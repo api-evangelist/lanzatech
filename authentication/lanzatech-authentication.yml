@@ -1,0 +1,16 @@
+generated: '2026-07-19'
+method: derived
+source: openapi/lanzatech-wordpress-openapi.yml
+summary:
+  types:
+  - http
+schemes:
+- name: applicationPassword
+  type: http
+  scheme: basic
+  description: WordPress application passwords, advertised by the API root document at https://lanzatech.com/wp-json/
+    (authentication.application-passwords.endpoints.authorization = https://lanzatech.com/wp-admin/authorize-application.php).
+    Sent as HTTP Basic credentials. Only required for write operations; all read operations
+    captured here are public.
+  sources:
+  - openapi/lanzatech-wordpress-openapi.yml
