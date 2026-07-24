@@ -1,0 +1,624 @@
+openapi: 3.0.3
+info:
+  title: LanzaTech WordPress REST block-directory comments API
+  version: wp/v2
+  description: 'The public WordPress REST API served by lanzatech.com. Derived faithfully from the provider''s own live discovery document at https://lanzatech.com/wp-json/ on 2026-07-19. Alongside the standard WordPress content types (posts, pages, media, categories, tags), LanzaTech publishes five custom content types that model the company itself: news (external news coverage), employee, board-member, download (published reports and life-cycle assessments) and testimonial. Read operations are publicly accessible without authentication; write operations require a WordPress application password.'
+  contact:
+    name: LanzaTech
+    url: https://lanzatech.com/contact/
+  termsOfService: https://lanzatech.com/terms-of-use/
+  x-generated: '2026-07-19'
+  x-method: derived
+  x-source: https://lanzatech.com/wp-json/
+servers:
+- url: https://lanzatech.com/wp-json
+  description: Production
+tags:
+- name: comments
+paths:
+  /wp/v2/comments:
+    get:
+      operationId: listComments
+      summary: GET /wp/v2/comments
+      tags:
+      - comments
+      parameters:
+      - name: context
+        in: query
+        required: false
+        description: Scope under which the request is made; determines fields present in response.
+        schema:
+          type: string
+          enum:
+          - view
+          - embed
+          - edit
+          default: view
+      - name: page
+        in: query
+        required: false
+        description: Current page of the collection.
+        schema:
+          type: integer
+          default: 1
+          minimum: 1
+      - name: per_page
+        in: query
+        required: false
+        description: Maximum number of items to be returned in result set.
+        schema:
+          type: integer
+          default: 10
+          minimum: 1
+          maximum: 100
+      - name: search
+        in: query
+        required: false
+        description: Limit results to those matching a string.
+        schema:
+          type: string
+      - name: after
+        in: query
+        required: false
+        description: Limit response to comments published after a given ISO8601 compliant date.
+        schema:
+          type: string
+          format: date-time
+      - name: author
+        in: query
+        required: false
+        description: Limit result set to comments assigned to specific user IDs. Requires authorization.
+        schema:
+          type: array
+          items:
+            type: integer
+      - name: author_exclude
+        in: query
+        required: false
+        description: Ensure result set excludes comments assigned to specific user IDs. Requires authorization.
+        schema:
+          type: array
+          items:
+            type: integer
+      - name: author_email
+        in: query
+        required: false
+        description: Limit result set to that from a specific author email. Requires authorization.
+        schema:
+          type: string
+          format: email
+      - name: before
+        in: query
+        required: false
+        description: Limit response to comments published before a given ISO8601 compliant date.
+        schema:
+          type: string
+          format: date-time
+      - name: exclude
+        in: query
+        required: false
+        description: Ensure result set excludes specific IDs.
+        schema:
+          type: array
+          default: []
+          items:
+            type: integer
+      - name: include
+        in: query
+        required: false
+        description: Limit result set to specific IDs.
+        schema:
+          type: array
+          default: []
+          items:
+            type: integer
+      - name: offset
+        in: query
+        required: false
+        description: Offset the result set by a specific number of items.
+        schema:
+          type: integer
+      - name: order
+        in: query
+        required: false
+        description: Order sort attribute ascending or descending.
+        schema:
+          type: string
+          enum:
+          - asc
+          - desc
+          default: desc
+      - name: orderby
+        in: query
+        required: false
+        description: Sort collection by comment attribute.
+        schema:
+          type: string
+          enum:
+          - date
+          - date_gmt
+          - id
+          - include
+          - post
+          - parent
+          - type
+          default: date_gmt
+      - name: parent
+        in: query
+        required: false
+        description: Limit result set to comments of specific parent IDs.
+        schema:
+          type: array
+          default: []
+          items:
+            type: integer
+      - name: parent_exclude
+        in: query
+        required: false
+        description: Ensure result set excludes specific parent IDs.
+        schema:
+          type: array
+          default: []
+          items:
+            type: integer
+      - name: post
+        in: query
+        required: false
+        description: Limit result set to comments assigned to specific post IDs.
+        schema:
+          type: array
+          default: []
+          items:
+            type: integer
+      - name: status
+        in: query
+        required: false
+        description: Limit result set to comments assigned a specific status. Requires authorization.
+        schema:
+          type: string
+          default: approve
+      - name: type
+        in: query
+        required: false
+        description: Limit result set to comments assigned a specific type. Requires authorization.
+        schema:
+          type: string
+          default: comment
+      - name: password
+        in: query
+        required: false
+        description: The password for the post if it is password protected.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response.
+          content:
+            application/json:
+              schema:
+                type: object
+          headers:
+            X-WP-Total:
+              description: Total items in the collection.
+              schema:
+                type: integer
+            X-WP-TotalPages:
+              description: Total pages in the collection.
+              schema:
+                type: integer
+            Link:
+              description: RFC 8288 pagination links (rel=next / rel=prev).
+              schema:
+                type: string
+        '400': &id001
+          $ref: '#/components/responses/Error'
+        '404': *id001
+    post:
+      operationId: createComments
+      summary: POST /wp/v2/comments
+      tags:
+      - comments
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                author:
+                  type: integer
+                  description: The ID of the user object, if author was a user.
+                author_email:
+                  type: string
+                  format: email
+                  description: Email address for the comment author.
+                author_ip:
+                  type: string
+                  format: ip
+                  description: IP address for the comment author.
+                author_name:
+                  type: string
+                  description: Display name for the comment author.
+                author_url:
+                  type: string
+                  format: uri
+                  description: URL for the comment author.
+                author_user_agent:
+                  type: string
+                  description: User agent for the comment author.
+                content:
+                  type: object
+                  description: The content for the comment.
+                date:
+                  type: string
+                  format: date-time
+                  description: The date the comment was published, in the site's timezone.
+                date_gmt:
+                  type: string
+                  format: date-time
+                  description: The date the comment was published, as GMT.
+                parent:
+                  type: integer
+                  default: 0
+                  description: The ID for the parent of the comment.
+                post:
+                  type: integer
+                  default: 0
+                  description: The ID of the associated post object.
+                status:
+                  type: string
+                  description: State of the comment.
+                meta:
+                  type: object
+                  description: Meta fields.
+      security:
+      - applicationPassword: []
+      responses:
+        '200':
+          description: Successful response.
+          content:
+            application/json:
+              schema:
+                type: object
+        '400': &id002
+          $ref: '#/components/responses/Error'
+        '401': *id002
+        '403': *id002
+        '404': *id002
+  /wp/v2/comments/{id}:
+    parameters:
+    - name: id
+      in: path
+      required: true
+      description: 'Route-matched value (WordPress route pattern: [\d]+).'
+      schema:
+        type: integer
+    get:
+      operationId: getCommentsById
+      summary: GET /wp/v2/comments/{id}
+      tags:
+      - comments
+      parameters:
+      - name: id
+        in: query
+        required: false
+        description: Unique identifier for the comment.
+        schema:
+          type: integer
+      - name: context
+        in: query
+        required: false
+        description: Scope under which the request is made; determines fields present in response.
+        schema:
+          type: string
+          enum:
+          - view
+          - embed
+          - edit
+          default: view
+      - name: password
+        in: query
+        required: false
+        description: The password for the parent post of the comment (if the post is password protected).
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response.
+          content:
+            application/json:
+              schema:
+                type: object
+        '404':
+          $ref: '#/components/responses/Error'
+    post:
+      operationId: createCommentsById
+      summary: POST /wp/v2/comments/{id}
+      tags:
+      - comments
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  description: Unique identifier for the comment.
+                author:
+                  type: integer
+                  description: The ID of the user object, if author was a user.
+                author_email:
+                  type: string
+                  format: email
+                  description: Email address for the comment author.
+                author_ip:
+                  type: string
+                  format: ip
+                  description: IP address for the comment author.
+                author_name:
+                  type: string
+                  description: Display name for the comment author.
+                author_url:
+                  type: string
+                  format: uri
+                  description: URL for the comment author.
+                author_user_agent:
+                  type: string
+                  description: User agent for the comment author.
+                content:
+                  type: object
+                  description: The content for the comment.
+                date:
+                  type: string
+                  format: date-time
+                  description: The date the comment was published, in the site's timezone.
+                date_gmt:
+                  type: string
+                  format: date-time
+                  description: The date the comment was published, as GMT.
+                parent:
+                  type: integer
+                  description: The ID for the parent of the comment.
+                post:
+                  type: integer
+                  description: The ID of the associated post object.
+                status:
+                  type: string
+                  description: State of the comment.
+                meta:
+                  type: object
+                  description: Meta fields.
+      security:
+      - applicationPassword: []
+      responses:
+        '200':
+          description: Successful response.
+          content:
+            application/json:
+              schema:
+                type: object
+        '400': &id003
+          $ref: '#/components/responses/Error'
+        '401': *id003
+        '403': *id003
+        '404': *id003
+    put:
+      operationId: replaceCommentsById
+      summary: PUT /wp/v2/comments/{id}
+      tags:
+      - comments
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  description: Unique identifier for the comment.
+                author:
+                  type: integer
+                  description: The ID of the user object, if author was a user.
+                author_email:
+                  type: string
+                  format: email
+                  description: Email address for the comment author.
+                author_ip:
+                  type: string
+                  format: ip
+                  description: IP address for the comment author.
+                author_name:
+                  type: string
+                  description: Display name for the comment author.
+                author_url:
+                  type: string
+                  format: uri
+                  description: URL for the comment author.
+                author_user_agent:
+                  type: string
+                  description: User agent for the comment author.
+                content:
+                  type: object
+                  description: The content for the comment.
+                date:
+                  type: string
+                  format: date-time
+                  description: The date the comment was published, in the site's timezone.
+                date_gmt:
+                  type: string
+                  format: date-time
+                  description: The date the comment was published, as GMT.
+                parent:
+                  type: integer
+                  description: The ID for the parent of the comment.
+                post:
+                  type: integer
+                  description: The ID of the associated post object.
+                status:
+                  type: string
+                  description: State of the comment.
+                meta:
+                  type: object
+                  description: Meta fields.
+      security:
+      - applicationPassword: []
+      responses:
+        '200':
+          description: Successful response.
+          content:
+            application/json:
+              schema:
+                type: object
+        '400': &id004
+          $ref: '#/components/responses/Error'
+        '401': *id004
+        '403': *id004
+        '404': *id004
+    patch:
+      operationId: updateCommentsById
+      summary: PATCH /wp/v2/comments/{id}
+      tags:
+      - comments
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  description: Unique identifier for the comment.
+                author:
+                  type: integer
+                  description: The ID of the user object, if author was a user.
+                author_email:
+                  type: string
+                  format: email
+                  description: Email address for the comment author.
+                author_ip:
+                  type: string
+                  format: ip
+                  description: IP address for the comment author.
+                author_name:
+                  type: string
+                  description: Display name for the comment author.
+                author_url:
+                  type: string
+                  format: uri
+                  description: URL for the comment author.
+                author_user_agent:
+                  type: string
+                  description: User agent for the comment author.
+                content:
+                  type: object
+                  description: The content for the comment.
+                date:
+                  type: string
+                  format: date-time
+                  description: The date the comment was published, in the site's timezone.
+                date_gmt:
+                  type: string
+                  format: date-time
+                  description: The date the comment was published, as GMT.
+                parent:
+                  type: integer
+                  description: The ID for the parent of the comment.
+                post:
+                  type: integer
+                  description: The ID of the associated post object.
+                status:
+                  type: string
+                  description: State of the comment.
+                meta:
+                  type: object
+                  description: Meta fields.
+      security:
+      - applicationPassword: []
+      responses:
+        '200':
+          description: Successful response.
+          content:
+            application/json:
+              schema:
+                type: object
+        '400': &id005
+          $ref: '#/components/responses/Error'
+        '401': *id005
+        '403': *id005
+        '404': *id005
+    delete:
+      operationId: deleteCommentsById
+      summary: DELETE /wp/v2/comments/{id}
+      tags:
+      - comments
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  description: Unique identifier for the comment.
+                force:
+                  type: boolean
+                  default: false
+                  description: Whether to bypass Trash and force deletion.
+                password:
+                  type: string
+                  description: The password for the parent post of the comment (if the post is password protected).
+      security:
+      - applicationPassword: []
+      responses:
+        '200':
+          description: Successful response.
+          content:
+            application/json:
+              schema:
+                type: object
+        '400': &id006
+          $ref: '#/components/responses/Error'
+        '401': *id006
+        '403': *id006
+        '404': *id006
+components:
+  responses:
+    Error:
+      description: WordPress REST API error envelope.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  schemas:
+    Error:
+      type: object
+      description: The WordPress REST API error envelope, captured verbatim from live responses.
+      properties:
+        code:
+          type: string
+          description: Machine-readable error code, e.g. rest_post_invalid_id.
+        message:
+          type: string
+          description: Human-readable error message.
+        data:
+          type: object
+          properties:
+            status:
+              type: integer
+              description: HTTP status code.
+            params:
+              type: object
+              description: Per-parameter validation messages (rest_invalid_param).
+            details:
+              type: object
+              description: Per-parameter structured error details.
+  securitySchemes:
+    applicationPassword:
+      type: http
+      scheme: basic
+      description: WordPress application passwords, advertised by the API root document at https://lanzatech.com/wp-json/ (authentication.application-passwords.endpoints.authorization = https://lanzatech.com/wp-admin/authorize-application.php). Sent as HTTP Basic credentials. Only required for write operations; all read operations captured here are public.

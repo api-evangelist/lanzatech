@@ -1,0 +1,222 @@
+openapi: 3.0.3
+info:
+  title: LanzaTech WordPress REST block-directory widget-types API
+  version: wp/v2
+  description: 'The public WordPress REST API served by lanzatech.com. Derived faithfully from the provider''s own live discovery document at https://lanzatech.com/wp-json/ on 2026-07-19. Alongside the standard WordPress content types (posts, pages, media, categories, tags), LanzaTech publishes five custom content types that model the company itself: news (external news coverage), employee, board-member, download (published reports and life-cycle assessments) and testimonial. Read operations are publicly accessible without authentication; write operations require a WordPress application password.'
+  contact:
+    name: LanzaTech
+    url: https://lanzatech.com/contact/
+  termsOfService: https://lanzatech.com/terms-of-use/
+  x-generated: '2026-07-19'
+  x-method: derived
+  x-source: https://lanzatech.com/wp-json/
+servers:
+- url: https://lanzatech.com/wp-json
+  description: Production
+tags:
+- name: widget-types
+paths:
+  /wp/v2/widget-types:
+    get:
+      operationId: listWidgetTypes
+      summary: GET /wp/v2/widget-types
+      tags:
+      - widget-types
+      parameters:
+      - name: context
+        in: query
+        required: false
+        description: Scope under which the request is made; determines fields present in response.
+        schema:
+          type: string
+          enum:
+          - view
+          - embed
+          - edit
+          default: view
+      responses:
+        '200':
+          description: Successful response.
+          content:
+            application/json:
+              schema:
+                type: object
+          headers:
+            X-WP-Total:
+              description: Total items in the collection.
+              schema:
+                type: integer
+            X-WP-TotalPages:
+              description: Total pages in the collection.
+              schema:
+                type: integer
+            Link:
+              description: RFC 8288 pagination links (rel=next / rel=prev).
+              schema:
+                type: string
+        '400': &id001
+          $ref: '#/components/responses/Error'
+        '404': *id001
+  /wp/v2/widget-types/{id}:
+    parameters:
+    - name: id
+      in: path
+      required: true
+      description: 'Route-matched value (WordPress route pattern: [a-zA-Z0-9_-]+).'
+      schema:
+        type: string
+    get:
+      operationId: getWidgetTypesById
+      summary: GET /wp/v2/widget-types/{id}
+      tags:
+      - widget-types
+      parameters:
+      - name: id
+        in: query
+        required: false
+        description: The widget type id.
+        schema:
+          type: string
+      - name: context
+        in: query
+        required: false
+        description: Scope under which the request is made; determines fields present in response.
+        schema:
+          type: string
+          enum:
+          - view
+          - embed
+          - edit
+          default: view
+      responses:
+        '200':
+          description: Successful response.
+          content:
+            application/json:
+              schema:
+                type: object
+        '404':
+          $ref: '#/components/responses/Error'
+  /wp/v2/widget-types/{id}/encode:
+    parameters:
+    - name: id
+      in: path
+      required: true
+      description: 'Route-matched value (WordPress route pattern: [a-zA-Z0-9_-]+).'
+      schema:
+        type: string
+    post:
+      operationId: createWidgetTypesEncodeById
+      summary: POST /wp/v2/widget-types/{id}/encode
+      tags:
+      - widget-types
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: string
+                  description: The widget type id.
+                instance:
+                  type: object
+                  description: Current instance settings of the widget.
+                form_data:
+                  type: string
+                  description: Serialized widget form data to encode into instance settings.
+              required:
+              - id
+      security:
+      - applicationPassword: []
+      responses:
+        '200':
+          description: Successful response.
+          content:
+            application/json:
+              schema:
+                type: object
+        '400': &id002
+          $ref: '#/components/responses/Error'
+        '401': *id002
+        '403': *id002
+        '404': *id002
+  /wp/v2/widget-types/{id}/render:
+    parameters:
+    - name: id
+      in: path
+      required: true
+      description: 'Route-matched value (WordPress route pattern: [a-zA-Z0-9_-]+).'
+      schema:
+        type: string
+    post:
+      operationId: createWidgetTypesRenderById
+      summary: POST /wp/v2/widget-types/{id}/render
+      tags:
+      - widget-types
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: string
+                  description: The widget type id.
+                instance:
+                  type: object
+                  description: Current instance settings of the widget.
+              required:
+              - id
+      security:
+      - applicationPassword: []
+      responses:
+        '200':
+          description: Successful response.
+          content:
+            application/json:
+              schema:
+                type: object
+        '400': &id003
+          $ref: '#/components/responses/Error'
+        '401': *id003
+        '403': *id003
+        '404': *id003
+components:
+  responses:
+    Error:
+      description: WordPress REST API error envelope.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  schemas:
+    Error:
+      type: object
+      description: The WordPress REST API error envelope, captured verbatim from live responses.
+      properties:
+        code:
+          type: string
+          description: Machine-readable error code, e.g. rest_post_invalid_id.
+        message:
+          type: string
+          description: Human-readable error message.
+        data:
+          type: object
+          properties:
+            status:
+              type: integer
+              description: HTTP status code.
+            params:
+              type: object
+              description: Per-parameter validation messages (rest_invalid_param).
+            details:
+              type: object
+              description: Per-parameter structured error details.
+  securitySchemes:
+    applicationPassword:
+      type: http
+      scheme: basic
+      description: WordPress application passwords, advertised by the API root document at https://lanzatech.com/wp-json/ (authentication.application-passwords.endpoints.authorization = https://lanzatech.com/wp-admin/authorize-application.php). Sent as HTTP Basic credentials. Only required for write operations; all read operations captured here are public.

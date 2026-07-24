@@ -1,0 +1,124 @@
+openapi: 3.0.3
+info:
+  title: LanzaTech WordPress REST block-directory themes API
+  version: wp/v2
+  description: 'The public WordPress REST API served by lanzatech.com. Derived faithfully from the provider''s own live discovery document at https://lanzatech.com/wp-json/ on 2026-07-19. Alongside the standard WordPress content types (posts, pages, media, categories, tags), LanzaTech publishes five custom content types that model the company itself: news (external news coverage), employee, board-member, download (published reports and life-cycle assessments) and testimonial. Read operations are publicly accessible without authentication; write operations require a WordPress application password.'
+  contact:
+    name: LanzaTech
+    url: https://lanzatech.com/contact/
+  termsOfService: https://lanzatech.com/terms-of-use/
+  x-generated: '2026-07-19'
+  x-method: derived
+  x-source: https://lanzatech.com/wp-json/
+servers:
+- url: https://lanzatech.com/wp-json
+  description: Production
+tags:
+- name: themes
+paths:
+  /wp/v2/themes:
+    get:
+      operationId: listThemes
+      summary: GET /wp/v2/themes
+      tags:
+      - themes
+      parameters:
+      - name: status
+        in: query
+        required: false
+        description: Limit result set to themes assigned one or more statuses.
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - active
+            - inactive
+      responses:
+        '200':
+          description: Successful response.
+          content:
+            application/json:
+              schema:
+                type: object
+          headers:
+            X-WP-Total:
+              description: Total items in the collection.
+              schema:
+                type: integer
+            X-WP-TotalPages:
+              description: Total pages in the collection.
+              schema:
+                type: integer
+            Link:
+              description: RFC 8288 pagination links (rel=next / rel=prev).
+              schema:
+                type: string
+        '400': &id001
+          $ref: '#/components/responses/Error'
+        '404': *id001
+  /wp/v2/themes/{stylesheet}/:<>\*\?"\|]+(?:\/[^\/:<>\*\?"\|]+)?):
+    parameters:
+    - name: stylesheet
+      in: path
+      required: true
+      description: 'Route-matched value (WordPress route pattern: (?P<stylesheet>[^\).'
+      schema:
+        type: string
+    get:
+      operationId: getThemes:<>\*\?"\|]+(?:\[^\:<>\*\?"\|]+)?)ByStylesheet
+      summary: GET /wp/v2/themes/{stylesheet}/:<>\*\?"\|]+(?:\/[^\/:<>\*\?"\|]+)?)
+      tags:
+      - themes
+      parameters:
+      - name: stylesheet
+        in: query
+        required: false
+        description: The theme's stylesheet. This uniquely identifies the theme.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response.
+          content:
+            application/json:
+              schema:
+                type: object
+        '404':
+          $ref: '#/components/responses/Error'
+components:
+  responses:
+    Error:
+      description: WordPress REST API error envelope.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  schemas:
+    Error:
+      type: object
+      description: The WordPress REST API error envelope, captured verbatim from live responses.
+      properties:
+        code:
+          type: string
+          description: Machine-readable error code, e.g. rest_post_invalid_id.
+        message:
+          type: string
+          description: Human-readable error message.
+        data:
+          type: object
+          properties:
+            status:
+              type: integer
+              description: HTTP status code.
+            params:
+              type: object
+              description: Per-parameter validation messages (rest_invalid_param).
+            details:
+              type: object
+              description: Per-parameter structured error details.
+  securitySchemes:
+    applicationPassword:
+      type: http
+      scheme: basic
+      description: WordPress application passwords, advertised by the API root document at https://lanzatech.com/wp-json/ (authentication.application-passwords.endpoints.authorization = https://lanzatech.com/wp-admin/authorize-application.php). Sent as HTTP Basic credentials. Only required for write operations; all read operations captured here are public.

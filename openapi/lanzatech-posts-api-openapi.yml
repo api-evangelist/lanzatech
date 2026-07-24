@@ -1,0 +1,1213 @@
+openapi: 3.0.3
+info:
+  title: LanzaTech WordPress REST block-directory posts API
+  version: wp/v2
+  description: 'The public WordPress REST API served by lanzatech.com. Derived faithfully from the provider''s own live discovery document at https://lanzatech.com/wp-json/ on 2026-07-19. Alongside the standard WordPress content types (posts, pages, media, categories, tags), LanzaTech publishes five custom content types that model the company itself: news (external news coverage), employee, board-member, download (published reports and life-cycle assessments) and testimonial. Read operations are publicly accessible without authentication; write operations require a WordPress application password.'
+  contact:
+    name: LanzaTech
+    url: https://lanzatech.com/contact/
+  termsOfService: https://lanzatech.com/terms-of-use/
+  x-generated: '2026-07-19'
+  x-method: derived
+  x-source: https://lanzatech.com/wp-json/
+servers:
+- url: https://lanzatech.com/wp-json
+  description: Production
+tags:
+- name: posts
+paths:
+  /wp/v2/posts:
+    get:
+      operationId: listPosts
+      summary: GET /wp/v2/posts
+      tags:
+      - posts
+      parameters:
+      - name: context
+        in: query
+        required: false
+        description: Scope under which the request is made; determines fields present in response.
+        schema:
+          type: string
+          enum:
+          - view
+          - embed
+          - edit
+          default: view
+      - name: page
+        in: query
+        required: false
+        description: Current page of the collection.
+        schema:
+          type: integer
+          default: 1
+          minimum: 1
+      - name: per_page
+        in: query
+        required: false
+        description: Maximum number of items to be returned in result set.
+        schema:
+          type: integer
+          default: 10
+          minimum: 1
+          maximum: 100
+      - name: search
+        in: query
+        required: false
+        description: Limit results to those matching a string.
+        schema:
+          type: string
+      - name: after
+        in: query
+        required: false
+        description: Limit response to posts published after a given ISO8601 compliant date.
+        schema:
+          type: string
+          format: date-time
+      - name: modified_after
+        in: query
+        required: false
+        description: Limit response to posts modified after a given ISO8601 compliant date.
+        schema:
+          type: string
+          format: date-time
+      - name: author
+        in: query
+        required: false
+        description: Limit result set to posts assigned to specific authors.
+        schema:
+          type: array
+          default: []
+          items:
+            type: integer
+      - name: author_exclude
+        in: query
+        required: false
+        description: Ensure result set excludes posts assigned to specific authors.
+        schema:
+          type: array
+          default: []
+          items:
+            type: integer
+      - name: before
+        in: query
+        required: false
+        description: Limit response to posts published before a given ISO8601 compliant date.
+        schema:
+          type: string
+          format: date-time
+      - name: modified_before
+        in: query
+        required: false
+        description: Limit response to posts modified before a given ISO8601 compliant date.
+        schema:
+          type: string
+          format: date-time
+      - name: exclude
+        in: query
+        required: false
+        description: Ensure result set excludes specific IDs.
+        schema:
+          type: array
+          default: []
+          items:
+            type: integer
+      - name: include
+        in: query
+        required: false
+        description: Limit result set to specific IDs.
+        schema:
+          type: array
+          default: []
+          items:
+            type: integer
+      - name: offset
+        in: query
+        required: false
+        description: Offset the result set by a specific number of items.
+        schema:
+          type: integer
+      - name: order
+        in: query
+        required: false
+        description: Order sort attribute ascending or descending.
+        schema:
+          type: string
+          enum:
+          - asc
+          - desc
+          default: desc
+      - name: orderby
+        in: query
+        required: false
+        description: Sort collection by post attribute.
+        schema:
+          type: string
+          enum:
+          - author
+          - date
+          - id
+          - include
+          - modified
+          - parent
+          - relevance
+          - slug
+          - include_slugs
+          - title
+          default: date
+      - name: slug
+        in: query
+        required: false
+        description: Limit result set to posts with one or more specific slugs.
+        schema:
+          type: array
+          items:
+            type: string
+      - name: status
+        in: query
+        required: false
+        description: Limit result set to posts assigned one or more statuses.
+        schema:
+          type: array
+          default: publish
+          items:
+            type: string
+            enum:
+            - publish
+            - future
+            - draft
+            - pending
+            - private
+            - trash
+            - auto-draft
+            - inherit
+            - request-pending
+            - request-confirmed
+            - request-failed
+            - request-completed
+            - any
+      - name: tax_relation
+        in: query
+        required: false
+        description: Limit result set based on relationship between multiple taxonomies.
+        schema:
+          type: string
+          enum:
+          - AND
+          - OR
+      - name: categories
+        in: query
+        required: false
+        description: Limit result set to items with specific terms assigned in the categories taxonomy.
+        schema:
+          type: object
+      - name: categories_exclude
+        in: query
+        required: false
+        description: Limit result set to items except those with specific terms assigned in the categories taxonomy.
+        schema:
+          type: object
+      - name: tags
+        in: query
+        required: false
+        description: Limit result set to items with specific terms assigned in the tags taxonomy.
+        schema:
+          type: object
+      - name: tags_exclude
+        in: query
+        required: false
+        description: Limit result set to items except those with specific terms assigned in the tags taxonomy.
+        schema:
+          type: object
+      - name: sticky
+        in: query
+        required: false
+        description: Limit result set to items that are sticky.
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: Successful response.
+          content:
+            application/json:
+              schema:
+                type: object
+          headers:
+            X-WP-Total:
+              description: Total items in the collection.
+              schema:
+                type: integer
+            X-WP-TotalPages:
+              description: Total pages in the collection.
+              schema:
+                type: integer
+            Link:
+              description: RFC 8288 pagination links (rel=next / rel=prev).
+              schema:
+                type: string
+        '400': &id001
+          $ref: '#/components/responses/Error'
+        '404': *id001
+    post:
+      operationId: createPosts
+      summary: POST /wp/v2/posts
+      tags:
+      - posts
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                date:
+                  type: string
+                  format: date-time
+                  description: The date the post was published, in the site's timezone.
+                date_gmt:
+                  type: string
+                  format: date-time
+                  description: The date the post was published, as GMT.
+                slug:
+                  type: string
+                  description: An alphanumeric identifier for the post unique to its type.
+                status:
+                  type: string
+                  enum:
+                  - publish
+                  - future
+                  - draft
+                  - pending
+                  - private
+                  description: A named status for the post.
+                password:
+                  type: string
+                  description: A password to protect access to the content and excerpt.
+                title:
+                  type: object
+                  description: The title for the post.
+                content:
+                  type: object
+                  description: The content for the post.
+                author:
+                  type: integer
+                  description: The ID for the author of the post.
+                excerpt:
+                  type: object
+                  description: The excerpt for the post.
+                featured_media:
+                  type: integer
+                  description: The ID of the featured media for the post.
+                comment_status:
+                  type: string
+                  enum:
+                  - open
+                  - closed
+                  description: Whether or not comments are open on the post.
+                ping_status:
+                  type: string
+                  enum:
+                  - open
+                  - closed
+                  description: Whether or not the post can be pinged.
+                format:
+                  type: string
+                  enum:
+                  - standard
+                  - aside
+                  - chat
+                  - gallery
+                  - link
+                  - image
+                  - quote
+                  - status
+                  - video
+                  - audio
+                  description: The format for the post.
+                meta:
+                  type: object
+                  description: Meta fields.
+                sticky:
+                  type: boolean
+                  description: Whether or not the post should be treated as sticky.
+                template:
+                  type: string
+                  description: The theme file to use to display the post.
+                categories:
+                  type: array
+                  items:
+                    type: integer
+                  description: The terms assigned to the post in the category taxonomy.
+                tags:
+                  type: array
+                  items:
+                    type: integer
+                  description: The terms assigned to the post in the post_tag taxonomy.
+      security:
+      - applicationPassword: []
+      responses:
+        '200':
+          description: Successful response.
+          content:
+            application/json:
+              schema:
+                type: object
+        '400': &id002
+          $ref: '#/components/responses/Error'
+        '401': *id002
+        '403': *id002
+        '404': *id002
+  /wp/v2/posts/{id}:
+    parameters:
+    - name: id
+      in: path
+      required: true
+      description: 'Route-matched value (WordPress route pattern: [\d]+).'
+      schema:
+        type: integer
+    get:
+      operationId: getPostsById
+      summary: GET /wp/v2/posts/{id}
+      tags:
+      - posts
+      parameters:
+      - name: id
+        in: query
+        required: false
+        description: Unique identifier for the post.
+        schema:
+          type: integer
+      - name: context
+        in: query
+        required: false
+        description: Scope under which the request is made; determines fields present in response.
+        schema:
+          type: string
+          enum:
+          - view
+          - embed
+          - edit
+          default: view
+      - name: password
+        in: query
+        required: false
+        description: The password for the post if it is password protected.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response.
+          content:
+            application/json:
+              schema:
+                type: object
+        '404':
+          $ref: '#/components/responses/Error'
+    post:
+      operationId: createPostsById
+      summary: POST /wp/v2/posts/{id}
+      tags:
+      - posts
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  description: Unique identifier for the post.
+                date:
+                  type: string
+                  format: date-time
+                  description: The date the post was published, in the site's timezone.
+                date_gmt:
+                  type: string
+                  format: date-time
+                  description: The date the post was published, as GMT.
+                slug:
+                  type: string
+                  description: An alphanumeric identifier for the post unique to its type.
+                status:
+                  type: string
+                  enum:
+                  - publish
+                  - future
+                  - draft
+                  - pending
+                  - private
+                  description: A named status for the post.
+                password:
+                  type: string
+                  description: A password to protect access to the content and excerpt.
+                title:
+                  type: object
+                  description: The title for the post.
+                content:
+                  type: object
+                  description: The content for the post.
+                author:
+                  type: integer
+                  description: The ID for the author of the post.
+                excerpt:
+                  type: object
+                  description: The excerpt for the post.
+                featured_media:
+                  type: integer
+                  description: The ID of the featured media for the post.
+                comment_status:
+                  type: string
+                  enum:
+                  - open
+                  - closed
+                  description: Whether or not comments are open on the post.
+                ping_status:
+                  type: string
+                  enum:
+                  - open
+                  - closed
+                  description: Whether or not the post can be pinged.
+                format:
+                  type: string
+                  enum:
+                  - standard
+                  - aside
+                  - chat
+                  - gallery
+                  - link
+                  - image
+                  - quote
+                  - status
+                  - video
+                  - audio
+                  description: The format for the post.
+                meta:
+                  type: object
+                  description: Meta fields.
+                sticky:
+                  type: boolean
+                  description: Whether or not the post should be treated as sticky.
+                template:
+                  type: string
+                  description: The theme file to use to display the post.
+                categories:
+                  type: array
+                  items:
+                    type: integer
+                  description: The terms assigned to the post in the category taxonomy.
+                tags:
+                  type: array
+                  items:
+                    type: integer
+                  description: The terms assigned to the post in the post_tag taxonomy.
+      security:
+      - applicationPassword: []
+      responses:
+        '200':
+          description: Successful response.
+          content:
+            application/json:
+              schema:
+                type: object
+        '400': &id003
+          $ref: '#/components/responses/Error'
+        '401': *id003
+        '403': *id003
+        '404': *id003
+    put:
+      operationId: replacePostsById
+      summary: PUT /wp/v2/posts/{id}
+      tags:
+      - posts
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  description: Unique identifier for the post.
+                date:
+                  type: string
+                  format: date-time
+                  description: The date the post was published, in the site's timezone.
+                date_gmt:
+                  type: string
+                  format: date-time
+                  description: The date the post was published, as GMT.
+                slug:
+                  type: string
+                  description: An alphanumeric identifier for the post unique to its type.
+                status:
+                  type: string
+                  enum:
+                  - publish
+                  - future
+                  - draft
+                  - pending
+                  - private
+                  description: A named status for the post.
+                password:
+                  type: string
+                  description: A password to protect access to the content and excerpt.
+                title:
+                  type: object
+                  description: The title for the post.
+                content:
+                  type: object
+                  description: The content for the post.
+                author:
+                  type: integer
+                  description: The ID for the author of the post.
+                excerpt:
+                  type: object
+                  description: The excerpt for the post.
+                featured_media:
+                  type: integer
+                  description: The ID of the featured media for the post.
+                comment_status:
+                  type: string
+                  enum:
+                  - open
+                  - closed
+                  description: Whether or not comments are open on the post.
+                ping_status:
+                  type: string
+                  enum:
+                  - open
+                  - closed
+                  description: Whether or not the post can be pinged.
+                format:
+                  type: string
+                  enum:
+                  - standard
+                  - aside
+                  - chat
+                  - gallery
+                  - link
+                  - image
+                  - quote
+                  - status
+                  - video
+                  - audio
+                  description: The format for the post.
+                meta:
+                  type: object
+                  description: Meta fields.
+                sticky:
+                  type: boolean
+                  description: Whether or not the post should be treated as sticky.
+                template:
+                  type: string
+                  description: The theme file to use to display the post.
+                categories:
+                  type: array
+                  items:
+                    type: integer
+                  description: The terms assigned to the post in the category taxonomy.
+                tags:
+                  type: array
+                  items:
+                    type: integer
+                  description: The terms assigned to the post in the post_tag taxonomy.
+      security:
+      - applicationPassword: []
+      responses:
+        '200':
+          description: Successful response.
+          content:
+            application/json:
+              schema:
+                type: object
+        '400': &id004
+          $ref: '#/components/responses/Error'
+        '401': *id004
+        '403': *id004
+        '404': *id004
+    patch:
+      operationId: updatePostsById
+      summary: PATCH /wp/v2/posts/{id}
+      tags:
+      - posts
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  description: Unique identifier for the post.
+                date:
+                  type: string
+                  format: date-time
+                  description: The date the post was published, in the site's timezone.
+                date_gmt:
+                  type: string
+                  format: date-time
+                  description: The date the post was published, as GMT.
+                slug:
+                  type: string
+                  description: An alphanumeric identifier for the post unique to its type.
+                status:
+                  type: string
+                  enum:
+                  - publish
+                  - future
+                  - draft
+                  - pending
+                  - private
+                  description: A named status for the post.
+                password:
+                  type: string
+                  description: A password to protect access to the content and excerpt.
+                title:
+                  type: object
+                  description: The title for the post.
+                content:
+                  type: object
+                  description: The content for the post.
+                author:
+                  type: integer
+                  description: The ID for the author of the post.
+                excerpt:
+                  type: object
+                  description: The excerpt for the post.
+                featured_media:
+                  type: integer
+                  description: The ID of the featured media for the post.
+                comment_status:
+                  type: string
+                  enum:
+                  - open
+                  - closed
+                  description: Whether or not comments are open on the post.
+                ping_status:
+                  type: string
+                  enum:
+                  - open
+                  - closed
+                  description: Whether or not the post can be pinged.
+                format:
+                  type: string
+                  enum:
+                  - standard
+                  - aside
+                  - chat
+                  - gallery
+                  - link
+                  - image
+                  - quote
+                  - status
+                  - video
+                  - audio
+                  description: The format for the post.
+                meta:
+                  type: object
+                  description: Meta fields.
+                sticky:
+                  type: boolean
+                  description: Whether or not the post should be treated as sticky.
+                template:
+                  type: string
+                  description: The theme file to use to display the post.
+                categories:
+                  type: array
+                  items:
+                    type: integer
+                  description: The terms assigned to the post in the category taxonomy.
+                tags:
+                  type: array
+                  items:
+                    type: integer
+                  description: The terms assigned to the post in the post_tag taxonomy.
+      security:
+      - applicationPassword: []
+      responses:
+        '200':
+          description: Successful response.
+          content:
+            application/json:
+              schema:
+                type: object
+        '400': &id005
+          $ref: '#/components/responses/Error'
+        '401': *id005
+        '403': *id005
+        '404': *id005
+    delete:
+      operationId: deletePostsById
+      summary: DELETE /wp/v2/posts/{id}
+      tags:
+      - posts
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  description: Unique identifier for the post.
+                force:
+                  type: boolean
+                  default: false
+                  description: Whether to bypass Trash and force deletion.
+      security:
+      - applicationPassword: []
+      responses:
+        '200':
+          description: Successful response.
+          content:
+            application/json:
+              schema:
+                type: object
+        '400': &id006
+          $ref: '#/components/responses/Error'
+        '401': *id006
+        '403': *id006
+        '404': *id006
+  /wp/v2/posts/{id}/autosaves:
+    parameters:
+    - name: id
+      in: path
+      required: true
+      description: 'Route-matched value (WordPress route pattern: [\d]+).'
+      schema:
+        type: integer
+    get:
+      operationId: getPostsAutosavesById
+      summary: GET /wp/v2/posts/{id}/autosaves
+      tags:
+      - posts
+      parameters:
+      - name: parent
+        in: query
+        required: false
+        description: The ID for the parent of the autosave.
+        schema:
+          type: integer
+      - name: context
+        in: query
+        required: false
+        description: Scope under which the request is made; determines fields present in response.
+        schema:
+          type: string
+          enum:
+          - view
+          - embed
+          - edit
+          default: view
+      responses:
+        '200':
+          description: Successful response.
+          content:
+            application/json:
+              schema:
+                type: object
+        '404':
+          $ref: '#/components/responses/Error'
+    post:
+      operationId: createPostsAutosavesById
+      summary: POST /wp/v2/posts/{id}/autosaves
+      tags:
+      - posts
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                parent:
+                  type: integer
+                  description: The ID for the parent of the autosave.
+                date:
+                  type: string
+                  format: date-time
+                  description: The date the post was published, in the site's timezone.
+                date_gmt:
+                  type: string
+                  format: date-time
+                  description: The date the post was published, as GMT.
+                slug:
+                  type: string
+                  description: An alphanumeric identifier for the post unique to its type.
+                status:
+                  type: string
+                  enum:
+                  - publish
+                  - future
+                  - draft
+                  - pending
+                  - private
+                  description: A named status for the post.
+                password:
+                  type: string
+                  description: A password to protect access to the content and excerpt.
+                title:
+                  type: object
+                  description: The title for the post.
+                content:
+                  type: object
+                  description: The content for the post.
+                author:
+                  type: integer
+                  description: The ID for the author of the post.
+                excerpt:
+                  type: object
+                  description: The excerpt for the post.
+                featured_media:
+                  type: integer
+                  description: The ID of the featured media for the post.
+                comment_status:
+                  type: string
+                  enum:
+                  - open
+                  - closed
+                  description: Whether or not comments are open on the post.
+                ping_status:
+                  type: string
+                  enum:
+                  - open
+                  - closed
+                  description: Whether or not the post can be pinged.
+                format:
+                  type: string
+                  enum:
+                  - standard
+                  - aside
+                  - chat
+                  - gallery
+                  - link
+                  - image
+                  - quote
+                  - status
+                  - video
+                  - audio
+                  description: The format for the post.
+                meta:
+                  type: object
+                  description: Meta fields.
+                sticky:
+                  type: boolean
+                  description: Whether or not the post should be treated as sticky.
+                template:
+                  type: string
+                  description: The theme file to use to display the post.
+                categories:
+                  type: array
+                  items:
+                    type: integer
+                  description: The terms assigned to the post in the category taxonomy.
+                tags:
+                  type: array
+                  items:
+                    type: integer
+                  description: The terms assigned to the post in the post_tag taxonomy.
+      security:
+      - applicationPassword: []
+      responses:
+        '200':
+          description: Successful response.
+          content:
+            application/json:
+              schema:
+                type: object
+        '400': &id007
+          $ref: '#/components/responses/Error'
+        '401': *id007
+        '403': *id007
+        '404': *id007
+  /wp/v2/posts/{parent}/autosaves/{id}:
+    parameters:
+    - name: parent
+      in: path
+      required: true
+      description: 'Route-matched value (WordPress route pattern: [\d]+).'
+      schema:
+        type: integer
+    - name: id
+      in: path
+      required: true
+      description: 'Route-matched value (WordPress route pattern: [\d]+).'
+      schema:
+        type: integer
+    get:
+      operationId: getPostsAutosavesByParentById
+      summary: GET /wp/v2/posts/{parent}/autosaves/{id}
+      tags:
+      - posts
+      parameters:
+      - name: parent
+        in: query
+        required: false
+        description: The ID for the parent of the autosave.
+        schema:
+          type: integer
+      - name: id
+        in: query
+        required: false
+        description: The ID for the autosave.
+        schema:
+          type: integer
+      - name: context
+        in: query
+        required: false
+        description: Scope under which the request is made; determines fields present in response.
+        schema:
+          type: string
+          enum:
+          - view
+          - embed
+          - edit
+          default: view
+      responses:
+        '200':
+          description: Successful response.
+          content:
+            application/json:
+              schema:
+                type: object
+        '404':
+          $ref: '#/components/responses/Error'
+  /wp/v2/posts/{parent}/revisions:
+    parameters:
+    - name: parent
+      in: path
+      required: true
+      description: 'Route-matched value (WordPress route pattern: [\d]+).'
+      schema:
+        type: integer
+    get:
+      operationId: getPostsRevisionsByParent
+      summary: GET /wp/v2/posts/{parent}/revisions
+      tags:
+      - posts
+      parameters:
+      - name: parent
+        in: query
+        required: false
+        description: The ID for the parent of the revision.
+        schema:
+          type: integer
+      - name: context
+        in: query
+        required: false
+        description: Scope under which the request is made; determines fields present in response.
+        schema:
+          type: string
+          enum:
+          - view
+          - embed
+          - edit
+          default: view
+      - name: page
+        in: query
+        required: false
+        description: Current page of the collection.
+        schema:
+          type: integer
+          default: 1
+          minimum: 1
+      - name: per_page
+        in: query
+        required: false
+        description: Maximum number of items to be returned in result set.
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+      - name: search
+        in: query
+        required: false
+        description: Limit results to those matching a string.
+        schema:
+          type: string
+      - name: exclude
+        in: query
+        required: false
+        description: Ensure result set excludes specific IDs.
+        schema:
+          type: array
+          default: []
+          items:
+            type: integer
+      - name: include
+        in: query
+        required: false
+        description: Limit result set to specific IDs.
+        schema:
+          type: array
+          default: []
+          items:
+            type: integer
+      - name: offset
+        in: query
+        required: false
+        description: Offset the result set by a specific number of items.
+        schema:
+          type: integer
+      - name: order
+        in: query
+        required: false
+        description: Order sort attribute ascending or descending.
+        schema:
+          type: string
+          enum:
+          - asc
+          - desc
+          default: desc
+      - name: orderby
+        in: query
+        required: false
+        description: Sort collection by object attribute.
+        schema:
+          type: string
+          enum:
+          - date
+          - id
+          - include
+          - relevance
+          - slug
+          - include_slugs
+          - title
+          default: date
+      responses:
+        '200':
+          description: Successful response.
+          content:
+            application/json:
+              schema:
+                type: object
+        '404':
+          $ref: '#/components/responses/Error'
+  /wp/v2/posts/{parent}/revisions/{id}:
+    parameters:
+    - name: parent
+      in: path
+      required: true
+      description: 'Route-matched value (WordPress route pattern: [\d]+).'
+      schema:
+        type: integer
+    - name: id
+      in: path
+      required: true
+      description: 'Route-matched value (WordPress route pattern: [\d]+).'
+      schema:
+        type: integer
+    get:
+      operationId: getPostsRevisionsByParentById
+      summary: GET /wp/v2/posts/{parent}/revisions/{id}
+      tags:
+      - posts
+      parameters:
+      - name: parent
+        in: query
+        required: false
+        description: The ID for the parent of the revision.
+        schema:
+          type: integer
+      - name: id
+        in: query
+        required: false
+        description: Unique identifier for the revision.
+        schema:
+          type: integer
+      - name: context
+        in: query
+        required: false
+        description: Scope under which the request is made; determines fields present in response.
+        schema:
+          type: string
+          enum:
+          - view
+          - embed
+          - edit
+          default: view
+      responses:
+        '200':
+          description: Successful response.
+          content:
+            application/json:
+              schema:
+                type: object
+        '404':
+          $ref: '#/components/responses/Error'
+    delete:
+      operationId: deletePostsRevisionsByParentById
+      summary: DELETE /wp/v2/posts/{parent}/revisions/{id}
+      tags:
+      - posts
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                parent:
+                  type: integer
+                  description: The ID for the parent of the revision.
+                id:
+                  type: integer
+                  description: Unique identifier for the revision.
+                force:
+                  type: boolean
+                  default: false
+                  description: Required to be true, as revisions do not support trashing.
+      security:
+      - applicationPassword: []
+      responses:
+        '200':
+          description: Successful response.
+          content:
+            application/json:
+              schema:
+                type: object
+        '400': &id008
+          $ref: '#/components/responses/Error'
+        '401': *id008
+        '403': *id008
+        '404': *id008
+components:
+  responses:
+    Error:
+      description: WordPress REST API error envelope.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  schemas:
+    Error:
+      type: object
+      description: The WordPress REST API error envelope, captured verbatim from live responses.
+      properties:
+        code:
+          type: string
+          description: Machine-readable error code, e.g. rest_post_invalid_id.
+        message:
+          type: string
+          description: Human-readable error message.
+        data:
+          type: object
+          properties:
+            status:
+              type: integer
+              description: HTTP status code.
+            params:
+              type: object
+              description: Per-parameter validation messages (rest_invalid_param).
+            details:
+              type: object
+              description: Per-parameter structured error details.
+  securitySchemes:
+    applicationPassword:
+      type: http
+      scheme: basic
+      description: WordPress application passwords, advertised by the API root document at https://lanzatech.com/wp-json/ (authentication.application-passwords.endpoints.authorization = https://lanzatech.com/wp-admin/authorize-application.php). Sent as HTTP Basic credentials. Only required for write operations; all read operations captured here are public.

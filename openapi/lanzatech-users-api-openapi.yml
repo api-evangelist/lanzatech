@@ -1,0 +1,1157 @@
+openapi: 3.0.3
+info:
+  title: LanzaTech WordPress REST block-directory users API
+  version: wp/v2
+  description: 'The public WordPress REST API served by lanzatech.com. Derived faithfully from the provider''s own live discovery document at https://lanzatech.com/wp-json/ on 2026-07-19. Alongside the standard WordPress content types (posts, pages, media, categories, tags), LanzaTech publishes five custom content types that model the company itself: news (external news coverage), employee, board-member, download (published reports and life-cycle assessments) and testimonial. Read operations are publicly accessible without authentication; write operations require a WordPress application password.'
+  contact:
+    name: LanzaTech
+    url: https://lanzatech.com/contact/
+  termsOfService: https://lanzatech.com/terms-of-use/
+  x-generated: '2026-07-19'
+  x-method: derived
+  x-source: https://lanzatech.com/wp-json/
+servers:
+- url: https://lanzatech.com/wp-json
+  description: Production
+tags:
+- name: users
+paths:
+  /wp/v2/users:
+    get:
+      operationId: listUsers
+      summary: GET /wp/v2/users
+      tags:
+      - users
+      parameters:
+      - name: context
+        in: query
+        required: false
+        description: Scope under which the request is made; determines fields present in response.
+        schema:
+          type: string
+          enum:
+          - view
+          - embed
+          - edit
+          default: view
+      - name: page
+        in: query
+        required: false
+        description: Current page of the collection.
+        schema:
+          type: integer
+          default: 1
+          minimum: 1
+      - name: per_page
+        in: query
+        required: false
+        description: Maximum number of items to be returned in result set.
+        schema:
+          type: integer
+          default: 10
+          minimum: 1
+          maximum: 100
+      - name: search
+        in: query
+        required: false
+        description: Limit results to those matching a string.
+        schema:
+          type: string
+      - name: exclude
+        in: query
+        required: false
+        description: Ensure result set excludes specific IDs.
+        schema:
+          type: array
+          default: []
+          items:
+            type: integer
+      - name: include
+        in: query
+        required: false
+        description: Limit result set to specific IDs.
+        schema:
+          type: array
+          default: []
+          items:
+            type: integer
+      - name: offset
+        in: query
+        required: false
+        description: Offset the result set by a specific number of items.
+        schema:
+          type: integer
+      - name: order
+        in: query
+        required: false
+        description: Order sort attribute ascending or descending.
+        schema:
+          type: string
+          enum:
+          - asc
+          - desc
+          default: asc
+      - name: orderby
+        in: query
+        required: false
+        description: Sort collection by user attribute.
+        schema:
+          type: string
+          enum:
+          - id
+          - include
+          - name
+          - registered_date
+          - slug
+          - include_slugs
+          - email
+          - url
+          default: name
+      - name: slug
+        in: query
+        required: false
+        description: Limit result set to users with one or more specific slugs.
+        schema:
+          type: array
+          items:
+            type: string
+      - name: roles
+        in: query
+        required: false
+        description: Limit result set to users matching at least one specific role provided. Accepts csv list or single role.
+        schema:
+          type: array
+          items:
+            type: string
+      - name: capabilities
+        in: query
+        required: false
+        description: Limit result set to users matching at least one specific capability provided. Accepts csv list or single capability.
+        schema:
+          type: array
+          items:
+            type: string
+      - name: who
+        in: query
+        required: false
+        description: Limit result set to users who are considered authors.
+        schema:
+          type: string
+          enum:
+          - authors
+      - name: has_published_posts
+        in: query
+        required: false
+        description: Limit result set to users who have published posts.
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: Successful response.
+          content:
+            application/json:
+              schema:
+                type: object
+          headers:
+            X-WP-Total:
+              description: Total items in the collection.
+              schema:
+                type: integer
+            X-WP-TotalPages:
+              description: Total pages in the collection.
+              schema:
+                type: integer
+            Link:
+              description: RFC 8288 pagination links (rel=next / rel=prev).
+              schema:
+                type: string
+        '400': &id001
+          $ref: '#/components/responses/Error'
+        '404': *id001
+    post:
+      operationId: createUsers
+      summary: POST /wp/v2/users
+      tags:
+      - users
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                  description: Login name for the user.
+                name:
+                  type: string
+                  description: Display name for the user.
+                first_name:
+                  type: string
+                  description: First name for the user.
+                last_name:
+                  type: string
+                  description: Last name for the user.
+                email:
+                  type: string
+                  format: email
+                  description: The email address for the user.
+                url:
+                  type: string
+                  format: uri
+                  description: URL of the user.
+                description:
+                  type: string
+                  description: Description of the user.
+                locale:
+                  type: string
+                  enum:
+                  - ''
+                  - en_US
+                  description: Locale for the user.
+                nickname:
+                  type: string
+                  description: The nickname for the user.
+                slug:
+                  type: string
+                  description: An alphanumeric identifier for the user.
+                roles:
+                  type: array
+                  items:
+                    type: string
+                  description: Roles assigned to the user.
+                password:
+                  type: string
+                  description: Password for the user (never included).
+                meta:
+                  type: object
+                  description: Meta fields.
+              required:
+              - username
+              - email
+              - password
+      security:
+      - applicationPassword: []
+      responses:
+        '200':
+          description: Successful response.
+          content:
+            application/json:
+              schema:
+                type: object
+        '400': &id002
+          $ref: '#/components/responses/Error'
+        '401': *id002
+        '403': *id002
+        '404': *id002
+  /wp/v2/users/{id}:
+    parameters:
+    - name: id
+      in: path
+      required: true
+      description: 'Route-matched value (WordPress route pattern: [\d]+).'
+      schema:
+        type: integer
+    get:
+      operationId: getUsersById
+      summary: GET /wp/v2/users/{id}
+      tags:
+      - users
+      parameters:
+      - name: id
+        in: query
+        required: false
+        description: Unique identifier for the user.
+        schema:
+          type: integer
+      - name: context
+        in: query
+        required: false
+        description: Scope under which the request is made; determines fields present in response.
+        schema:
+          type: string
+          enum:
+          - view
+          - embed
+          - edit
+          default: view
+      responses:
+        '200':
+          description: Successful response.
+          content:
+            application/json:
+              schema:
+                type: object
+        '404':
+          $ref: '#/components/responses/Error'
+    post:
+      operationId: createUsersById
+      summary: POST /wp/v2/users/{id}
+      tags:
+      - users
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  description: Unique identifier for the user.
+                username:
+                  type: string
+                  description: Login name for the user.
+                name:
+                  type: string
+                  description: Display name for the user.
+                first_name:
+                  type: string
+                  description: First name for the user.
+                last_name:
+                  type: string
+                  description: Last name for the user.
+                email:
+                  type: string
+                  format: email
+                  description: The email address for the user.
+                url:
+                  type: string
+                  format: uri
+                  description: URL of the user.
+                description:
+                  type: string
+                  description: Description of the user.
+                locale:
+                  type: string
+                  enum:
+                  - ''
+                  - en_US
+                  description: Locale for the user.
+                nickname:
+                  type: string
+                  description: The nickname for the user.
+                slug:
+                  type: string
+                  description: An alphanumeric identifier for the user.
+                roles:
+                  type: array
+                  items:
+                    type: string
+                  description: Roles assigned to the user.
+                password:
+                  type: string
+                  description: Password for the user (never included).
+                meta:
+                  type: object
+                  description: Meta fields.
+      security:
+      - applicationPassword: []
+      responses:
+        '200':
+          description: Successful response.
+          content:
+            application/json:
+              schema:
+                type: object
+        '400': &id003
+          $ref: '#/components/responses/Error'
+        '401': *id003
+        '403': *id003
+        '404': *id003
+    put:
+      operationId: replaceUsersById
+      summary: PUT /wp/v2/users/{id}
+      tags:
+      - users
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  description: Unique identifier for the user.
+                username:
+                  type: string
+                  description: Login name for the user.
+                name:
+                  type: string
+                  description: Display name for the user.
+                first_name:
+                  type: string
+                  description: First name for the user.
+                last_name:
+                  type: string
+                  description: Last name for the user.
+                email:
+                  type: string
+                  format: email
+                  description: The email address for the user.
+                url:
+                  type: string
+                  format: uri
+                  description: URL of the user.
+                description:
+                  type: string
+                  description: Description of the user.
+                locale:
+                  type: string
+                  enum:
+                  - ''
+                  - en_US
+                  description: Locale for the user.
+                nickname:
+                  type: string
+                  description: The nickname for the user.
+                slug:
+                  type: string
+                  description: An alphanumeric identifier for the user.
+                roles:
+                  type: array
+                  items:
+                    type: string
+                  description: Roles assigned to the user.
+                password:
+                  type: string
+                  description: Password for the user (never included).
+                meta:
+                  type: object
+                  description: Meta fields.
+      security:
+      - applicationPassword: []
+      responses:
+        '200':
+          description: Successful response.
+          content:
+            application/json:
+              schema:
+                type: object
+        '400': &id004
+          $ref: '#/components/responses/Error'
+        '401': *id004
+        '403': *id004
+        '404': *id004
+    patch:
+      operationId: updateUsersById
+      summary: PATCH /wp/v2/users/{id}
+      tags:
+      - users
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  description: Unique identifier for the user.
+                username:
+                  type: string
+                  description: Login name for the user.
+                name:
+                  type: string
+                  description: Display name for the user.
+                first_name:
+                  type: string
+                  description: First name for the user.
+                last_name:
+                  type: string
+                  description: Last name for the user.
+                email:
+                  type: string
+                  format: email
+                  description: The email address for the user.
+                url:
+                  type: string
+                  format: uri
+                  description: URL of the user.
+                description:
+                  type: string
+                  description: Description of the user.
+                locale:
+                  type: string
+                  enum:
+                  - ''
+                  - en_US
+                  description: Locale for the user.
+                nickname:
+                  type: string
+                  description: The nickname for the user.
+                slug:
+                  type: string
+                  description: An alphanumeric identifier for the user.
+                roles:
+                  type: array
+                  items:
+                    type: string
+                  description: Roles assigned to the user.
+                password:
+                  type: string
+                  description: Password for the user (never included).
+                meta:
+                  type: object
+                  description: Meta fields.
+      security:
+      - applicationPassword: []
+      responses:
+        '200':
+          description: Successful response.
+          content:
+            application/json:
+              schema:
+                type: object
+        '400': &id005
+          $ref: '#/components/responses/Error'
+        '401': *id005
+        '403': *id005
+        '404': *id005
+    delete:
+      operationId: deleteUsersById
+      summary: DELETE /wp/v2/users/{id}
+      tags:
+      - users
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  description: Unique identifier for the user.
+                force:
+                  type: boolean
+                  default: false
+                  description: Required to be true, as users do not support trashing.
+                reassign:
+                  type: integer
+                  description: Reassign the deleted user's posts and links to this user ID.
+              required:
+              - reassign
+      security:
+      - applicationPassword: []
+      responses:
+        '200':
+          description: Successful response.
+          content:
+            application/json:
+              schema:
+                type: object
+        '400': &id006
+          $ref: '#/components/responses/Error'
+        '401': *id006
+        '403': *id006
+        '404': *id006
+  /wp/v2/users/{user_id}/application-passwords:
+    parameters:
+    - name: user_id
+      in: path
+      required: true
+      description: 'Route-matched value (WordPress route pattern: (?:[\d]+|me)).'
+      schema:
+        type: string
+    get:
+      operationId: getUsersApplicationPasswordsByUser_id
+      summary: GET /wp/v2/users/{user_id}/application-passwords
+      tags:
+      - users
+      parameters:
+      - name: context
+        in: query
+        required: false
+        description: Scope under which the request is made; determines fields present in response.
+        schema:
+          type: string
+          enum:
+          - view
+          - embed
+          - edit
+          default: view
+      responses:
+        '200':
+          description: Successful response.
+          content:
+            application/json:
+              schema:
+                type: object
+        '404':
+          $ref: '#/components/responses/Error'
+    post:
+      operationId: createUsersApplicationPasswordsByUser_id
+      summary: POST /wp/v2/users/{user_id}/application-passwords
+      tags:
+      - users
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                app_id:
+                  type: string
+                  format: uuid
+                  description: A UUID provided by the application to uniquely identify it. It is recommended to use an UUID v5 with the URL or DNS namespace.
+                name:
+                  type: string
+                  description: The name of the application password.
+              required:
+              - name
+      security:
+      - applicationPassword: []
+      responses:
+        '200':
+          description: Successful response.
+          content:
+            application/json:
+              schema:
+                type: object
+        '400': &id007
+          $ref: '#/components/responses/Error'
+        '401': *id007
+        '403': *id007
+        '404': *id007
+    delete:
+      operationId: deleteUsersApplicationPasswordsByUser_id
+      summary: DELETE /wp/v2/users/{user_id}/application-passwords
+      tags:
+      - users
+      security:
+      - applicationPassword: []
+      responses:
+        '200':
+          description: Successful response.
+          content:
+            application/json:
+              schema:
+                type: object
+        '400': &id008
+          $ref: '#/components/responses/Error'
+        '401': *id008
+        '403': *id008
+        '404': *id008
+  /wp/v2/users/{user_id}/application-passwords/{uuid}:
+    parameters:
+    - name: user_id
+      in: path
+      required: true
+      description: 'Route-matched value (WordPress route pattern: (?:[\d]+|me)).'
+      schema:
+        type: string
+    - name: uuid
+      in: path
+      required: true
+      description: 'Route-matched value (WordPress route pattern: [\w\-]+).'
+      schema:
+        type: string
+    get:
+      operationId: getUsersApplicationPasswordsByUser_idByUuid
+      summary: GET /wp/v2/users/{user_id}/application-passwords/{uuid}
+      tags:
+      - users
+      parameters:
+      - name: context
+        in: query
+        required: false
+        description: Scope under which the request is made; determines fields present in response.
+        schema:
+          type: string
+          enum:
+          - view
+          - embed
+          - edit
+          default: view
+      responses:
+        '200':
+          description: Successful response.
+          content:
+            application/json:
+              schema:
+                type: object
+        '404':
+          $ref: '#/components/responses/Error'
+    post:
+      operationId: createUsersApplicationPasswordsByUser_idByUuid
+      summary: POST /wp/v2/users/{user_id}/application-passwords/{uuid}
+      tags:
+      - users
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                app_id:
+                  type: string
+                  format: uuid
+                  description: A UUID provided by the application to uniquely identify it. It is recommended to use an UUID v5 with the URL or DNS namespace.
+                name:
+                  type: string
+                  description: The name of the application password.
+      security:
+      - applicationPassword: []
+      responses:
+        '200':
+          description: Successful response.
+          content:
+            application/json:
+              schema:
+                type: object
+        '400': &id009
+          $ref: '#/components/responses/Error'
+        '401': *id009
+        '403': *id009
+        '404': *id009
+    put:
+      operationId: replaceUsersApplicationPasswordsByUser_idByUuid
+      summary: PUT /wp/v2/users/{user_id}/application-passwords/{uuid}
+      tags:
+      - users
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                app_id:
+                  type: string
+                  format: uuid
+                  description: A UUID provided by the application to uniquely identify it. It is recommended to use an UUID v5 with the URL or DNS namespace.
+                name:
+                  type: string
+                  description: The name of the application password.
+      security:
+      - applicationPassword: []
+      responses:
+        '200':
+          description: Successful response.
+          content:
+            application/json:
+              schema:
+                type: object
+        '400': &id010
+          $ref: '#/components/responses/Error'
+        '401': *id010
+        '403': *id010
+        '404': *id010
+    patch:
+      operationId: updateUsersApplicationPasswordsByUser_idByUuid
+      summary: PATCH /wp/v2/users/{user_id}/application-passwords/{uuid}
+      tags:
+      - users
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                app_id:
+                  type: string
+                  format: uuid
+                  description: A UUID provided by the application to uniquely identify it. It is recommended to use an UUID v5 with the URL or DNS namespace.
+                name:
+                  type: string
+                  description: The name of the application password.
+      security:
+      - applicationPassword: []
+      responses:
+        '200':
+          description: Successful response.
+          content:
+            application/json:
+              schema:
+                type: object
+        '400': &id011
+          $ref: '#/components/responses/Error'
+        '401': *id011
+        '403': *id011
+        '404': *id011
+    delete:
+      operationId: deleteUsersApplicationPasswordsByUser_idByUuid
+      summary: DELETE /wp/v2/users/{user_id}/application-passwords/{uuid}
+      tags:
+      - users
+      security:
+      - applicationPassword: []
+      responses:
+        '200':
+          description: Successful response.
+          content:
+            application/json:
+              schema:
+                type: object
+        '400': &id012
+          $ref: '#/components/responses/Error'
+        '401': *id012
+        '403': *id012
+        '404': *id012
+  /wp/v2/users/{user_id}/application-passwords/introspect:
+    parameters:
+    - name: user_id
+      in: path
+      required: true
+      description: 'Route-matched value (WordPress route pattern: (?:[\d]+|me)).'
+      schema:
+        type: string
+    get:
+      operationId: getUsersApplicationPasswordsIntrospectByUser_id
+      summary: GET /wp/v2/users/{user_id}/application-passwords/introspect
+      tags:
+      - users
+      parameters:
+      - name: context
+        in: query
+        required: false
+        description: Scope under which the request is made; determines fields present in response.
+        schema:
+          type: string
+          enum:
+          - view
+          - embed
+          - edit
+          default: view
+      responses:
+        '200':
+          description: Successful response.
+          content:
+            application/json:
+              schema:
+                type: object
+        '404':
+          $ref: '#/components/responses/Error'
+  /wp/v2/users/me:
+    get:
+      operationId: listUsersMe
+      summary: GET /wp/v2/users/me
+      tags:
+      - users
+      parameters:
+      - name: context
+        in: query
+        required: false
+        description: Scope under which the request is made; determines fields present in response.
+        schema:
+          type: string
+          enum:
+          - view
+          - embed
+          - edit
+          default: view
+      responses:
+        '200':
+          description: Successful response.
+          content:
+            application/json:
+              schema:
+                type: object
+          headers:
+            X-WP-Total:
+              description: Total items in the collection.
+              schema:
+                type: integer
+            X-WP-TotalPages:
+              description: Total pages in the collection.
+              schema:
+                type: integer
+            Link:
+              description: RFC 8288 pagination links (rel=next / rel=prev).
+              schema:
+                type: string
+        '400': &id013
+          $ref: '#/components/responses/Error'
+        '404': *id013
+    post:
+      operationId: createUsersMe
+      summary: POST /wp/v2/users/me
+      tags:
+      - users
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                  description: Login name for the user.
+                name:
+                  type: string
+                  description: Display name for the user.
+                first_name:
+                  type: string
+                  description: First name for the user.
+                last_name:
+                  type: string
+                  description: Last name for the user.
+                email:
+                  type: string
+                  format: email
+                  description: The email address for the user.
+                url:
+                  type: string
+                  format: uri
+                  description: URL of the user.
+                description:
+                  type: string
+                  description: Description of the user.
+                locale:
+                  type: string
+                  enum:
+                  - ''
+                  - en_US
+                  description: Locale for the user.
+                nickname:
+                  type: string
+                  description: The nickname for the user.
+                slug:
+                  type: string
+                  description: An alphanumeric identifier for the user.
+                roles:
+                  type: array
+                  items:
+                    type: string
+                  description: Roles assigned to the user.
+                password:
+                  type: string
+                  description: Password for the user (never included).
+                meta:
+                  type: object
+                  description: Meta fields.
+      security:
+      - applicationPassword: []
+      responses:
+        '200':
+          description: Successful response.
+          content:
+            application/json:
+              schema:
+                type: object
+        '400': &id014
+          $ref: '#/components/responses/Error'
+        '401': *id014
+        '403': *id014
+        '404': *id014
+    put:
+      operationId: replaceUsersMe
+      summary: PUT /wp/v2/users/me
+      tags:
+      - users
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                  description: Login name for the user.
+                name:
+                  type: string
+                  description: Display name for the user.
+                first_name:
+                  type: string
+                  description: First name for the user.
+                last_name:
+                  type: string
+                  description: Last name for the user.
+                email:
+                  type: string
+                  format: email
+                  description: The email address for the user.
+                url:
+                  type: string
+                  format: uri
+                  description: URL of the user.
+                description:
+                  type: string
+                  description: Description of the user.
+                locale:
+                  type: string
+                  enum:
+                  - ''
+                  - en_US
+                  description: Locale for the user.
+                nickname:
+                  type: string
+                  description: The nickname for the user.
+                slug:
+                  type: string
+                  description: An alphanumeric identifier for the user.
+                roles:
+                  type: array
+                  items:
+                    type: string
+                  description: Roles assigned to the user.
+                password:
+                  type: string
+                  description: Password for the user (never included).
+                meta:
+                  type: object
+                  description: Meta fields.
+      security:
+      - applicationPassword: []
+      responses:
+        '200':
+          description: Successful response.
+          content:
+            application/json:
+              schema:
+                type: object
+        '400': &id015
+          $ref: '#/components/responses/Error'
+        '401': *id015
+        '403': *id015
+        '404': *id015
+    patch:
+      operationId: updateUsersMe
+      summary: PATCH /wp/v2/users/me
+      tags:
+      - users
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                  description: Login name for the user.
+                name:
+                  type: string
+                  description: Display name for the user.
+                first_name:
+                  type: string
+                  description: First name for the user.
+                last_name:
+                  type: string
+                  description: Last name for the user.
+                email:
+                  type: string
+                  format: email
+                  description: The email address for the user.
+                url:
+                  type: string
+                  format: uri
+                  description: URL of the user.
+                description:
+                  type: string
+                  description: Description of the user.
+                locale:
+                  type: string
+                  enum:
+                  - ''
+                  - en_US
+                  description: Locale for the user.
+                nickname:
+                  type: string
+                  description: The nickname for the user.
+                slug:
+                  type: string
+                  description: An alphanumeric identifier for the user.
+                roles:
+                  type: array
+                  items:
+                    type: string
+                  description: Roles assigned to the user.
+                password:
+                  type: string
+                  description: Password for the user (never included).
+                meta:
+                  type: object
+                  description: Meta fields.
+      security:
+      - applicationPassword: []
+      responses:
+        '200':
+          description: Successful response.
+          content:
+            application/json:
+              schema:
+                type: object
+        '400': &id016
+          $ref: '#/components/responses/Error'
+        '401': *id016
+        '403': *id016
+        '404': *id016
+    delete:
+      operationId: deleteUsersMe
+      summary: DELETE /wp/v2/users/me
+      tags:
+      - users
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                force:
+                  type: boolean
+                  default: false
+                  description: Required to be true, as users do not support trashing.
+                reassign:
+                  type: integer
+                  description: Reassign the deleted user's posts and links to this user ID.
+              required:
+              - reassign
+      security:
+      - applicationPassword: []
+      responses:
+        '200':
+          description: Successful response.
+          content:
+            application/json:
+              schema:
+                type: object
+        '400': &id017
+          $ref: '#/components/responses/Error'
+        '401': *id017
+        '403': *id017
+        '404': *id017
+components:
+  responses:
+    Error:
+      description: WordPress REST API error envelope.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  schemas:
+    Error:
+      type: object
+      description: The WordPress REST API error envelope, captured verbatim from live responses.
+      properties:
+        code:
+          type: string
+          description: Machine-readable error code, e.g. rest_post_invalid_id.
+        message:
+          type: string
+          description: Human-readable error message.
+        data:
+          type: object
+          properties:
+            status:
+              type: integer
+              description: HTTP status code.
+            params:
+              type: object
+              description: Per-parameter validation messages (rest_invalid_param).
+            details:
+              type: object
+              description: Per-parameter structured error details.
+  securitySchemes:
+    applicationPassword:
+      type: http
+      scheme: basic
+      description: WordPress application passwords, advertised by the API root document at https://lanzatech.com/wp-json/ (authentication.application-passwords.endpoints.authorization = https://lanzatech.com/wp-admin/authorize-application.php). Sent as HTTP Basic credentials. Only required for write operations; all read operations captured here are public.
