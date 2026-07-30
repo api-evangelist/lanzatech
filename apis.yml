@@ -1,27 +1,466 @@
 aid: lanzatech
-name: Lanzatech
-description: Lanzatech is a company surfaced as a portfolio company of khosla-ventures, qiming and added
-  to the API Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment
-  pipeline.
+name: LanzaTech
+description: LanzaTech is a carbon recycling company (Nasdaq LNZA) that uses gas fermentation to convert
+  waste carbon into fuels and chemicals. Its technology retrofits an industrial site such as a steel mill,
+  a ferroalloy plant or a landfill with a bioreactor in which proprietary bacteria consume carbon-rich
+  off-gases and produce ethanol and other intermediates, marketed as CarbonSmart products and used by
+  brands including Unilever, Coty and Zara. The company operates commercial plants in China, India and
+  Belgium, is building the LanzaTech Porsgrunn CCUS project in Norway with Eramet, and works with LanzaJet
+  on sustainable aviation fuel. LanzaTech publishes no developer program, but lanzatech.com runs on
+  WordPress and exposes a fully public, unauthenticated WordPress REST API whose custom content types
+  (news, employee, board-member, download, testimonial) model the company itself.
 url: https://raw.githubusercontent.com/api-evangelist/lanzatech/refs/heads/main/apis.yml
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://lanzatech.com/wp-content/uploads/2022/02/LT-Logo-Navy.svg
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
 - khosla-ventures
 - qiming
-x-tier: stub
-x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-19'
 tags:
 - Company
-apis: []
+- Carbon Capture
+- Climate Tech
+- Sustainability
+- Synthetic Biology
+- Energy
+- Chemicals
+- Sustainable Aviation Fuel
+- Manufacturing
+- Content
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
+apis:
+- aid: lanzatech:lanzatech-block-directory-api
+  name: LanzaTech block-directory API
+  description: The block-directory API from LanzaTech — 1 operation(s) for block-directory.
+  humanURL: https://lanzatech.com/wp-json/
+  baseURL: https://lanzatech.com/wp-json
+  tags:
+  - block-directory
+  properties:
+  - type: OpenAPI
+    url: openapi/lanzatech-block-directory-api-openapi.yml
+- aid: lanzatech:lanzatech-block-patterns-api
+  name: LanzaTech block-patterns API
+  description: The block-patterns API from LanzaTech — 2 operation(s) for block-patterns.
+  humanURL: https://lanzatech.com/wp-json/
+  baseURL: https://lanzatech.com/wp-json
+  tags:
+  - block-patterns
+  properties:
+  - type: OpenAPI
+    url: openapi/lanzatech-block-patterns-api-openapi.yml
+- aid: lanzatech:lanzatech-block-renderer-api
+  name: LanzaTech block-renderer API
+  description: The block-renderer API from LanzaTech — 1 operation(s) for block-renderer.
+  humanURL: https://lanzatech.com/wp-json/
+  baseURL: https://lanzatech.com/wp-json
+  tags:
+  - block-renderer
+  properties:
+  - type: OpenAPI
+    url: openapi/lanzatech-block-renderer-api-openapi.yml
+- aid: lanzatech:lanzatech-block-types-api
+  name: LanzaTech block-types API
+  description: The block-types API from LanzaTech — 3 operation(s) for block-types.
+  humanURL: https://lanzatech.com/wp-json/
+  baseURL: https://lanzatech.com/wp-json
+  tags:
+  - block-types
+  properties:
+  - type: OpenAPI
+    url: openapi/lanzatech-block-types-api-openapi.yml
+- aid: lanzatech:lanzatech-blocks-api
+  name: LanzaTech blocks API
+  description: The blocks API from LanzaTech — 6 operation(s) for blocks.
+  humanURL: https://lanzatech.com/wp-json/
+  baseURL: https://lanzatech.com/wp-json
+  tags:
+  - blocks
+  properties:
+  - type: OpenAPI
+    url: openapi/lanzatech-blocks-api-openapi.yml
+- aid: lanzatech:lanzatech-board-member-api
+  name: LanzaTech board-member API
+  description: The board-member API from LanzaTech — 4 operation(s) for board-member.
+  humanURL: https://lanzatech.com/wp-json/
+  baseURL: https://lanzatech.com/wp-json
+  tags:
+  - board-member
+  properties:
+  - type: OpenAPI
+    url: openapi/lanzatech-board-member-api-openapi.yml
+- aid: lanzatech:lanzatech-categories-api
+  name: LanzaTech categories API
+  description: The categories API from LanzaTech — 2 operation(s) for categories.
+  humanURL: https://lanzatech.com/wp-json/
+  baseURL: https://lanzatech.com/wp-json
+  tags:
+  - categories
+  properties:
+  - type: OpenAPI
+    url: openapi/lanzatech-categories-api-openapi.yml
+- aid: lanzatech:lanzatech-comments-api
+  name: LanzaTech comments API
+  description: The comments API from LanzaTech — 2 operation(s) for comments.
+  humanURL: https://lanzatech.com/wp-json/
+  baseURL: https://lanzatech.com/wp-json
+  tags:
+  - comments
+  properties:
+  - type: OpenAPI
+    url: openapi/lanzatech-comments-api-openapi.yml
+- aid: lanzatech:lanzatech-download-api
+  name: LanzaTech download API
+  description: The download API from LanzaTech — 4 operation(s) for download.
+  humanURL: https://lanzatech.com/wp-json/
+  baseURL: https://lanzatech.com/wp-json
+  tags:
+  - download
+  properties:
+  - type: OpenAPI
+    url: openapi/lanzatech-download-api-openapi.yml
+- aid: lanzatech:lanzatech-employee-api
+  name: LanzaTech employee API
+  description: The employee API from LanzaTech — 4 operation(s) for employee.
+  humanURL: https://lanzatech.com/wp-json/
+  baseURL: https://lanzatech.com/wp-json
+  tags:
+  - employee
+  properties:
+  - type: OpenAPI
+    url: openapi/lanzatech-employee-api-openapi.yml
+- aid: lanzatech:lanzatech-global-styles-api
+  name: LanzaTech global-styles API
+  description: The global-styles API from LanzaTech — 3 operation(s) for global-styles.
+  humanURL: https://lanzatech.com/wp-json/
+  baseURL: https://lanzatech.com/wp-json
+  tags:
+  - global-styles
+  properties:
+  - type: OpenAPI
+    url: openapi/lanzatech-global-styles-api-openapi.yml
+- aid: lanzatech:lanzatech-jet-engine-api
+  name: LanzaTech jet-engine API
+  description: The jet-engine API from LanzaTech — 6 operation(s) for jet-engine.
+  humanURL: https://lanzatech.com/wp-json/
+  baseURL: https://lanzatech.com/wp-json
+  tags:
+  - jet-engine
+  properties:
+  - type: OpenAPI
+    url: openapi/lanzatech-jet-engine-api-openapi.yml
+- aid: lanzatech:lanzatech-media-api
+  name: LanzaTech media API
+  description: The media API from LanzaTech — 4 operation(s) for media.
+  humanURL: https://lanzatech.com/wp-json/
+  baseURL: https://lanzatech.com/wp-json
+  tags:
+  - media
+  properties:
+  - type: OpenAPI
+    url: openapi/lanzatech-media-api-openapi.yml
+- aid: lanzatech:lanzatech-menu-items-api
+  name: LanzaTech menu-items API
+  description: The menu-items API from LanzaTech — 4 operation(s) for menu-items.
+  humanURL: https://lanzatech.com/wp-json/
+  baseURL: https://lanzatech.com/wp-json
+  tags:
+  - menu-items
+  properties:
+  - type: OpenAPI
+    url: openapi/lanzatech-menu-items-api-openapi.yml
+- aid: lanzatech:lanzatech-menu-locations-api
+  name: LanzaTech menu-locations API
+  description: The menu-locations API from LanzaTech — 2 operation(s) for menu-locations.
+  humanURL: https://lanzatech.com/wp-json/
+  baseURL: https://lanzatech.com/wp-json
+  tags:
+  - menu-locations
+  properties:
+  - type: OpenAPI
+    url: openapi/lanzatech-menu-locations-api-openapi.yml
+- aid: lanzatech:lanzatech-menus-api
+  name: LanzaTech menus API
+  description: The menus API from LanzaTech — 2 operation(s) for menus.
+  humanURL: https://lanzatech.com/wp-json/
+  baseURL: https://lanzatech.com/wp-json
+  tags:
+  - menus
+  properties:
+  - type: OpenAPI
+    url: openapi/lanzatech-menus-api-openapi.yml
+- aid: lanzatech:lanzatech-navigation-api
+  name: LanzaTech navigation API
+  description: The navigation API from LanzaTech — 6 operation(s) for navigation.
+  humanURL: https://lanzatech.com/wp-json/
+  baseURL: https://lanzatech.com/wp-json
+  tags:
+  - navigation
+  properties:
+  - type: OpenAPI
+    url: openapi/lanzatech-navigation-api-openapi.yml
+- aid: lanzatech:lanzatech-news-api
+  name: LanzaTech news API
+  description: The news API from LanzaTech — 4 operation(s) for news.
+  humanURL: https://lanzatech.com/wp-json/
+  baseURL: https://lanzatech.com/wp-json
+  tags:
+  - news
+  properties:
+  - type: OpenAPI
+    url: openapi/lanzatech-news-api-openapi.yml
+- aid: lanzatech:lanzatech-pages-api
+  name: LanzaTech pages API
+  description: The pages API from LanzaTech — 6 operation(s) for pages.
+  humanURL: https://lanzatech.com/wp-json/
+  baseURL: https://lanzatech.com/wp-json
+  tags:
+  - pages
+  properties:
+  - type: OpenAPI
+    url: openapi/lanzatech-pages-api-openapi.yml
+- aid: lanzatech:lanzatech-pattern-directory-api
+  name: LanzaTech pattern-directory API
+  description: The pattern-directory API from LanzaTech — 1 operation(s) for pattern-directory.
+  humanURL: https://lanzatech.com/wp-json/
+  baseURL: https://lanzatech.com/wp-json
+  tags:
+  - pattern-directory
+  properties:
+  - type: OpenAPI
+    url: openapi/lanzatech-pattern-directory-api-openapi.yml
+- aid: lanzatech:lanzatech-plugins-api
+  name: LanzaTech plugins API
+  description: The plugins API from LanzaTech — 2 operation(s) for plugins.
+  humanURL: https://lanzatech.com/wp-json/
+  baseURL: https://lanzatech.com/wp-json
+  tags:
+  - plugins
+  properties:
+  - type: OpenAPI
+    url: openapi/lanzatech-plugins-api-openapi.yml
+- aid: lanzatech:lanzatech-posts-api
+  name: LanzaTech posts API
+  description: The posts API from LanzaTech — 6 operation(s) for posts.
+  humanURL: https://lanzatech.com/wp-json/
+  baseURL: https://lanzatech.com/wp-json
+  tags:
+  - posts
+  properties:
+  - type: OpenAPI
+    url: openapi/lanzatech-posts-api-openapi.yml
+- aid: lanzatech:lanzatech-search-api
+  name: LanzaTech search API
+  description: The search API from LanzaTech — 1 operation(s) for search.
+  humanURL: https://lanzatech.com/wp-json/
+  baseURL: https://lanzatech.com/wp-json
+  tags:
+  - search
+  properties:
+  - type: OpenAPI
+    url: openapi/lanzatech-search-api-openapi.yml
+- aid: lanzatech:lanzatech-settings-api
+  name: LanzaTech settings API
+  description: The settings API from LanzaTech — 1 operation(s) for settings.
+  humanURL: https://lanzatech.com/wp-json/
+  baseURL: https://lanzatech.com/wp-json
+  tags:
+  - settings
+  properties:
+  - type: OpenAPI
+    url: openapi/lanzatech-settings-api-openapi.yml
+- aid: lanzatech:lanzatech-sidebars-api
+  name: LanzaTech sidebars API
+  description: The sidebars API from LanzaTech — 2 operation(s) for sidebars.
+  humanURL: https://lanzatech.com/wp-json/
+  baseURL: https://lanzatech.com/wp-json
+  tags:
+  - sidebars
+  properties:
+  - type: OpenAPI
+    url: openapi/lanzatech-sidebars-api-openapi.yml
+- aid: lanzatech:lanzatech-statuses-api
+  name: LanzaTech statuses API
+  description: The statuses API from LanzaTech — 2 operation(s) for statuses.
+  humanURL: https://lanzatech.com/wp-json/
+  baseURL: https://lanzatech.com/wp-json
+  tags:
+  - statuses
+  properties:
+  - type: OpenAPI
+    url: openapi/lanzatech-statuses-api-openapi.yml
+- aid: lanzatech:lanzatech-tags-api
+  name: LanzaTech tags API
+  description: The tags API from LanzaTech — 2 operation(s) for tags.
+  humanURL: https://lanzatech.com/wp-json/
+  baseURL: https://lanzatech.com/wp-json
+  tags:
+  - tags
+  properties:
+  - type: OpenAPI
+    url: openapi/lanzatech-tags-api-openapi.yml
+- aid: lanzatech:lanzatech-taxonomies-api
+  name: LanzaTech taxonomies API
+  description: The taxonomies API from LanzaTech — 2 operation(s) for taxonomies.
+  humanURL: https://lanzatech.com/wp-json/
+  baseURL: https://lanzatech.com/wp-json
+  tags:
+  - taxonomies
+  properties:
+  - type: OpenAPI
+    url: openapi/lanzatech-taxonomies-api-openapi.yml
+- aid: lanzatech:lanzatech-template-parts-api
+  name: LanzaTech template-parts API
+  description: The template-parts API from LanzaTech — 7 operation(s) for template-parts.
+  humanURL: https://lanzatech.com/wp-json/
+  baseURL: https://lanzatech.com/wp-json
+  tags:
+  - template-parts
+  properties:
+  - type: OpenAPI
+    url: openapi/lanzatech-template-parts-api-openapi.yml
+- aid: lanzatech:lanzatech-templates-api
+  name: LanzaTech templates API
+  description: The templates API from LanzaTech — 7 operation(s) for templates.
+  humanURL: https://lanzatech.com/wp-json/
+  baseURL: https://lanzatech.com/wp-json
+  tags:
+  - templates
+  properties:
+  - type: OpenAPI
+    url: openapi/lanzatech-templates-api-openapi.yml
+- aid: lanzatech:lanzatech-testimonial-api
+  name: LanzaTech testimonial API
+  description: The testimonial API from LanzaTech — 4 operation(s) for testimonial.
+  humanURL: https://lanzatech.com/wp-json/
+  baseURL: https://lanzatech.com/wp-json
+  tags:
+  - testimonial
+  properties:
+  - type: OpenAPI
+    url: openapi/lanzatech-testimonial-api-openapi.yml
+- aid: lanzatech:lanzatech-themes-api
+  name: LanzaTech themes API
+  description: The themes API from LanzaTech — 2 operation(s) for themes.
+  humanURL: https://lanzatech.com/wp-json/
+  baseURL: https://lanzatech.com/wp-json
+  tags:
+  - themes
+  properties:
+  - type: OpenAPI
+    url: openapi/lanzatech-themes-api-openapi.yml
+- aid: lanzatech:lanzatech-types-api
+  name: LanzaTech types API
+  description: The types API from LanzaTech — 2 operation(s) for types.
+  humanURL: https://lanzatech.com/wp-json/
+  baseURL: https://lanzatech.com/wp-json
+  tags:
+  - types
+  properties:
+  - type: OpenAPI
+    url: openapi/lanzatech-types-api-openapi.yml
+- aid: lanzatech:lanzatech-users-api
+  name: LanzaTech users API
+  description: The users API from LanzaTech — 6 operation(s) for users.
+  humanURL: https://lanzatech.com/wp-json/
+  baseURL: https://lanzatech.com/wp-json
+  tags:
+  - users
+  properties:
+  - type: OpenAPI
+    url: openapi/lanzatech-users-api-openapi.yml
+- aid: lanzatech:lanzatech-widget-types-api
+  name: LanzaTech widget-types API
+  description: The widget-types API from LanzaTech — 4 operation(s) for widget-types.
+  humanURL: https://lanzatech.com/wp-json/
+  baseURL: https://lanzatech.com/wp-json
+  tags:
+  - widget-types
+  properties:
+  - type: OpenAPI
+    url: openapi/lanzatech-widget-types-api-openapi.yml
+- aid: lanzatech:lanzatech-widgets-api
+  name: LanzaTech widgets API
+  description: The widgets API from LanzaTech — 2 operation(s) for widgets.
+  humanURL: https://lanzatech.com/wp-json/
+  baseURL: https://lanzatech.com/wp-json
+  tags:
+  - widgets
+  properties:
+  - type: OpenAPI
+    url: openapi/lanzatech-widgets-api-openapi.yml
 common:
+- type: AgenticAccess
+  url: agentic-access/lanzatech-agentic-access.yml
 - type: Website
   url: https://lanzatech.com/
+- type: About
+  url: https://lanzatech.com/about/
+- type: Blog
+  url: https://lanzatech.com/blog/
+- type: BlogRSS
+  url: https://lanzatech.com/feed/
+- type: Support
+  url: https://lanzatech.com/contact/
+- type: TermsOfService
+  url: https://lanzatech.com/terms-of-use/
+- type: PrivacyPolicy
+  url: https://lanzatech.com/privacy-policy/
+- type: GitHubOrganization
+  url: https://github.com/LanzaTech
+- type: InvestorRelations
+  url: https://ir.lanzatech.com/
+- type: Sitemap
+  url: https://lanzatech.com/wp-sitemap.xml
+- type: Twitter
+  url: https://twitter.com/lanzatech
+- type: LinkedIn
+  url: https://www.linkedin.com/company/lanzatech
+- type: YouTube
+  url: https://www.youtube.com/user/LanzaTech/videos
+- type: Authentication
+  url: authentication/lanzatech-authentication.yml
+- type: Conventions
+  url: conventions/lanzatech-conventions.yml
+- type: ErrorCatalog
+  url: errors/lanzatech-problem-types.yml
+- type: DataModel
+  url: data-model/lanzatech-data-model.yml
+- type: Lifecycle
+  url: lifecycle/lanzatech-lifecycle.yml
+- type: Conformance
+  url: conformance/lanzatech-conformance.yml
+- type: WellKnown
+  url: well-known/lanzatech-well-known.yml
+- type: MCPServer
+  url: mcp/lanzatech-mcp.yml
+- type: LLMsTxt
+  url: llms/lanzatech-llms.txt
+- type: AgentSkill
+  url: skills/_index.yml
+- type: DomainSecurity
+  url: security/lanzatech-domain-security.yml
+x-enrichment:
+  date: '2026-07-19'
+  status: backfilled
+  pass: local-v1
+  note: backfilled from .gitignore signal + verified work evidence
