@@ -1,0 +1,91 @@
+generated: '2026-07-19'
+method: derived
+status: candidate
+source: openapi/lanzatech-wordpress-openapi.yml
+note: LanzaTech publishes no MCP server. Searched the site, the GitHub org (github.com/LanzaTech, one
+  public repo - genopsis-escher, a customised fork of the Escher metabolic-pathway viewer), npm (zero
+  results for lanzatech) and PyPI (404). This is a candidate tool list derived from the public read
+  operations of the WordPress REST API, scoped deliberately to the surface that answers real questions
+  about the company. Administrative, block-editor, theme, plugin and autosave/revision routes are
+  excluded - they are noise for an agent and mostly require authentication.
+
+server:
+  name: lanzatech
+  transport: stdio
+  url: null
+  auth: none
+  base_url: https://lanzatech.com/wp-json
+
+tools:
+- name: list_posts
+  description: List posts from the LanzaTech Re:Carbon blog. Supports search, date filtering, category
+    and tag filtering, and pagination. 107 posts available.
+  source_operation: openapi/lanzatech-wordpress-openapi.yml#listPosts
+- name: get_post
+  description: Retrieve a single blog post by id.
+  source_operation: openapi/lanzatech-wordpress-openapi.yml#getPostsById
+- name: list_news
+  description: List curated third-party press coverage of LanzaTech. 35 items available.
+  source_operation: openapi/lanzatech-wordpress-openapi.yml#listNews
+- name: get_news_item
+  description: Retrieve a single external news item by id.
+  source_operation: openapi/lanzatech-wordpress-openapi.yml#getNewsById
+- name: list_pages
+  description: List LanzaTech site pages - About, Biorefining, SAF, Chemicals, Contact and the project
+    pages. 16 pages available.
+  source_operation: openapi/lanzatech-wordpress-openapi.yml#listPages
+- name: get_page
+  description: Retrieve a single page by id, including its full rendered content.
+  source_operation: openapi/lanzatech-wordpress-openapi.yml#getPagesById
+- name: list_employees
+  description: List LanzaTech leadership team profiles.
+  source_operation: openapi/lanzatech-wordpress-openapi.yml#listEmployee
+- name: get_employee
+  description: Retrieve a single leadership profile by id.
+  source_operation: openapi/lanzatech-wordpress-openapi.yml#getEmployeeById
+- name: list_board_members
+  description: List LanzaTech board of directors profiles. 14 members available.
+  source_operation: openapi/lanzatech-wordpress-openapi.yml#listBoardMember
+- name: get_board_member
+  description: Retrieve a single board member profile by id.
+  source_operation: openapi/lanzatech-wordpress-openapi.yml#getBoardMemberById
+- name: list_downloads
+  description: List LanzaTech published reports and life-cycle assessment documents.
+  source_operation: openapi/lanzatech-wordpress-openapi.yml#listDownload
+- name: get_download
+  description: Retrieve a single download record by id.
+  source_operation: openapi/lanzatech-wordpress-openapi.yml#getDownloadById
+- name: list_testimonials
+  description: List customer and partner testimonials.
+  source_operation: openapi/lanzatech-wordpress-openapi.yml#listTestimonial
+- name: list_media
+  description: List media items - images, PDFs and life-cycle assessment documents. 314 items available.
+  source_operation: openapi/lanzatech-wordpress-openapi.yml#listMedia
+- name: get_media
+  description: Retrieve a single media item by id, including its source_url.
+  source_operation: openapi/lanzatech-wordpress-openapi.yml#getMediaById
+- name: list_categories
+  description: List blog categories. 4 categories available.
+  source_operation: openapi/lanzatech-wordpress-openapi.yml#listCategories
+- name: list_tags
+  description: List blog tags. 141 tags available.
+  source_operation: openapi/lanzatech-wordpress-openapi.yml#listTags
+- name: search_site
+  description: Cross-type search over LanzaTech content. Returns 182 searchable objects across posts and
+    terms.
+  source_operation: openapi/lanzatech-wordpress-openapi.yml#listSearch
+- name: list_content_types
+  description: List the registered content types, including LanzaTech's five custom types. Useful for an
+    agent to orient itself before querying.
+  source_operation: openapi/lanzatech-wordpress-openapi.yml#listTypes
+
+excluded:
+  reason: Not useful or not available to an unauthenticated agent.
+  routes:
+  - /wp/v2/users - blocked at the Sucuri WAF, returns HTML 403
+  - /wp/v2/settings - returns 401 rest_forbidden
+  - /wp/v2/comments - registered but empty (X-WP-Total 0)
+  - autosave and revision routes on every post type
+  - block, template, template-part, global-styles, widget, sidebar, menu and theme administration routes
+  - the elementor, elementor-pro, google-site-kit, jet-engine, wp-site-health and wp-block-editor
+    namespaces, which are plugin-internal

@@ -1,0 +1,109 @@
+generated: '2026-07-19'
+method: derived
+source: openapi/lanzatech-wordpress-openapi.yml + live response headers observed on
+  https://lanzatech.com/wp-json/wp/v2/posts
+note: LanzaTech publishes no developer documentation for this API. Every convention below was observed
+  directly against the live endpoint or read out of the provider's own /wp-json/ route schema, and each
+  entry records how it was established. The conventions are those of the WordPress REST API as LanzaTech
+  operates it, not a LanzaTech-authored contract.
+
+authentication:
+  style: http-basic
+  scheme: WordPress application passwords
+  authorization_endpoint: https://lanzatech.com/wp-admin/authorize-application.php
+  public_read: true
+  evidence: The /wp-json/ root document advertises authentication.application-passwords. Every read
+    collection captured in the OpenAPI returned 200 with no credentials.
+  artifact: authentication/lanzatech-authentication.yml
+
+pagination:
+  style: page-number
+  parameters:
+  - name: page
+    in: query
+    default: 1
+    minimum: 1
+  - name: per_page
+    in: query
+    default: 10
+    minimum: 1
+    maximum: 100
+  response_headers:
+  - name: X-WP-Total
+    description: Total number of items in the collection.
+  - name: X-WP-TotalPages
+    description: Total number of pages at the current per_page.
+  link_header:
+    rfc: 8288
+    relations: [next, prev]
+    example: '<https://lanzatech.com/wp-json/wp/v2/posts?per_page=2&page=2>; rel="next"'
+  evidence: Observed live on GET /wp/v2/posts?per_page=2 - x-wp-total 107, x-wp-totalpages 54, and a
+    Link header carrying rel="next".
+
+sparse_fieldsets:
+  supported: true
+  parameter: _fields
+  description: Comma-separated list of response fields to return. Standard WordPress REST API behaviour.
+
+expansion:
+  supported: true
+  parameter: _embed
+  description: Embeds linked resources (author, featured media, terms) inline under _embedded, resolved
+    from the _links block on each item.
+
+context_scoping:
+  parameter: context
+  values: [view, embed, edit]
+  default: view
+  description: Determines which fields are present in the response. edit requires authentication.
+
+ordering_and_filtering:
+  parameters: [search, order, orderby, include, exclude, offset, slug, status, after, before,
+    modified_after, modified_before]
+  description: Collection endpoints accept a consistent filter set derived from the route args in the
+    /wp-json/ discovery document.
+
+versioning:
+  scheme: namespace-in-path
+  current: wp/v2
+  namespaces: [wp/v2, oembed/1.0, elementor/v1, elementor-pro/v1, google-site-kit/v1, jet-engine/v2,
+    wp-site-health/v1, wp-block-editor/v1]
+  description: Versions are expressed as a namespace segment in the path. Only the wp/v2 namespace is
+    modelled here - the remaining namespaces are plugin-internal administrative surfaces.
+  artifact: lifecycle/lanzatech-lifecycle.yml
+
+error_envelope:
+  format: wordpress-rest
+  rfc9457: false
+  content_type: application/json
+  shape:
+    code: Machine-readable error slug, e.g. rest_post_invalid_id.
+    message: Human-readable message.
+    data.status: HTTP status code, repeated in the body.
+    data.params: Per-parameter validation messages, present on rest_invalid_param.
+    data.details: Per-parameter structured error details, present on rest_invalid_param.
+  example: '{"code":"rest_post_invalid_id","message":"Invalid post ID.","data":{"status":404}}'
+  artifact: errors/lanzatech-problem-types.yml
+
+idempotency:
+  supported: false
+  note: No idempotency key header or parameter is documented or present in the route schema. Write
+    operations are conventional REST verbs - PUT/PATCH on a resource id are naturally idempotent, POST
+    to a collection is not, and there is no replay-protection mechanism. No Idempotency pointer is
+    emitted for this provider.
+
+rate_limiting:
+  documented: false
+  headers_observed: []
+  note: No rate-limit headers were returned on any probed request and no rate-limit policy is published.
+    A Sucuri WAF fronts the site and returned an HTML 403 on /wp/v2/users, so undocumented protective
+    throttling should be assumed even though it is not signalled in-band.
+
+request_tracing:
+  request_id_header: null
+  note: No request-id or correlation header was observed on live responses.
+
+cors:
+  access_control_expose_headers: [X-WP-Total, X-WP-TotalPages, Link]
+  access_control_allow_headers: [Authorization, X-WP-Nonce, Content-Disposition, Content-MD5, Content-Type]
+  evidence: Observed live on GET /wp/v2/posts.

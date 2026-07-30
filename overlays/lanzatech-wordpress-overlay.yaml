@@ -1,0 +1,80 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for the LanzaTech WordPress REST API
+  version: 1.0.0
+x-generated: '2026-07-19'
+x-method: generated
+x-source: derived from the API Evangelist enrichment pass on all/lanzatech
+extends: openapi/lanzatech-wordpress-openapi.yml
+actions:
+- target: $.info
+  update:
+    x-apievangelist-enriched: '2026-07-19'
+    x-api-evangelist-provider: lanzatech
+    x-spec-provenance: derived-from-wordpress-route-schema
+    x-provider-publishes-openapi: false
+
+- target: $.info
+  description: Record that the provider does not run a developer program, so the contract is
+    operational reality rather than a published commitment.
+  update:
+    x-developer-program: false
+    x-support-url: https://lanzatech.com/contact/
+
+- target: $.servers[0]
+  update:
+    x-waf: Sucuri
+    x-public-read: true
+
+- target: $.paths['/wp/v2/news']
+  update:
+    description: LanzaTech custom content type. Curated third-party press coverage of the company.
+      35 items as of 2026-07-19.
+    x-custom-post-type: true
+
+- target: $.paths['/wp/v2/employee']
+  update:
+    description: LanzaTech custom content type. Leadership team profiles. 4 items as of 2026-07-19.
+    x-custom-post-type: true
+
+- target: $.paths['/wp/v2/board-member']
+  update:
+    description: LanzaTech custom content type. Board of directors profiles. 14 items as of 2026-07-19.
+    x-custom-post-type: true
+
+- target: $.paths['/wp/v2/download']
+  update:
+    description: LanzaTech custom content type. Published reports and life-cycle assessment PDFs.
+      5 items as of 2026-07-19.
+    x-custom-post-type: true
+
+- target: $.paths['/wp/v2/testimonial']
+  update:
+    description: LanzaTech custom content type. Customer and partner quotes. 1 item as of 2026-07-19.
+    x-custom-post-type: true
+
+- target: $.paths['/wp/v2/posts']
+  update:
+    description: The LanzaTech Re:Carbon blog. 107 posts as of 2026-07-19. The only content type on
+      this site carrying category and tag terms.
+
+- target: $.paths['/wp/v2/users']
+  update:
+    x-publicly-accessible: false
+    x-access-note: Blocked at the Sucuri WAF. Returns an HTML 403 page rather than the JSON error
+      envelope.
+
+- target: $.paths['/wp/v2/settings']
+  update:
+    x-publicly-accessible: false
+    x-access-note: Returns 401 rest_forbidden without authentication.
+
+- target: $.paths['/wp/v2/comments']
+  update:
+    x-access-note: Registered but empty - the collection returns X-WP-Total 0. Comments are not in use
+      on this site.
+
+- target: $.components.schemas.Error
+  update:
+    x-error-catalog: errors/lanzatech-problem-types.yml
+    x-rfc9457: false

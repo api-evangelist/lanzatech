@@ -1,0 +1,35 @@
+generated: '2026-07-19'
+method: searched
+source: live HTTPS probes of the /.well-known/ surface on lanzatech.com
+host: https://lanzatech.com
+note: LanzaTech publishes no /.well-known/ discovery documents. Every probe returned 404. This is a
+  recorded absence, not a gap in the harvest. The site does publish a WordPress sitemap index and a
+  robots.txt, both recorded below as the non-well-known discovery surface that does exist.
+documents:
+- path: /.well-known/security.txt
+  status: 404
+- path: /.well-known/openid-configuration
+  status: 404
+- path: /.well-known/oauth-authorization-server
+  status: 404
+- path: /.well-known/api-catalog
+  status: 404
+- path: /.well-known/ai-plugin.json
+  status: 404
+- path: /.well-known/dnt-policy.txt
+  status: 404
+other_discovery:
+- path: /robots.txt
+  status: 200
+- path: /wp-sitemap.xml
+  status: 200
+  note: WordPress sitemap index covering posts, pages, employee, board-member, download, news and
+    testimonial content types plus the category and post_tag taxonomies.
+- path: /wp-json/
+  status: 200
+  note: The WordPress REST API root discovery document - 246 routes across 8 namespaces. This is the
+    provider's only machine-readable API discovery surface, and it is what openapi/lanzatech-wordpress-openapi.yml
+    was derived from.
+- path: /feed/
+  status: 200
+  note: RSS 2.0 feed for the blog.

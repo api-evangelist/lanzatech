@@ -1,0 +1,109 @@
+generated: '2026-07-19'
+method: derived
+source: live error responses observed against https://lanzatech.com/wp-json/wp/v2/*
+format: wordpress-rest
+rfc9457: false
+note: LanzaTech publishes no error reference. Every entry below was captured by issuing a real request
+  against the live API and recording the response verbatim. The envelope is the standard WordPress REST
+  API error object - code, message, and a data block carrying the HTTP status - not RFC 9457
+  application/problem+json.
+
+envelope:
+  content_type: application/json
+  fields:
+    code: Machine-readable error slug.
+    message: Human-readable message.
+    data.status: HTTP status code, repeated in the body.
+    data.params: Map of parameter name to validation message. Present on rest_invalid_param only.
+    data.details: Map of parameter name to a structured error object. Present on rest_invalid_param only.
+
+problems:
+- code: rest_no_route
+  status: 404
+  title: No route was found matching the URL and request method.
+  meaning: The requested path does not resolve to a registered route in the namespace.
+  remediation: Check the path against the route list in the /wp-json/ discovery document.
+  observed_at: GET /wp/v2/nope
+
+- code: rest_post_invalid_id
+  status: 404
+  title: Invalid post ID.
+  meaning: The numeric id in the path does not correspond to a published item of that post type. Also
+    returned when the item exists but is not publicly readable.
+  remediation: List the collection first and use an id from the result set.
+  applies_to: [posts, pages, media, news, employee, board-member, download, testimonial]
+  observed_at: GET /wp/v2/posts/99999999, GET /wp/v2/news/1, GET /wp/v2/employee/999999
+
+- code: rest_term_invalid
+  status: 404
+  title: Term does not exist.
+  meaning: The taxonomy term id in the path does not exist.
+  remediation: List /wp/v2/categories or /wp/v2/tags and use an id from the result set.
+  applies_to: [categories, tags]
+  observed_at: GET /wp/v2/categories/999999, GET /wp/v2/tags/999999
+
+- code: rest_comment_invalid_id
+  status: 404
+  title: Invalid comment ID.
+  meaning: The comment id in the path does not exist.
+  remediation: The comments collection on this site is empty (X-WP-Total 0), so no comment id resolves.
+  applies_to: [comments]
+  observed_at: GET /wp/v2/comments/999999
+
+- code: rest_taxonomy_invalid
+  status: 404
+  title: Invalid taxonomy.
+  meaning: The taxonomy slug in the path is not registered.
+  remediation: Use a slug from GET /wp/v2/taxonomies - category, post_tag or nav_menu.
+  applies_to: [taxonomies]
+  observed_at: GET /wp/v2/taxonomies/nope
+
+- code: rest_type_invalid
+  status: 404
+  title: Invalid post type.
+  meaning: The post type slug in the path is not registered.
+  remediation: Use a slug from GET /wp/v2/types.
+  applies_to: [types]
+  observed_at: GET /wp/v2/types/nope
+
+- code: rest_status_invalid
+  status: 404
+  title: Invalid status.
+  meaning: The post status slug in the path is not registered.
+  remediation: Use a slug from GET /wp/v2/statuses.
+  applies_to: [statuses]
+  observed_at: GET /wp/v2/statuses/nope
+
+- code: rest_invalid_param
+  status: 400
+  title: Invalid parameter(s).
+  meaning: One or more query parameters failed validation against the route schema. The offending
+    parameters are named in message, explained in data.params, and given a nested error code in
+    data.details.
+  remediation: Read the constraint out of data.params - it states the valid range or enum directly.
+  nested_codes:
+  - code: rest_out_of_bounds
+    example: per_page must be between 1 (inclusive) and 100 (inclusive)
+    observed_at: GET /wp/v2/posts?per_page=999
+  - code: rest_not_in_enum
+    example: type is not one of post, term, and post-format.
+    observed_at: GET /wp/v2/search?type=nope
+  observed_at: GET /wp/v2/posts?per_page=999, GET /wp/v2/posts?orderby=bogus, GET /wp/v2/search?type=nope
+
+- code: rest_forbidden
+  status: 401
+  title: Sorry, you are not allowed to do that.
+  meaning: The operation requires authentication and none was supplied, or the authenticated user lacks
+    the capability.
+  remediation: Authenticate with a WordPress application password. Note that this API's administrative
+    surface is not available to the public.
+  applies_to: [settings]
+  observed_at: GET /wp/v2/settings
+
+edge_cases:
+- description: A Sucuri WAF fronts lanzatech.com and intercepts some requests ahead of WordPress. These
+    return an HTML error page with no JSON envelope at all, so a client must not assume every non-2xx
+    response is parseable JSON.
+  observed_at: GET /wp/v2/users (403 HTML), POST /wp/v2/posts (403 HTML)
+  remediation: Check the response Content-Type before parsing, and treat a non-JSON body as an
+    infrastructure-level rejection rather than an API error.

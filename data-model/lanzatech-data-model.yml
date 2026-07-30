@@ -1,0 +1,168 @@
+generated: '2026-07-19'
+method: derived
+source: https://lanzatech.com/wp-json/wp/v2/types + https://lanzatech.com/wp-json/wp/v2/taxonomies
+  + openapi/lanzatech-wordpress-openapi.yml
+note: The entity graph was read directly out of the provider's own live type and taxonomy registries.
+  Item counts are the X-WP-Total values returned by each collection on 2026-07-19. The five custom types
+  are LanzaTech's own additions to the WordPress content model and are the reason this API is
+  interesting - they describe the company, not just its blog.
+
+entities:
+- name: post
+  rest_base: posts
+  label: Posts
+  hierarchical: false
+  item_count: 107
+  taxonomies: [category, post_tag]
+  description: The Re:Carbon blog. The only content type on the site carrying taxonomy terms.
+
+- name: page
+  rest_base: pages
+  label: Pages
+  hierarchical: true
+  item_count: 16
+  taxonomies: []
+  description: Site pages - About, Biorefining, SAF, Chemicals, Contact and the project pages.
+  self_relationship: parent
+
+- name: attachment
+  rest_base: media
+  label: Media
+  hierarchical: false
+  item_count: 314
+  taxonomies: []
+  description: Uploaded images, PDFs and life-cycle assessment documents.
+
+- name: news
+  rest_base: news
+  label: External news
+  hierarchical: false
+  item_count: 35
+  taxonomies: []
+  custom: true
+  description: Third-party press coverage of LanzaTech, curated by the company.
+
+- name: employee
+  rest_base: employee
+  label: Employee
+  hierarchical: false
+  item_count: 4
+  taxonomies: []
+  custom: true
+  description: Leadership team profiles.
+
+- name: board-member
+  rest_base: board-member
+  label: Board Member
+  hierarchical: false
+  item_count: 14
+  taxonomies: []
+  custom: true
+  description: Board of directors profiles.
+
+- name: download
+  rest_base: download
+  label: Download
+  hierarchical: false
+  item_count: 5
+  taxonomies: []
+  custom: true
+  description: Published reports and life-cycle assessment PDFs offered for download.
+
+- name: testimonial
+  rest_base: testimonial
+  label: Testimonial
+  hierarchical: false
+  item_count: 1
+  taxonomies: []
+  custom: true
+  description: Customer and partner quotes rendered on the homepage.
+
+- name: comment
+  rest_base: comments
+  label: Comments
+  item_count: 0
+  description: Registered but empty - comments are not in use on this site.
+
+- name: user
+  rest_base: users
+  label: Users
+  public_read: false
+  description: Author records. The collection is blocked at the WAF and returns a 403 HTML page rather
+    than JSON, so authors are only reachable indirectly via the author id on a post.
+
+taxonomies:
+- name: category
+  rest_base: categories
+  hierarchical: true
+  term_count: 4
+  applies_to: [post]
+- name: post_tag
+  rest_base: tags
+  hierarchical: false
+  term_count: 141
+  applies_to: [post]
+- name: nav_menu
+  rest_base: menus
+  hierarchical: false
+  applies_to: [nav_menu_item]
+
+relationships:
+- from: post
+  to: category
+  type: has_many
+  via: categories
+  description: Array of category term ids on each post.
+- from: category
+  to: post
+  type: has_many
+  via: categories
+  description: Filter GET /wp/v2/posts?categories={id}.
+- from: post
+  to: post_tag
+  type: has_many
+  via: tags
+  description: Array of tag term ids on each post.
+- from: post_tag
+  to: post
+  type: has_many
+  via: tags
+  description: Filter GET /wp/v2/posts?tags={id}.
+- from: category
+  to: category
+  type: belongs_to
+  via: parent
+  description: Categories are hierarchical.
+- from: page
+  to: page
+  type: belongs_to
+  via: parent
+  description: Pages are hierarchical.
+- from: post
+  to: user
+  type: belongs_to
+  via: author
+  description: Author user id. The user record itself is not publicly readable on this deployment.
+- from: post
+  to: attachment
+  type: has_one
+  via: featured_media
+  description: Featured image attachment id. Applies to every post type that supports thumbnails.
+- from: attachment
+  to: post
+  type: belongs_to
+  via: post
+  description: The item an attachment was uploaded to.
+- from: post
+  to: comment
+  type: has_many
+  via: post
+  description: Filter GET /wp/v2/comments?post={id}. The collection is empty on this site.
+
+conventions:
+  id_scheme: integer
+  note: WordPress uses a single global integer id space across all post types, so a numeric id is unique
+    across posts, pages, media, news, employee, board-member, download and testimonial. There are no
+    typed id prefixes.
+  embedding: Add _embed to any request to resolve author, featured media and terms inline under
+    _embedded, driven by the _links block each item carries.

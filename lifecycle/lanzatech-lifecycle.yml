@@ -1,0 +1,63 @@
+generated: '2026-07-19'
+method: derived
+source: https://lanzatech.com/wp-json/ + live probes of lanzatech.com
+note: LanzaTech runs this API as a side effect of running a WordPress site. There is no published
+  versioning policy, no deprecation policy, no SLA and no status page. Recording those absences honestly
+  is the point of this file - no StatusPage or Deprecation pointer is emitted in apis.yml, because
+  neither exists.
+
+versioning:
+  scheme: namespace-in-path
+  current: wp/v2
+  docs: null
+  policy_published: false
+  note: The version is the WordPress core REST namespace, governed by the WordPress project rather than
+    by LanzaTech. wp/v2 has been stable since WordPress 4.7 (2016). LanzaTech has published no statement
+    about how it will handle a future namespace change.
+  other_namespaces:
+  - oembed/1.0
+  - elementor/v1
+  - elementor-pro/v1
+  - google-site-kit/v1
+  - jet-engine/v2
+  - wp-site-health/v1
+  - wp-block-editor/v1
+
+deprecation:
+  policy_url: null
+  policy_published: false
+  sunset_header: false
+  deprecation_header: false
+  note: No RFC 8594 Sunset or Deprecation headers were observed on any probed response.
+
+deprecated_operations: []
+
+sla:
+  url: null
+  uptime_target: null
+  published: false
+
+status_page:
+  url: null
+  found: false
+  note: Probed for a status page and none exists. trust.lanzatech.com does not resolve;
+    lanzatech.com/security/ returns 404.
+
+support:
+  url: https://lanzatech.com/contact/
+  channel: web-form
+
+change_communication:
+  changelog_url: null
+  note: LanzaTech publishes no API changelog. Company-level change is announced on the Re:Carbon blog
+    (https://lanzatech.com/blog/, RSS at https://lanzatech.com/feed/) and in investor relations material
+    at https://ir.lanzatech.com/. Neither is an API changelog, so no ChangeLog pointer is emitted.
+
+operational_observations:
+  waf: Sucuri
+  note: A Sucuri WAF fronts the site. It intercepts /wp/v2/users and unauthenticated writes ahead of
+    WordPress and returns HTML rather than the JSON error envelope. This is the closest thing to a
+    published access policy the provider has, and it is not documented anywhere.
+  tls_version: TLSv1.3
+  cert_expires: 'Aug 29 21:49:07 2026 GMT'
+  hsts: false
