@@ -409,6 +409,8 @@ apis:
   - type: OpenAPI
     url: openapi/lanzatech-widgets-api-openapi.yml
 common:
+- type: Overlay
+  url: overlays/lanzatech-wordpress-overlay.yaml
 - type: AgenticAccess
   url: agentic-access/lanzatech-agentic-access.yml
 - type: Website
