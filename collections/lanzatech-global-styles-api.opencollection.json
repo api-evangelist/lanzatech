@@ -1,0 +1,177 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "LanzaTech WordPress REST block-directory global-styles API",
+    "version": "wp/v2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "global-styles",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /wp/v2/global-styles/{id}/\\w-]+)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://lanzatech.com/wp-json/wp/v2/global-styles/:id/\\w-]+)",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Route-matched value (WordPress route pattern: (?P<id>[\\)."
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "query",
+                "description": "The id of a template"
+              }
+            ]
+          },
+          "docs": "GET /wp/v2/global-styles/{id}/\\w-]+)"
+        },
+        {
+          "info": {
+            "name": "POST /wp/v2/global-styles/{id}/\\w-]+)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://lanzatech.com/wp-json/wp/v2/global-styles/:id/\\w-]+)",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Route-matched value (WordPress route pattern: (?P<id>[\\)."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "POST /wp/v2/global-styles/{id}/\\w-]+)"
+        },
+        {
+          "info": {
+            "name": "PUT /wp/v2/global-styles/{id}/\\w-]+)",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://lanzatech.com/wp-json/wp/v2/global-styles/:id/\\w-]+)",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Route-matched value (WordPress route pattern: (?P<id>[\\)."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "PUT /wp/v2/global-styles/{id}/\\w-]+)"
+        },
+        {
+          "info": {
+            "name": "PATCH /wp/v2/global-styles/{id}/\\w-]+)",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://lanzatech.com/wp-json/wp/v2/global-styles/:id/\\w-]+)",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Route-matched value (WordPress route pattern: (?P<id>[\\)."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "PATCH /wp/v2/global-styles/{id}/\\w-]+)"
+        },
+        {
+          "info": {
+            "name": "GET /wp/v2/global-styles/themes/{stylesheet}/\\s%\\w\\.\\(\\)\\[\\]\\@_\\-]+)/variations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://lanzatech.com/wp-json/wp/v2/global-styles/themes/:stylesheet/\\s%\\w\\.\\(\\)\\[\\]\\@_\\-]+)/variations",
+            "params": [
+              {
+                "name": "stylesheet",
+                "value": "",
+                "type": "path",
+                "description": "Route-matched value (WordPress route pattern: (?P<stylesheet>[\\)."
+              },
+              {
+                "name": "stylesheet",
+                "value": "",
+                "type": "query",
+                "description": "The theme identifier"
+              }
+            ]
+          },
+          "docs": "GET /wp/v2/global-styles/themes/{stylesheet}/\\s%\\w\\.\\(\\)\\[\\]\\@_\\-]+)/variations"
+        },
+        {
+          "info": {
+            "name": "GET /wp/v2/global-styles/themes/{stylesheet}/:<>\\*\\?\"\\|]+(?:\\/[^\\/:<>\\*\\?\"\\|]+)?)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://lanzatech.com/wp-json/wp/v2/global-styles/themes/:stylesheet/:<>\\*\\?\"\\|]+(?:\\/[^\\/:<>\\*\\?\"\\|]+)?)",
+            "params": [
+              {
+                "name": "stylesheet",
+                "value": "",
+                "type": "path",
+                "description": "Route-matched value (WordPress route pattern: (?P<stylesheet>[^\\)."
+              },
+              {
+                "name": "stylesheet",
+                "value": "",
+                "type": "query",
+                "description": "The theme identifier"
+              }
+            ]
+          },
+          "docs": "GET /wp/v2/global-styles/themes/{stylesheet}/:<>\\*\\?\"\\|]+(?:\\/[^\\/:<>\\*\\?\"\\|]+)?)"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

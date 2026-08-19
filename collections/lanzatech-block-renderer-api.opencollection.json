@@ -1,0 +1,89 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "LanzaTech WordPress REST block-directory block-renderer API",
+    "version": "wp/v2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "block-renderer",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /wp/v2/block-renderer/{name}/[a-z0-9-]+)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://lanzatech.com/wp-json/wp/v2/block-renderer/:name/[a-z0-9-]+)",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "Route-matched value (WordPress route pattern: (?P<name>[a-z0-9-]+)."
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "Unique registered name for the block."
+              },
+              {
+                "name": "context",
+                "value": "",
+                "type": "query",
+                "description": "Scope under which the request is made; determines fields present in response."
+              },
+              {
+                "name": "attributes",
+                "value": "",
+                "type": "query",
+                "description": "Attributes for the block."
+              },
+              {
+                "name": "post_id",
+                "value": "",
+                "type": "query",
+                "description": "ID of the post context."
+              }
+            ]
+          },
+          "docs": "GET /wp/v2/block-renderer/{name}/[a-z0-9-]+)"
+        },
+        {
+          "info": {
+            "name": "POST /wp/v2/block-renderer/{name}/[a-z0-9-]+)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://lanzatech.com/wp-json/wp/v2/block-renderer/:name/[a-z0-9-]+)",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "Route-matched value (WordPress route pattern: (?P<name>[a-z0-9-]+)."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "POST /wp/v2/block-renderer/{name}/[a-z0-9-]+)"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

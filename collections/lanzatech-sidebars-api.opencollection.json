@@ -1,0 +1,152 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "LanzaTech WordPress REST block-directory sidebars API",
+    "version": "wp/v2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "sidebars",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /wp/v2/sidebars",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://lanzatech.com/wp-json/wp/v2/sidebars",
+            "params": [
+              {
+                "name": "context",
+                "value": "",
+                "type": "query",
+                "description": "Scope under which the request is made; determines fields present in response."
+              }
+            ]
+          },
+          "docs": "GET /wp/v2/sidebars"
+        },
+        {
+          "info": {
+            "name": "GET /wp/v2/sidebars/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://lanzatech.com/wp-json/wp/v2/sidebars/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Route-matched value (WordPress route pattern: [\\w-]+)."
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "query",
+                "description": "The id of a registered sidebar"
+              },
+              {
+                "name": "context",
+                "value": "",
+                "type": "query",
+                "description": "Scope under which the request is made; determines fields present in response."
+              }
+            ]
+          },
+          "docs": "GET /wp/v2/sidebars/{id}"
+        },
+        {
+          "info": {
+            "name": "POST /wp/v2/sidebars/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://lanzatech.com/wp-json/wp/v2/sidebars/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Route-matched value (WordPress route pattern: [\\w-]+)."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "POST /wp/v2/sidebars/{id}"
+        },
+        {
+          "info": {
+            "name": "PUT /wp/v2/sidebars/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://lanzatech.com/wp-json/wp/v2/sidebars/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Route-matched value (WordPress route pattern: [\\w-]+)."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "PUT /wp/v2/sidebars/{id}"
+        },
+        {
+          "info": {
+            "name": "PATCH /wp/v2/sidebars/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://lanzatech.com/wp-json/wp/v2/sidebars/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Route-matched value (WordPress route pattern: [\\w-]+)."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "PATCH /wp/v2/sidebars/{id}"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

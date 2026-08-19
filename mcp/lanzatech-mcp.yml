@@ -4,18 +4,16 @@ status: candidate
 source: openapi/lanzatech-wordpress-openapi.yml
 note: LanzaTech publishes no MCP server. Searched the site, the GitHub org (github.com/LanzaTech, one
   public repo - genopsis-escher, a customised fork of the Escher metabolic-pathway viewer), npm (zero
-  results for lanzatech) and PyPI (404). This is a candidate tool list derived from the public read
-  operations of the WordPress REST API, scoped deliberately to the surface that answers real questions
-  about the company. Administrative, block-editor, theme, plugin and autosave/revision routes are
-  excluded - they are noise for an agent and mostly require authentication.
-
+  results for lanzatech) and PyPI (404). This is a candidate tool list derived from the public read operations
+  of the WordPress REST API, scoped deliberately to the surface that answers real questions about the
+  company. Administrative, block-editor, theme, plugin and autosave/revision routes are excluded - they
+  are noise for an agent and mostly require authentication.
 server:
   name: lanzatech
   transport: stdio
   url: null
   auth: none
   base_url: https://lanzatech.com/wp-json
-
 tools:
 - name: list_posts
   description: List posts from the LanzaTech Re:Carbon blog. Supports search, date filtering, category
@@ -75,10 +73,9 @@ tools:
     terms.
   source_operation: openapi/lanzatech-wordpress-openapi.yml#listSearch
 - name: list_content_types
-  description: List the registered content types, including LanzaTech's five custom types. Useful for an
-    agent to orient itself before querying.
+  description: List the registered content types, including LanzaTech's five custom types. Useful for
+    an agent to orient itself before querying.
   source_operation: openapi/lanzatech-wordpress-openapi.yml#listTypes
-
 excluded:
   reason: Not useful or not available to an unauthenticated agent.
   routes:
@@ -87,5 +84,11 @@ excluded:
   - /wp/v2/comments - registered but empty (X-WP-Total 0)
   - autosave and revision routes on every post type
   - block, template, template-part, global-styles, widget, sidebar, menu and theme administration routes
-  - the elementor, elementor-pro, google-site-kit, jet-engine, wp-site-health and wp-block-editor
-    namespaces, which are plugin-internal
+  - the elementor, elementor-pro, google-site-kit, jet-engine, wp-site-health and wp-block-editor namespaces,
+    which are plugin-internal
+deployment:
+  mode: none
+  verified: derived
+  tools: 19
+  checked: '2026-08-12'
+  source: catalog MCP census

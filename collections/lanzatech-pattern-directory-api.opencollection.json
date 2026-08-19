@@ -1,0 +1,61 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "LanzaTech WordPress REST block-directory pattern-directory API",
+    "version": "wp/v2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "pattern-directory",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /wp/v2/pattern-directory/patterns",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://lanzatech.com/wp-json/wp/v2/pattern-directory/patterns",
+            "params": [
+              {
+                "name": "context",
+                "value": "",
+                "type": "query",
+                "description": "Scope under which the request is made; determines fields present in response."
+              },
+              {
+                "name": "search",
+                "value": "",
+                "type": "query",
+                "description": "Limit results to those matching a string."
+              },
+              {
+                "name": "category",
+                "value": "",
+                "type": "query",
+                "description": "Limit results to those matching a category ID."
+              },
+              {
+                "name": "keyword",
+                "value": "",
+                "type": "query",
+                "description": "Limit results to those matching a keyword ID."
+              },
+              {
+                "name": "slug",
+                "value": "",
+                "type": "query",
+                "description": "Limit results to those matching a pattern (slug)."
+              }
+            ]
+          },
+          "docs": "GET /wp/v2/pattern-directory/patterns"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,211 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "LanzaTech WordPress REST block-directory plugins API",
+    "version": "wp/v2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "plugins",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /wp/v2/plugins",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://lanzatech.com/wp-json/wp/v2/plugins",
+            "params": [
+              {
+                "name": "context",
+                "value": "",
+                "type": "query",
+                "description": "Scope under which the request is made; determines fields present in response."
+              },
+              {
+                "name": "search",
+                "value": "",
+                "type": "query",
+                "description": "Limit results to those matching a string."
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Limits results to plugins with the given status."
+              }
+            ]
+          },
+          "docs": "GET /wp/v2/plugins"
+        },
+        {
+          "info": {
+            "name": "POST /wp/v2/plugins",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://lanzatech.com/wp-json/wp/v2/plugins",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "POST /wp/v2/plugins"
+        },
+        {
+          "info": {
+            "name": "GET /wp/v2/plugins/{plugin}/]+(?:\\/[^.\\/]+)?)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://lanzatech.com/wp-json/wp/v2/plugins/:plugin/]+(?:\\/[^.\\/]+)?)",
+            "params": [
+              {
+                "name": "plugin",
+                "value": "",
+                "type": "path",
+                "description": "Route-matched value (WordPress route pattern: (?P<plugin>[^.\\)."
+              },
+              {
+                "name": "context",
+                "value": "",
+                "type": "query",
+                "description": "Scope under which the request is made; determines fields present in response."
+              },
+              {
+                "name": "plugin",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "GET /wp/v2/plugins/{plugin}/]+(?:\\/[^.\\/]+)?)"
+        },
+        {
+          "info": {
+            "name": "POST /wp/v2/plugins/{plugin}/]+(?:\\/[^.\\/]+)?)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://lanzatech.com/wp-json/wp/v2/plugins/:plugin/]+(?:\\/[^.\\/]+)?)",
+            "params": [
+              {
+                "name": "plugin",
+                "value": "",
+                "type": "path",
+                "description": "Route-matched value (WordPress route pattern: (?P<plugin>[^.\\)."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "POST /wp/v2/plugins/{plugin}/]+(?:\\/[^.\\/]+)?)"
+        },
+        {
+          "info": {
+            "name": "PUT /wp/v2/plugins/{plugin}/]+(?:\\/[^.\\/]+)?)",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://lanzatech.com/wp-json/wp/v2/plugins/:plugin/]+(?:\\/[^.\\/]+)?)",
+            "params": [
+              {
+                "name": "plugin",
+                "value": "",
+                "type": "path",
+                "description": "Route-matched value (WordPress route pattern: (?P<plugin>[^.\\)."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "PUT /wp/v2/plugins/{plugin}/]+(?:\\/[^.\\/]+)?)"
+        },
+        {
+          "info": {
+            "name": "PATCH /wp/v2/plugins/{plugin}/]+(?:\\/[^.\\/]+)?)",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://lanzatech.com/wp-json/wp/v2/plugins/:plugin/]+(?:\\/[^.\\/]+)?)",
+            "params": [
+              {
+                "name": "plugin",
+                "value": "",
+                "type": "path",
+                "description": "Route-matched value (WordPress route pattern: (?P<plugin>[^.\\)."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "PATCH /wp/v2/plugins/{plugin}/]+(?:\\/[^.\\/]+)?)"
+        },
+        {
+          "info": {
+            "name": "DELETE /wp/v2/plugins/{plugin}/]+(?:\\/[^.\\/]+)?)",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://lanzatech.com/wp-json/wp/v2/plugins/:plugin/]+(?:\\/[^.\\/]+)?)",
+            "params": [
+              {
+                "name": "plugin",
+                "value": "",
+                "type": "path",
+                "description": "Route-matched value (WordPress route pattern: (?P<plugin>[^.\\)."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "DELETE /wp/v2/plugins/{plugin}/]+(?:\\/[^.\\/]+)?)"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

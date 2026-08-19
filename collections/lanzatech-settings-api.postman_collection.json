@@ -1,0 +1,1167 @@
+{
+  "item": [
+    {
+      "id": "42389813-4097-4b7a-89f5-9f7c1dfe4498",
+      "name": "settings",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c1f2dbf9-3d44-4737-96b9-78e557f9e42c",
+          "name": "GET /wp/v2/settings",
+          "request": {
+            "name": "GET /wp/v2/settings",
+            "description": {},
+            "url": {
+              "path": [
+                "wp",
+                "v2",
+                "settings"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5dd51f14-455b-4834-9a1f-91043cd61530",
+              "name": "Successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "wp",
+                    "v2",
+                    "settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Total items in the collection.",
+                  "key": "X-WP-Total",
+                  "value": "1691"
+                },
+                {
+                  "disabled": false,
+                  "description": "Total pages in the collection.",
+                  "key": "X-WP-TotalPages",
+                  "value": "1691"
+                },
+                {
+                  "disabled": false,
+                  "description": "RFC 8288 pagination links (rel=next / rel=prev).",
+                  "key": "Link",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "50a0a4eb-8a4f-4569-a66f-0b8fc2a5e94e",
+              "name": "WordPress REST API error envelope.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "wp",
+                    "v2",
+                    "settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"data\": {\n    \"status\": 4774,\n    \"params\": {},\n    \"details\": {}\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9d5efc37-b46b-4d3f-9535-897d8d5f2c27",
+              "name": "WordPress REST API error envelope.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "wp",
+                    "v2",
+                    "settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"data\": {\n    \"status\": 4774,\n    \"params\": {},\n    \"details\": {}\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d39fea09-fc5b-4be9-b487-ecad1cfdf6c3",
+          "name": "POST /wp/v2/settings",
+          "request": {
+            "name": "POST /wp/v2/settings",
+            "description": {},
+            "url": {
+              "path": [
+                "wp",
+                "v2",
+                "settings"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"<string>\",\n  \"description\": \"<string>\",\n  \"url\": \"<uri>\",\n  \"email\": \"<email>\",\n  \"timezone\": \"<string>\",\n  \"date_format\": \"<string>\",\n  \"time_format\": \"<string>\",\n  \"start_of_week\": \"<integer>\",\n  \"language\": \"<string>\",\n  \"use_smilies\": \"<boolean>\",\n  \"default_category\": \"<integer>\",\n  \"default_post_format\": \"<string>\",\n  \"posts_per_page\": \"<integer>\",\n  \"show_on_front\": \"<string>\",\n  \"page_on_front\": \"<integer>\",\n  \"page_for_posts\": \"<integer>\",\n  \"default_ping_status\": \"<string>\",\n  \"default_comment_status\": \"<string>\",\n  \"site_logo\": \"<integer>\",\n  \"site_icon\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e8d7387d-f887-446e-9b04-f6384b21dec0",
+              "name": "Successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "wp",
+                    "v2",
+                    "settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title\": \"<string>\",\n  \"description\": \"<string>\",\n  \"url\": \"<uri>\",\n  \"email\": \"<email>\",\n  \"timezone\": \"<string>\",\n  \"date_format\": \"<string>\",\n  \"time_format\": \"<string>\",\n  \"start_of_week\": \"<integer>\",\n  \"language\": \"<string>\",\n  \"use_smilies\": \"<boolean>\",\n  \"default_category\": \"<integer>\",\n  \"default_post_format\": \"<string>\",\n  \"posts_per_page\": \"<integer>\",\n  \"show_on_front\": \"<string>\",\n  \"page_on_front\": \"<integer>\",\n  \"page_for_posts\": \"<integer>\",\n  \"default_ping_status\": \"<string>\",\n  \"default_comment_status\": \"<string>\",\n  \"site_logo\": \"<integer>\",\n  \"site_icon\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4f582d8a-bdd3-4192-acdd-5bb84cbeee26",
+              "name": "WordPress REST API error envelope.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "wp",
+                    "v2",
+                    "settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title\": \"<string>\",\n  \"description\": \"<string>\",\n  \"url\": \"<uri>\",\n  \"email\": \"<email>\",\n  \"timezone\": \"<string>\",\n  \"date_format\": \"<string>\",\n  \"time_format\": \"<string>\",\n  \"start_of_week\": \"<integer>\",\n  \"language\": \"<string>\",\n  \"use_smilies\": \"<boolean>\",\n  \"default_category\": \"<integer>\",\n  \"default_post_format\": \"<string>\",\n  \"posts_per_page\": \"<integer>\",\n  \"show_on_front\": \"<string>\",\n  \"page_on_front\": \"<integer>\",\n  \"page_for_posts\": \"<integer>\",\n  \"default_ping_status\": \"<string>\",\n  \"default_comment_status\": \"<string>\",\n  \"site_logo\": \"<integer>\",\n  \"site_icon\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"data\": {\n    \"status\": 4774,\n    \"params\": {},\n    \"details\": {}\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "497ba650-71b0-4777-80fe-956d205f4c7c",
+              "name": "WordPress REST API error envelope.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "wp",
+                    "v2",
+                    "settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title\": \"<string>\",\n  \"description\": \"<string>\",\n  \"url\": \"<uri>\",\n  \"email\": \"<email>\",\n  \"timezone\": \"<string>\",\n  \"date_format\": \"<string>\",\n  \"time_format\": \"<string>\",\n  \"start_of_week\": \"<integer>\",\n  \"language\": \"<string>\",\n  \"use_smilies\": \"<boolean>\",\n  \"default_category\": \"<integer>\",\n  \"default_post_format\": \"<string>\",\n  \"posts_per_page\": \"<integer>\",\n  \"show_on_front\": \"<string>\",\n  \"page_on_front\": \"<integer>\",\n  \"page_for_posts\": \"<integer>\",\n  \"default_ping_status\": \"<string>\",\n  \"default_comment_status\": \"<string>\",\n  \"site_logo\": \"<integer>\",\n  \"site_icon\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"data\": {\n    \"status\": 4774,\n    \"params\": {},\n    \"details\": {}\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "eb93b366-6b4d-4d00-9115-0d4b46281e18",
+              "name": "WordPress REST API error envelope.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "wp",
+                    "v2",
+                    "settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title\": \"<string>\",\n  \"description\": \"<string>\",\n  \"url\": \"<uri>\",\n  \"email\": \"<email>\",\n  \"timezone\": \"<string>\",\n  \"date_format\": \"<string>\",\n  \"time_format\": \"<string>\",\n  \"start_of_week\": \"<integer>\",\n  \"language\": \"<string>\",\n  \"use_smilies\": \"<boolean>\",\n  \"default_category\": \"<integer>\",\n  \"default_post_format\": \"<string>\",\n  \"posts_per_page\": \"<integer>\",\n  \"show_on_front\": \"<string>\",\n  \"page_on_front\": \"<integer>\",\n  \"page_for_posts\": \"<integer>\",\n  \"default_ping_status\": \"<string>\",\n  \"default_comment_status\": \"<string>\",\n  \"site_logo\": \"<integer>\",\n  \"site_icon\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"data\": {\n    \"status\": 4774,\n    \"params\": {},\n    \"details\": {}\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a5057a7d-2479-403e-854d-494d7e3eefb9",
+              "name": "WordPress REST API error envelope.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "wp",
+                    "v2",
+                    "settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title\": \"<string>\",\n  \"description\": \"<string>\",\n  \"url\": \"<uri>\",\n  \"email\": \"<email>\",\n  \"timezone\": \"<string>\",\n  \"date_format\": \"<string>\",\n  \"time_format\": \"<string>\",\n  \"start_of_week\": \"<integer>\",\n  \"language\": \"<string>\",\n  \"use_smilies\": \"<boolean>\",\n  \"default_category\": \"<integer>\",\n  \"default_post_format\": \"<string>\",\n  \"posts_per_page\": \"<integer>\",\n  \"show_on_front\": \"<string>\",\n  \"page_on_front\": \"<integer>\",\n  \"page_for_posts\": \"<integer>\",\n  \"default_ping_status\": \"<string>\",\n  \"default_comment_status\": \"<string>\",\n  \"site_logo\": \"<integer>\",\n  \"site_icon\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"data\": {\n    \"status\": 4774,\n    \"params\": {},\n    \"details\": {}\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3618cae9-6ec6-4a57-8be2-238850d67abb",
+          "name": "PUT /wp/v2/settings",
+          "request": {
+            "name": "PUT /wp/v2/settings",
+            "description": {},
+            "url": {
+              "path": [
+                "wp",
+                "v2",
+                "settings"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"<string>\",\n  \"description\": \"<string>\",\n  \"url\": \"<uri>\",\n  \"email\": \"<email>\",\n  \"timezone\": \"<string>\",\n  \"date_format\": \"<string>\",\n  \"time_format\": \"<string>\",\n  \"start_of_week\": \"<integer>\",\n  \"language\": \"<string>\",\n  \"use_smilies\": \"<boolean>\",\n  \"default_category\": \"<integer>\",\n  \"default_post_format\": \"<string>\",\n  \"posts_per_page\": \"<integer>\",\n  \"show_on_front\": \"<string>\",\n  \"page_on_front\": \"<integer>\",\n  \"page_for_posts\": \"<integer>\",\n  \"default_ping_status\": \"<string>\",\n  \"default_comment_status\": \"<string>\",\n  \"site_logo\": \"<integer>\",\n  \"site_icon\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "623395a3-03f2-486d-8e94-e162c938d0c5",
+              "name": "Successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "wp",
+                    "v2",
+                    "settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title\": \"<string>\",\n  \"description\": \"<string>\",\n  \"url\": \"<uri>\",\n  \"email\": \"<email>\",\n  \"timezone\": \"<string>\",\n  \"date_format\": \"<string>\",\n  \"time_format\": \"<string>\",\n  \"start_of_week\": \"<integer>\",\n  \"language\": \"<string>\",\n  \"use_smilies\": \"<boolean>\",\n  \"default_category\": \"<integer>\",\n  \"default_post_format\": \"<string>\",\n  \"posts_per_page\": \"<integer>\",\n  \"show_on_front\": \"<string>\",\n  \"page_on_front\": \"<integer>\",\n  \"page_for_posts\": \"<integer>\",\n  \"default_ping_status\": \"<string>\",\n  \"default_comment_status\": \"<string>\",\n  \"site_logo\": \"<integer>\",\n  \"site_icon\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0dc82f17-ae02-4b7b-b2c4-2eb5dee77238",
+              "name": "WordPress REST API error envelope.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "wp",
+                    "v2",
+                    "settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title\": \"<string>\",\n  \"description\": \"<string>\",\n  \"url\": \"<uri>\",\n  \"email\": \"<email>\",\n  \"timezone\": \"<string>\",\n  \"date_format\": \"<string>\",\n  \"time_format\": \"<string>\",\n  \"start_of_week\": \"<integer>\",\n  \"language\": \"<string>\",\n  \"use_smilies\": \"<boolean>\",\n  \"default_category\": \"<integer>\",\n  \"default_post_format\": \"<string>\",\n  \"posts_per_page\": \"<integer>\",\n  \"show_on_front\": \"<string>\",\n  \"page_on_front\": \"<integer>\",\n  \"page_for_posts\": \"<integer>\",\n  \"default_ping_status\": \"<string>\",\n  \"default_comment_status\": \"<string>\",\n  \"site_logo\": \"<integer>\",\n  \"site_icon\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"data\": {\n    \"status\": 4774,\n    \"params\": {},\n    \"details\": {}\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8b120b5f-a49c-49a8-9c9a-86b02eb2f8bf",
+              "name": "WordPress REST API error envelope.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "wp",
+                    "v2",
+                    "settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title\": \"<string>\",\n  \"description\": \"<string>\",\n  \"url\": \"<uri>\",\n  \"email\": \"<email>\",\n  \"timezone\": \"<string>\",\n  \"date_format\": \"<string>\",\n  \"time_format\": \"<string>\",\n  \"start_of_week\": \"<integer>\",\n  \"language\": \"<string>\",\n  \"use_smilies\": \"<boolean>\",\n  \"default_category\": \"<integer>\",\n  \"default_post_format\": \"<string>\",\n  \"posts_per_page\": \"<integer>\",\n  \"show_on_front\": \"<string>\",\n  \"page_on_front\": \"<integer>\",\n  \"page_for_posts\": \"<integer>\",\n  \"default_ping_status\": \"<string>\",\n  \"default_comment_status\": \"<string>\",\n  \"site_logo\": \"<integer>\",\n  \"site_icon\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"data\": {\n    \"status\": 4774,\n    \"params\": {},\n    \"details\": {}\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "75eff816-78f2-4d9d-8c5c-f28d37e5cfc3",
+              "name": "WordPress REST API error envelope.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "wp",
+                    "v2",
+                    "settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title\": \"<string>\",\n  \"description\": \"<string>\",\n  \"url\": \"<uri>\",\n  \"email\": \"<email>\",\n  \"timezone\": \"<string>\",\n  \"date_format\": \"<string>\",\n  \"time_format\": \"<string>\",\n  \"start_of_week\": \"<integer>\",\n  \"language\": \"<string>\",\n  \"use_smilies\": \"<boolean>\",\n  \"default_category\": \"<integer>\",\n  \"default_post_format\": \"<string>\",\n  \"posts_per_page\": \"<integer>\",\n  \"show_on_front\": \"<string>\",\n  \"page_on_front\": \"<integer>\",\n  \"page_for_posts\": \"<integer>\",\n  \"default_ping_status\": \"<string>\",\n  \"default_comment_status\": \"<string>\",\n  \"site_logo\": \"<integer>\",\n  \"site_icon\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"data\": {\n    \"status\": 4774,\n    \"params\": {},\n    \"details\": {}\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e2af298c-93ad-4bd5-827f-52a7f6d50eb1",
+              "name": "WordPress REST API error envelope.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "wp",
+                    "v2",
+                    "settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title\": \"<string>\",\n  \"description\": \"<string>\",\n  \"url\": \"<uri>\",\n  \"email\": \"<email>\",\n  \"timezone\": \"<string>\",\n  \"date_format\": \"<string>\",\n  \"time_format\": \"<string>\",\n  \"start_of_week\": \"<integer>\",\n  \"language\": \"<string>\",\n  \"use_smilies\": \"<boolean>\",\n  \"default_category\": \"<integer>\",\n  \"default_post_format\": \"<string>\",\n  \"posts_per_page\": \"<integer>\",\n  \"show_on_front\": \"<string>\",\n  \"page_on_front\": \"<integer>\",\n  \"page_for_posts\": \"<integer>\",\n  \"default_ping_status\": \"<string>\",\n  \"default_comment_status\": \"<string>\",\n  \"site_logo\": \"<integer>\",\n  \"site_icon\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"data\": {\n    \"status\": 4774,\n    \"params\": {},\n    \"details\": {}\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f5233ffc-aa3a-467c-beb9-3017c0a8ffe6",
+          "name": "PATCH /wp/v2/settings",
+          "request": {
+            "name": "PATCH /wp/v2/settings",
+            "description": {},
+            "url": {
+              "path": [
+                "wp",
+                "v2",
+                "settings"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"<string>\",\n  \"description\": \"<string>\",\n  \"url\": \"<uri>\",\n  \"email\": \"<email>\",\n  \"timezone\": \"<string>\",\n  \"date_format\": \"<string>\",\n  \"time_format\": \"<string>\",\n  \"start_of_week\": \"<integer>\",\n  \"language\": \"<string>\",\n  \"use_smilies\": \"<boolean>\",\n  \"default_category\": \"<integer>\",\n  \"default_post_format\": \"<string>\",\n  \"posts_per_page\": \"<integer>\",\n  \"show_on_front\": \"<string>\",\n  \"page_on_front\": \"<integer>\",\n  \"page_for_posts\": \"<integer>\",\n  \"default_ping_status\": \"<string>\",\n  \"default_comment_status\": \"<string>\",\n  \"site_logo\": \"<integer>\",\n  \"site_icon\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f0bc3943-b0e3-4fc4-8c77-50977bea1515",
+              "name": "Successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "wp",
+                    "v2",
+                    "settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title\": \"<string>\",\n  \"description\": \"<string>\",\n  \"url\": \"<uri>\",\n  \"email\": \"<email>\",\n  \"timezone\": \"<string>\",\n  \"date_format\": \"<string>\",\n  \"time_format\": \"<string>\",\n  \"start_of_week\": \"<integer>\",\n  \"language\": \"<string>\",\n  \"use_smilies\": \"<boolean>\",\n  \"default_category\": \"<integer>\",\n  \"default_post_format\": \"<string>\",\n  \"posts_per_page\": \"<integer>\",\n  \"show_on_front\": \"<string>\",\n  \"page_on_front\": \"<integer>\",\n  \"page_for_posts\": \"<integer>\",\n  \"default_ping_status\": \"<string>\",\n  \"default_comment_status\": \"<string>\",\n  \"site_logo\": \"<integer>\",\n  \"site_icon\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bd279dd1-f8aa-4540-b1f9-c4f6f2dccd54",
+              "name": "WordPress REST API error envelope.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "wp",
+                    "v2",
+                    "settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title\": \"<string>\",\n  \"description\": \"<string>\",\n  \"url\": \"<uri>\",\n  \"email\": \"<email>\",\n  \"timezone\": \"<string>\",\n  \"date_format\": \"<string>\",\n  \"time_format\": \"<string>\",\n  \"start_of_week\": \"<integer>\",\n  \"language\": \"<string>\",\n  \"use_smilies\": \"<boolean>\",\n  \"default_category\": \"<integer>\",\n  \"default_post_format\": \"<string>\",\n  \"posts_per_page\": \"<integer>\",\n  \"show_on_front\": \"<string>\",\n  \"page_on_front\": \"<integer>\",\n  \"page_for_posts\": \"<integer>\",\n  \"default_ping_status\": \"<string>\",\n  \"default_comment_status\": \"<string>\",\n  \"site_logo\": \"<integer>\",\n  \"site_icon\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"data\": {\n    \"status\": 4774,\n    \"params\": {},\n    \"details\": {}\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c7475969-6aaa-4526-b54c-2aa641212a6a",
+              "name": "WordPress REST API error envelope.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "wp",
+                    "v2",
+                    "settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title\": \"<string>\",\n  \"description\": \"<string>\",\n  \"url\": \"<uri>\",\n  \"email\": \"<email>\",\n  \"timezone\": \"<string>\",\n  \"date_format\": \"<string>\",\n  \"time_format\": \"<string>\",\n  \"start_of_week\": \"<integer>\",\n  \"language\": \"<string>\",\n  \"use_smilies\": \"<boolean>\",\n  \"default_category\": \"<integer>\",\n  \"default_post_format\": \"<string>\",\n  \"posts_per_page\": \"<integer>\",\n  \"show_on_front\": \"<string>\",\n  \"page_on_front\": \"<integer>\",\n  \"page_for_posts\": \"<integer>\",\n  \"default_ping_status\": \"<string>\",\n  \"default_comment_status\": \"<string>\",\n  \"site_logo\": \"<integer>\",\n  \"site_icon\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"data\": {\n    \"status\": 4774,\n    \"params\": {},\n    \"details\": {}\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "57996093-ddf7-492e-9b38-51e00c4ed322",
+              "name": "WordPress REST API error envelope.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "wp",
+                    "v2",
+                    "settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title\": \"<string>\",\n  \"description\": \"<string>\",\n  \"url\": \"<uri>\",\n  \"email\": \"<email>\",\n  \"timezone\": \"<string>\",\n  \"date_format\": \"<string>\",\n  \"time_format\": \"<string>\",\n  \"start_of_week\": \"<integer>\",\n  \"language\": \"<string>\",\n  \"use_smilies\": \"<boolean>\",\n  \"default_category\": \"<integer>\",\n  \"default_post_format\": \"<string>\",\n  \"posts_per_page\": \"<integer>\",\n  \"show_on_front\": \"<string>\",\n  \"page_on_front\": \"<integer>\",\n  \"page_for_posts\": \"<integer>\",\n  \"default_ping_status\": \"<string>\",\n  \"default_comment_status\": \"<string>\",\n  \"site_logo\": \"<integer>\",\n  \"site_icon\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"data\": {\n    \"status\": 4774,\n    \"params\": {},\n    \"details\": {}\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fbe87b85-1477-4b73-bb58-45f2ef3de90c",
+              "name": "WordPress REST API error envelope.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "wp",
+                    "v2",
+                    "settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title\": \"<string>\",\n  \"description\": \"<string>\",\n  \"url\": \"<uri>\",\n  \"email\": \"<email>\",\n  \"timezone\": \"<string>\",\n  \"date_format\": \"<string>\",\n  \"time_format\": \"<string>\",\n  \"start_of_week\": \"<integer>\",\n  \"language\": \"<string>\",\n  \"use_smilies\": \"<boolean>\",\n  \"default_category\": \"<integer>\",\n  \"default_post_format\": \"<string>\",\n  \"posts_per_page\": \"<integer>\",\n  \"show_on_front\": \"<string>\",\n  \"page_on_front\": \"<integer>\",\n  \"page_for_posts\": \"<integer>\",\n  \"default_ping_status\": \"<string>\",\n  \"default_comment_status\": \"<string>\",\n  \"site_logo\": \"<integer>\",\n  \"site_icon\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"data\": {\n    \"status\": 4774,\n    \"params\": {},\n    \"details\": {}\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://lanzatech.com/wp-json",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "27402fcc-9b2d-48b3-8177-7f191d45b814",
+    "name": "LanzaTech WordPress REST block-directory settings API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The public WordPress REST API served by lanzatech.com. Derived faithfully from the provider's own live discovery document at https://lanzatech.com/wp-json/ on 2026-07-19. Alongside the standard WordPress content types (posts, pages, media, categories, tags), LanzaTech publishes five custom content types that model the company itself: news (external news coverage), employee, board-member, download (published reports and life-cycle assessments) and testimonial. Read operations are publicly accessible without authentication; write operations require a WordPress application password.\n\nContact Support:\n Name: LanzaTech",
+      "type": "text/plain"
+    }
+  }
+}

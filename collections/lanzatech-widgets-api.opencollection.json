@@ -1,0 +1,200 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "LanzaTech WordPress REST block-directory widgets API",
+    "version": "wp/v2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "widgets",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /wp/v2/widgets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://lanzatech.com/wp-json/wp/v2/widgets",
+            "params": [
+              {
+                "name": "context",
+                "value": "",
+                "type": "query",
+                "description": "Scope under which the request is made; determines fields present in response."
+              },
+              {
+                "name": "sidebar",
+                "value": "",
+                "type": "query",
+                "description": "The sidebar to return widgets for."
+              }
+            ]
+          },
+          "docs": "GET /wp/v2/widgets"
+        },
+        {
+          "info": {
+            "name": "POST /wp/v2/widgets",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://lanzatech.com/wp-json/wp/v2/widgets",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "POST /wp/v2/widgets"
+        },
+        {
+          "info": {
+            "name": "GET /wp/v2/widgets/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://lanzatech.com/wp-json/wp/v2/widgets/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Route-matched value (WordPress route pattern: [\\w\\-]+)."
+              },
+              {
+                "name": "context",
+                "value": "",
+                "type": "query",
+                "description": "Scope under which the request is made; determines fields present in response."
+              }
+            ]
+          },
+          "docs": "GET /wp/v2/widgets/{id}"
+        },
+        {
+          "info": {
+            "name": "POST /wp/v2/widgets/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://lanzatech.com/wp-json/wp/v2/widgets/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Route-matched value (WordPress route pattern: [\\w\\-]+)."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "POST /wp/v2/widgets/{id}"
+        },
+        {
+          "info": {
+            "name": "PUT /wp/v2/widgets/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://lanzatech.com/wp-json/wp/v2/widgets/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Route-matched value (WordPress route pattern: [\\w\\-]+)."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "PUT /wp/v2/widgets/{id}"
+        },
+        {
+          "info": {
+            "name": "PATCH /wp/v2/widgets/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://lanzatech.com/wp-json/wp/v2/widgets/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Route-matched value (WordPress route pattern: [\\w\\-]+)."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "PATCH /wp/v2/widgets/{id}"
+        },
+        {
+          "info": {
+            "name": "DELETE /wp/v2/widgets/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://lanzatech.com/wp-json/wp/v2/widgets/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Route-matched value (WordPress route pattern: [\\w\\-]+)."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "DELETE /wp/v2/widgets/{id}"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
