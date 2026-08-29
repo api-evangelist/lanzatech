@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: LanzaTech WordPress REST block-directory template-parts API
+  title: LanzaTech WordPress REST block-directory Template Parts API
   version: wp/v2
   description: 'The public WordPress REST API served by lanzatech.com. Derived faithfully from the provider''s own live discovery document at https://lanzatech.com/wp-json/ on 2026-07-19. Alongside the standard WordPress content types (posts, pages, media, categories, tags), LanzaTech publishes five custom content types that model the company itself: news (external news coverage), employee, board-member, download (published reports and life-cycle assessments) and testimonial. Read operations are publicly accessible without authentication; write operations require a WordPress application password.'
   contact:
@@ -72,9 +72,10 @@ paths:
               description: RFC 8288 pagination links (rel=next / rel=prev).
               schema:
                 type: string
-        '400': &id001
+        '400':
           $ref: '#/components/responses/Error'
-        '404': *id001
+        '404':
+          $ref: '#/components/responses/Error'
     post:
       operationId: createTemplateParts
       summary: POST /wp/v2/template-parts
@@ -135,11 +136,14 @@ paths:
             application/json:
               schema:
                 type: object
-        '400': &id002
+        '400':
           $ref: '#/components/responses/Error'
-        '401': *id002
-        '403': *id002
-        '404': *id002
+        '401':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+        '404':
+          $ref: '#/components/responses/Error'
   /wp/v2/template-parts/{id}/:<>\*\?"\|]+(?:\/[^\/:<>\*\?"\|]+)?)[\/\w-]+):
     parameters:
     - name: id
@@ -237,11 +241,14 @@ paths:
             application/json:
               schema:
                 type: object
-        '400': &id003
+        '400':
           $ref: '#/components/responses/Error'
-        '401': *id003
-        '403': *id003
-        '404': *id003
+        '401':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+        '404':
+          $ref: '#/components/responses/Error'
     put:
       operationId: replaceTemplateParts:<>\*\?"\|]+(?:\[^\:<>\*\?"\|]+)?)[\\w]+)ById
       summary: PUT /wp/v2/template-parts/{id}/:<>\*\?"\|]+(?:\/[^\/:<>\*\?"\|]+)?)[\/\w-]+)
@@ -299,11 +306,14 @@ paths:
             application/json:
               schema:
                 type: object
-        '400': &id004
+        '400':
           $ref: '#/components/responses/Error'
-        '401': *id004
-        '403': *id004
-        '404': *id004
+        '401':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+        '404':
+          $ref: '#/components/responses/Error'
     patch:
       operationId: updateTemplateParts:<>\*\?"\|]+(?:\[^\:<>\*\?"\|]+)?)[\\w]+)ById
       summary: PATCH /wp/v2/template-parts/{id}/:<>\*\?"\|]+(?:\/[^\/:<>\*\?"\|]+)?)[\/\w-]+)
@@ -361,11 +371,14 @@ paths:
             application/json:
               schema:
                 type: object
-        '400': &id005
+        '400':
           $ref: '#/components/responses/Error'
-        '401': *id005
-        '403': *id005
-        '404': *id005
+        '401':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+        '404':
+          $ref: '#/components/responses/Error'
     delete:
       operationId: deleteTemplateParts:<>\*\?"\|]+(?:\[^\:<>\*\?"\|]+)?)[\\w]+)ById
       summary: DELETE /wp/v2/template-parts/{id}/:<>\*\?"\|]+(?:\/[^\/:<>\*\?"\|]+)?)[\/\w-]+)
@@ -394,11 +407,14 @@ paths:
             application/json:
               schema:
                 type: object
-        '400': &id006
+        '400':
           $ref: '#/components/responses/Error'
-        '401': *id006
-        '403': *id006
-        '404': *id006
+        '401':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+        '404':
+          $ref: '#/components/responses/Error'
   /wp/v2/template-parts/{id}/autosaves:
     parameters:
     - name: id
@@ -496,11 +512,14 @@ paths:
             application/json:
               schema:
                 type: object
-        '400': &id007
+        '400':
           $ref: '#/components/responses/Error'
-        '401': *id007
-        '403': *id007
-        '404': *id007
+        '401':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+        '404':
+          $ref: '#/components/responses/Error'
   /wp/v2/template-parts/{parent}/autosaves/{id}:
     parameters:
     - name: parent
@@ -747,11 +766,14 @@ paths:
             application/json:
               schema:
                 type: object
-        '400': &id008
+        '400':
           $ref: '#/components/responses/Error'
-        '401': *id008
-        '403': *id008
-        '404': *id008
+        '401':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+        '404':
+          $ref: '#/components/responses/Error'
   /wp/v2/template-parts/lookup:
     get:
       operationId: listTemplatePartsLookup
@@ -797,17 +819,11 @@ paths:
               description: RFC 8288 pagination links (rel=next / rel=prev).
               schema:
                 type: string
-        '400': &id009
+        '400':
           $ref: '#/components/responses/Error'
-        '404': *id009
+        '404':
+          $ref: '#/components/responses/Error'
 components:
-  responses:
-    Error:
-      description: WordPress REST API error envelope.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   schemas:
     Error:
       type: object
@@ -831,6 +847,13 @@ components:
             details:
               type: object
               description: Per-parameter structured error details.
+  responses:
+    Error:
+      description: WordPress REST API error envelope.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   securitySchemes:
     applicationPassword:
       type: http

@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: LanzaTech WordPress REST block-directory users API
+  title: LanzaTech WordPress REST block-directory Users API
   version: wp/v2
   description: 'The public WordPress REST API served by lanzatech.com. Derived faithfully from the provider''s own live discovery document at https://lanzatech.com/wp-json/ on 2026-07-19. Alongside the standard WordPress content types (posts, pages, media, categories, tags), LanzaTech publishes five custom content types that model the company itself: news (external news coverage), employee, board-member, download (published reports and life-cycle assessments) and testimonial. Read operations are publicly accessible without authentication; write operations require a WordPress application password.'
   contact:
@@ -165,9 +165,10 @@ paths:
               description: RFC 8288 pagination links (rel=next / rel=prev).
               schema:
                 type: string
-        '400': &id001
+        '400':
           $ref: '#/components/responses/Error'
-        '404': *id001
+        '404':
+          $ref: '#/components/responses/Error'
     post:
       operationId: createUsers
       summary: POST /wp/v2/users
@@ -239,11 +240,14 @@ paths:
             application/json:
               schema:
                 type: object
-        '400': &id002
+        '400':
           $ref: '#/components/responses/Error'
-        '401': *id002
-        '403': *id002
-        '404': *id002
+        '401':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+        '404':
+          $ref: '#/components/responses/Error'
   /wp/v2/users/{id}:
     parameters:
     - name: id
@@ -354,11 +358,14 @@ paths:
             application/json:
               schema:
                 type: object
-        '400': &id003
+        '400':
           $ref: '#/components/responses/Error'
-        '401': *id003
-        '403': *id003
-        '404': *id003
+        '401':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+        '404':
+          $ref: '#/components/responses/Error'
     put:
       operationId: replaceUsersById
       summary: PUT /wp/v2/users/{id}
@@ -429,11 +436,14 @@ paths:
             application/json:
               schema:
                 type: object
-        '400': &id004
+        '400':
           $ref: '#/components/responses/Error'
-        '401': *id004
-        '403': *id004
-        '404': *id004
+        '401':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+        '404':
+          $ref: '#/components/responses/Error'
     patch:
       operationId: updateUsersById
       summary: PATCH /wp/v2/users/{id}
@@ -504,11 +514,14 @@ paths:
             application/json:
               schema:
                 type: object
-        '400': &id005
+        '400':
           $ref: '#/components/responses/Error'
-        '401': *id005
-        '403': *id005
-        '404': *id005
+        '401':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+        '404':
+          $ref: '#/components/responses/Error'
     delete:
       operationId: deleteUsersById
       summary: DELETE /wp/v2/users/{id}
@@ -542,11 +555,14 @@ paths:
             application/json:
               schema:
                 type: object
-        '400': &id006
+        '400':
           $ref: '#/components/responses/Error'
-        '401': *id006
-        '403': *id006
-        '404': *id006
+        '401':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+        '404':
+          $ref: '#/components/responses/Error'
   /wp/v2/users/{user_id}/application-passwords:
     parameters:
     - name: user_id
@@ -611,11 +627,14 @@ paths:
             application/json:
               schema:
                 type: object
-        '400': &id007
+        '400':
           $ref: '#/components/responses/Error'
-        '401': *id007
-        '403': *id007
-        '404': *id007
+        '401':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+        '404':
+          $ref: '#/components/responses/Error'
     delete:
       operationId: deleteUsersApplicationPasswordsByUser_id
       summary: DELETE /wp/v2/users/{user_id}/application-passwords
@@ -630,11 +649,14 @@ paths:
             application/json:
               schema:
                 type: object
-        '400': &id008
+        '400':
           $ref: '#/components/responses/Error'
-        '401': *id008
-        '403': *id008
-        '404': *id008
+        '401':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+        '404':
+          $ref: '#/components/responses/Error'
   /wp/v2/users/{user_id}/application-passwords/{uuid}:
     parameters:
     - name: user_id
@@ -703,11 +725,14 @@ paths:
             application/json:
               schema:
                 type: object
-        '400': &id009
+        '400':
           $ref: '#/components/responses/Error'
-        '401': *id009
-        '403': *id009
-        '404': *id009
+        '401':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+        '404':
+          $ref: '#/components/responses/Error'
     put:
       operationId: replaceUsersApplicationPasswordsByUser_idByUuid
       summary: PUT /wp/v2/users/{user_id}/application-passwords/{uuid}
@@ -736,11 +761,14 @@ paths:
             application/json:
               schema:
                 type: object
-        '400': &id010
+        '400':
           $ref: '#/components/responses/Error'
-        '401': *id010
-        '403': *id010
-        '404': *id010
+        '401':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+        '404':
+          $ref: '#/components/responses/Error'
     patch:
       operationId: updateUsersApplicationPasswordsByUser_idByUuid
       summary: PATCH /wp/v2/users/{user_id}/application-passwords/{uuid}
@@ -769,11 +797,14 @@ paths:
             application/json:
               schema:
                 type: object
-        '400': &id011
+        '400':
           $ref: '#/components/responses/Error'
-        '401': *id011
-        '403': *id011
-        '404': *id011
+        '401':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+        '404':
+          $ref: '#/components/responses/Error'
     delete:
       operationId: deleteUsersApplicationPasswordsByUser_idByUuid
       summary: DELETE /wp/v2/users/{user_id}/application-passwords/{uuid}
@@ -788,11 +819,14 @@ paths:
             application/json:
               schema:
                 type: object
-        '400': &id012
+        '400':
           $ref: '#/components/responses/Error'
-        '401': *id012
-        '403': *id012
-        '404': *id012
+        '401':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+        '404':
+          $ref: '#/components/responses/Error'
   /wp/v2/users/{user_id}/application-passwords/introspect:
     parameters:
     - name: user_id
@@ -865,9 +899,10 @@ paths:
               description: RFC 8288 pagination links (rel=next / rel=prev).
               schema:
                 type: string
-        '400': &id013
+        '400':
           $ref: '#/components/responses/Error'
-        '404': *id013
+        '404':
+          $ref: '#/components/responses/Error'
     post:
       operationId: createUsersMe
       summary: POST /wp/v2/users/me
@@ -935,11 +970,14 @@ paths:
             application/json:
               schema:
                 type: object
-        '400': &id014
+        '400':
           $ref: '#/components/responses/Error'
-        '401': *id014
-        '403': *id014
-        '404': *id014
+        '401':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+        '404':
+          $ref: '#/components/responses/Error'
     put:
       operationId: replaceUsersMe
       summary: PUT /wp/v2/users/me
@@ -1007,11 +1045,14 @@ paths:
             application/json:
               schema:
                 type: object
-        '400': &id015
+        '400':
           $ref: '#/components/responses/Error'
-        '401': *id015
-        '403': *id015
-        '404': *id015
+        '401':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+        '404':
+          $ref: '#/components/responses/Error'
     patch:
       operationId: updateUsersMe
       summary: PATCH /wp/v2/users/me
@@ -1079,11 +1120,14 @@ paths:
             application/json:
               schema:
                 type: object
-        '400': &id016
+        '400':
           $ref: '#/components/responses/Error'
-        '401': *id016
-        '403': *id016
-        '404': *id016
+        '401':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+        '404':
+          $ref: '#/components/responses/Error'
     delete:
       operationId: deleteUsersMe
       summary: DELETE /wp/v2/users/me
@@ -1114,19 +1158,15 @@ paths:
             application/json:
               schema:
                 type: object
-        '400': &id017
+        '400':
           $ref: '#/components/responses/Error'
-        '401': *id017
-        '403': *id017
-        '404': *id017
+        '401':
+          $ref: '#/components/responses/Error'
+        '403':
+          $ref: '#/components/responses/Error'
+        '404':
+          $ref: '#/components/responses/Error'
 components:
-  responses:
-    Error:
-      description: WordPress REST API error envelope.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   schemas:
     Error:
       type: object
@@ -1150,6 +1190,13 @@ components:
             details:
               type: object
               description: Per-parameter structured error details.
+  responses:
+    Error:
+      description: WordPress REST API error envelope.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   securitySchemes:
     applicationPassword:
       type: http

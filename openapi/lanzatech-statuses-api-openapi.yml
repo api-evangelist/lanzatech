@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: LanzaTech WordPress REST block-directory statuses API
+  title: LanzaTech WordPress REST block-directory Statuses API
   version: wp/v2
   description: 'The public WordPress REST API served by lanzatech.com. Derived faithfully from the provider''s own live discovery document at https://lanzatech.com/wp-json/ on 2026-07-19. Alongside the standard WordPress content types (posts, pages, media, categories, tags), LanzaTech publishes five custom content types that model the company itself: news (external news coverage), employee, board-member, download (published reports and life-cycle assessments) and testimonial. Read operations are publicly accessible without authentication; write operations require a WordPress application password.'
   contact:
@@ -54,9 +54,10 @@ paths:
               description: RFC 8288 pagination links (rel=next / rel=prev).
               schema:
                 type: string
-        '400': &id001
+        '400':
           $ref: '#/components/responses/Error'
-        '404': *id001
+        '404':
+          $ref: '#/components/responses/Error'
   /wp/v2/statuses/{status}:
     parameters:
     - name: status
@@ -98,13 +99,6 @@ paths:
         '404':
           $ref: '#/components/responses/Error'
 components:
-  responses:
-    Error:
-      description: WordPress REST API error envelope.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   schemas:
     Error:
       type: object
@@ -128,6 +122,13 @@ components:
             details:
               type: object
               description: Per-parameter structured error details.
+  responses:
+    Error:
+      description: WordPress REST API error envelope.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   securitySchemes:
     applicationPassword:
       type: http
