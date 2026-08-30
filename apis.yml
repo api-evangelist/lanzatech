@@ -164,7 +164,7 @@ apis:
   humanURL: https://lanzatech.com/wp-json/
   baseURL: https://lanzatech.com/wp-json
   tags:
-  - Employee
+  - employee
   tags_raw:
   - employee
   properties:
@@ -402,6 +402,8 @@ apis:
   humanURL: https://lanzatech.com/wp-json/
   baseURL: https://lanzatech.com/wp-json
   tags:
+  - Testimonial
+  tags_raw:
   - testimonial
   properties:
   - type: OpenAPI
