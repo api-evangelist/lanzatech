@@ -1,8 +1,8 @@
 openapi: 3.2.0
 info:
-  title: LanzaTech WordPress REST block-directory Block Types API
+  title: LanzaTech WordPress REST Block Types API
   version: wp/v2
-  description: 'The public WordPress REST API served by lanzatech.com. Derived faithfully from the provider''s own live discovery document at https://lanzatech.com/wp-json/ on 2026-07-19. Alongside the standard WordPress content types (posts, pages, media, categories, tags), LanzaTech publishes five custom content types that model the company itself: news (external news coverage), employee, board-member, download (published reports and life-cycle assessments) and testimonial. Read operations are publicly accessible without authentication; write operations require a WordPress application password.'
+  description: The public WordPress REST API served by lanzatech.com.
   contact:
     name: LanzaTech
     url: https://lanzatech.com/contact/
@@ -14,14 +14,14 @@ servers:
 - url: https://lanzatech.com/wp-json
   description: Production
 tags:
-- name: block-types
+- name: Block Types
 paths:
   /wp/v2/block-types:
     get:
       operationId: listBlockTypes
       summary: GET /wp/v2/block-types
       tags:
-      - block-types
+      - Block Types
       parameters:
       - name: context
         in: query
@@ -76,7 +76,7 @@ paths:
       operationId: getBlockTypesByNamespace
       summary: GET /wp/v2/block-types/{namespace}
       tags:
-      - block-types
+      - Block Types
       parameters:
       - name: context
         in: query
@@ -122,7 +122,7 @@ paths:
       operationId: getBlockTypesByNamespaceByName
       summary: GET /wp/v2/block-types/{namespace}/{name}
       tags:
-      - block-types
+      - Block Types
       parameters:
       - name: name
         in: query

@@ -1,8 +1,8 @@
 openapi: 3.2.0
 info:
-  title: LanzaTech WordPress REST block-directory Global Styles API
+  title: LanzaTech WordPress REST Global Styles API
   version: wp/v2
-  description: 'The public WordPress REST API served by lanzatech.com. Derived faithfully from the provider''s own live discovery document at https://lanzatech.com/wp-json/ on 2026-07-19. Alongside the standard WordPress content types (posts, pages, media, categories, tags), LanzaTech publishes five custom content types that model the company itself: news (external news coverage), employee, board-member, download (published reports and life-cycle assessments) and testimonial. Read operations are publicly accessible without authentication; write operations require a WordPress application password.'
+  description: The public WordPress REST API served by lanzatech.com.
   contact:
     name: LanzaTech
     url: https://lanzatech.com/contact/
@@ -14,7 +14,7 @@ servers:
 - url: https://lanzatech.com/wp-json
   description: Production
 tags:
-- name: global-styles
+- name: global styles
 paths:
   /wp/v2/global-styles/{id}/\w-]+):
     parameters:
@@ -28,7 +28,7 @@ paths:
       operationId: getGlobalStyles\w]+)ById
       summary: GET /wp/v2/global-styles/{id}/\w-]+)
       tags:
-      - global-styles
+      - global styles
       parameters:
       - name: id
         in: query
@@ -49,7 +49,7 @@ paths:
       operationId: createGlobalStyles\w]+)ById
       summary: POST /wp/v2/global-styles/{id}/\w-]+)
       tags:
-      - global-styles
+      - global styles
       requestBody:
         required: false
         content:
@@ -87,7 +87,7 @@ paths:
       operationId: replaceGlobalStyles\w]+)ById
       summary: PUT /wp/v2/global-styles/{id}/\w-]+)
       tags:
-      - global-styles
+      - global styles
       requestBody:
         required: false
         content:
@@ -125,7 +125,7 @@ paths:
       operationId: updateGlobalStyles\w]+)ById
       summary: PATCH /wp/v2/global-styles/{id}/\w-]+)
       tags:
-      - global-styles
+      - global styles
       requestBody:
         required: false
         content:
@@ -171,7 +171,7 @@ paths:
       operationId: getGlobalStylesThemes\s%\w\.\(\)\[\]\@\]+)VariationsByStylesheet
       summary: GET /wp/v2/global-styles/themes/{stylesheet}/\s%\w\.\(\)\[\]\@_\-]+)/variations
       tags:
-      - global-styles
+      - global styles
       parameters:
       - name: stylesheet
         in: query
@@ -198,9 +198,9 @@ paths:
         type: string
     get:
       operationId: getGlobalStylesThemes:<>\*\?"\|]+(?:\[^\:<>\*\?"\|]+)?)ByStylesheet
-      summary: GET /wp/v2/global-styles/themes/{stylesheet}/:<>\*\?"\|]+(?:\/[^\/:<>\*\?"\|]+)?)
+      summary: GET /wp/v2/global-styles/themes/{stylesheet}/:<>\*\?"\|]+(?:\/[^\/:<>\*\?"\|]+)?…
       tags:
-      - global-styles
+      - global styles
       parameters:
       - name: stylesheet
         in: query

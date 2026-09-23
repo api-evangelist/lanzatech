@@ -1,8 +1,8 @@
 openapi: 3.2.0
 info:
-  title: LanzaTech WordPress REST block-directory Posts API
+  title: LanzaTech WordPress REST Posts API
   version: wp/v2
-  description: 'The public WordPress REST API served by lanzatech.com. Derived faithfully from the provider''s own live discovery document at https://lanzatech.com/wp-json/ on 2026-07-19. Alongside the standard WordPress content types (posts, pages, media, categories, tags), LanzaTech publishes five custom content types that model the company itself: news (external news coverage), employee, board-member, download (published reports and life-cycle assessments) and testimonial. Read operations are publicly accessible without authentication; write operations require a WordPress application password.'
+  description: The public WordPress REST API served by lanzatech.com.
   contact:
     name: LanzaTech
     url: https://lanzatech.com/contact/
@@ -14,14 +14,14 @@ servers:
 - url: https://lanzatech.com/wp-json
   description: Production
 tags:
-- name: posts
+- name: Posts
 paths:
   /wp/v2/posts:
     get:
       operationId: listPosts
       summary: GET /wp/v2/posts
       tags:
-      - posts
+      - Posts
       parameters:
       - name: context
         in: query
@@ -253,7 +253,7 @@ paths:
       operationId: createPosts
       summary: POST /wp/v2/posts
       tags:
-      - posts
+      - Posts
       requestBody:
         required: false
         content:
@@ -373,7 +373,7 @@ paths:
       operationId: getPostsById
       summary: GET /wp/v2/posts/{id}
       tags:
-      - posts
+      - Posts
       parameters:
       - name: id
         in: query
@@ -411,7 +411,7 @@ paths:
       operationId: createPostsById
       summary: POST /wp/v2/posts/{id}
       tags:
-      - posts
+      - Posts
       requestBody:
         required: false
         content:
@@ -526,7 +526,7 @@ paths:
       operationId: replacePostsById
       summary: PUT /wp/v2/posts/{id}
       tags:
-      - posts
+      - Posts
       requestBody:
         required: false
         content:
@@ -641,7 +641,7 @@ paths:
       operationId: updatePostsById
       summary: PATCH /wp/v2/posts/{id}
       tags:
-      - posts
+      - Posts
       requestBody:
         required: false
         content:
@@ -756,7 +756,7 @@ paths:
       operationId: deletePostsById
       summary: DELETE /wp/v2/posts/{id}
       tags:
-      - posts
+      - Posts
       requestBody:
         required: false
         content:
@@ -800,7 +800,7 @@ paths:
       operationId: getPostsAutosavesById
       summary: GET /wp/v2/posts/{id}/autosaves
       tags:
-      - posts
+      - Posts
       parameters:
       - name: parent
         in: query
@@ -832,7 +832,7 @@ paths:
       operationId: createPostsAutosavesById
       summary: POST /wp/v2/posts/{id}/autosaves
       tags:
-      - posts
+      - Posts
       requestBody:
         required: false
         content:
@@ -961,7 +961,7 @@ paths:
       operationId: getPostsAutosavesByParentById
       summary: GET /wp/v2/posts/{parent}/autosaves/{id}
       tags:
-      - posts
+      - Posts
       parameters:
       - name: parent
         in: query
@@ -1007,7 +1007,7 @@ paths:
       operationId: getPostsRevisionsByParent
       summary: GET /wp/v2/posts/{parent}/revisions
       tags:
-      - posts
+      - Posts
       parameters:
       - name: parent
         in: query
@@ -1124,7 +1124,7 @@ paths:
       operationId: getPostsRevisionsByParentById
       summary: GET /wp/v2/posts/{parent}/revisions/{id}
       tags:
-      - posts
+      - Posts
       parameters:
       - name: parent
         in: query
@@ -1162,7 +1162,7 @@ paths:
       operationId: deletePostsRevisionsByParentById
       summary: DELETE /wp/v2/posts/{parent}/revisions/{id}
       tags:
-      - posts
+      - Posts
       requestBody:
         required: false
         content:

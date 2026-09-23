@@ -1,8 +1,8 @@
 openapi: 3.2.0
 info:
-  title: LanzaTech WordPress REST block-directory Users API
+  title: LanzaTech WordPress REST Users API
   version: wp/v2
-  description: 'The public WordPress REST API served by lanzatech.com. Derived faithfully from the provider''s own live discovery document at https://lanzatech.com/wp-json/ on 2026-07-19. Alongside the standard WordPress content types (posts, pages, media, categories, tags), LanzaTech publishes five custom content types that model the company itself: news (external news coverage), employee, board-member, download (published reports and life-cycle assessments) and testimonial. Read operations are publicly accessible without authentication; write operations require a WordPress application password.'
+  description: The public WordPress REST API served by lanzatech.com.
   contact:
     name: LanzaTech
     url: https://lanzatech.com/contact/
@@ -14,14 +14,14 @@ servers:
 - url: https://lanzatech.com/wp-json
   description: Production
 tags:
-- name: users
+- name: Users
 paths:
   /wp/v2/users:
     get:
       operationId: listUsers
       summary: GET /wp/v2/users
       tags:
-      - users
+      - Users
       parameters:
       - name: context
         in: query
@@ -173,7 +173,7 @@ paths:
       operationId: createUsers
       summary: POST /wp/v2/users
       tags:
-      - users
+      - Users
       requestBody:
         required: true
         content:
@@ -260,7 +260,7 @@ paths:
       operationId: getUsersById
       summary: GET /wp/v2/users/{id}
       tags:
-      - users
+      - Users
       parameters:
       - name: id
         in: query
@@ -292,7 +292,7 @@ paths:
       operationId: createUsersById
       summary: POST /wp/v2/users/{id}
       tags:
-      - users
+      - Users
       requestBody:
         required: false
         content:
@@ -370,7 +370,7 @@ paths:
       operationId: replaceUsersById
       summary: PUT /wp/v2/users/{id}
       tags:
-      - users
+      - Users
       requestBody:
         required: false
         content:
@@ -448,7 +448,7 @@ paths:
       operationId: updateUsersById
       summary: PATCH /wp/v2/users/{id}
       tags:
-      - users
+      - Users
       requestBody:
         required: false
         content:
@@ -526,7 +526,7 @@ paths:
       operationId: deleteUsersById
       summary: DELETE /wp/v2/users/{id}
       tags:
-      - users
+      - Users
       requestBody:
         required: true
         content:
@@ -575,7 +575,7 @@ paths:
       operationId: getUsersApplicationPasswordsByUser_id
       summary: GET /wp/v2/users/{user_id}/application-passwords
       tags:
-      - users
+      - Users
       parameters:
       - name: context
         in: query
@@ -601,7 +601,7 @@ paths:
       operationId: createUsersApplicationPasswordsByUser_id
       summary: POST /wp/v2/users/{user_id}/application-passwords
       tags:
-      - users
+      - Users
       requestBody:
         required: true
         content:
@@ -639,7 +639,7 @@ paths:
       operationId: deleteUsersApplicationPasswordsByUser_id
       summary: DELETE /wp/v2/users/{user_id}/application-passwords
       tags:
-      - users
+      - Users
       security:
       - applicationPassword: []
       responses:
@@ -675,7 +675,7 @@ paths:
       operationId: getUsersApplicationPasswordsByUser_idByUuid
       summary: GET /wp/v2/users/{user_id}/application-passwords/{uuid}
       tags:
-      - users
+      - Users
       parameters:
       - name: context
         in: query
@@ -701,7 +701,7 @@ paths:
       operationId: createUsersApplicationPasswordsByUser_idByUuid
       summary: POST /wp/v2/users/{user_id}/application-passwords/{uuid}
       tags:
-      - users
+      - Users
       requestBody:
         required: false
         content:
@@ -737,7 +737,7 @@ paths:
       operationId: replaceUsersApplicationPasswordsByUser_idByUuid
       summary: PUT /wp/v2/users/{user_id}/application-passwords/{uuid}
       tags:
-      - users
+      - Users
       requestBody:
         required: false
         content:
@@ -773,7 +773,7 @@ paths:
       operationId: updateUsersApplicationPasswordsByUser_idByUuid
       summary: PATCH /wp/v2/users/{user_id}/application-passwords/{uuid}
       tags:
-      - users
+      - Users
       requestBody:
         required: false
         content:
@@ -809,7 +809,7 @@ paths:
       operationId: deleteUsersApplicationPasswordsByUser_idByUuid
       summary: DELETE /wp/v2/users/{user_id}/application-passwords/{uuid}
       tags:
-      - users
+      - Users
       security:
       - applicationPassword: []
       responses:
@@ -839,7 +839,7 @@ paths:
       operationId: getUsersApplicationPasswordsIntrospectByUser_id
       summary: GET /wp/v2/users/{user_id}/application-passwords/introspect
       tags:
-      - users
+      - Users
       parameters:
       - name: context
         in: query
@@ -866,7 +866,7 @@ paths:
       operationId: listUsersMe
       summary: GET /wp/v2/users/me
       tags:
-      - users
+      - Users
       parameters:
       - name: context
         in: query
@@ -907,7 +907,7 @@ paths:
       operationId: createUsersMe
       summary: POST /wp/v2/users/me
       tags:
-      - users
+      - Users
       requestBody:
         required: false
         content:
@@ -982,7 +982,7 @@ paths:
       operationId: replaceUsersMe
       summary: PUT /wp/v2/users/me
       tags:
-      - users
+      - Users
       requestBody:
         required: false
         content:
@@ -1057,7 +1057,7 @@ paths:
       operationId: updateUsersMe
       summary: PATCH /wp/v2/users/me
       tags:
-      - users
+      - Users
       requestBody:
         required: false
         content:
@@ -1132,7 +1132,7 @@ paths:
       operationId: deleteUsersMe
       summary: DELETE /wp/v2/users/me
       tags:
-      - users
+      - Users
       requestBody:
         required: true
         content:

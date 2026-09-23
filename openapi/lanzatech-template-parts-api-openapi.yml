@@ -1,8 +1,8 @@
 openapi: 3.2.0
 info:
-  title: LanzaTech WordPress REST block-directory Template Parts API
+  title: LanzaTech WordPress REST Template Parts API
   version: wp/v2
-  description: 'The public WordPress REST API served by lanzatech.com. Derived faithfully from the provider''s own live discovery document at https://lanzatech.com/wp-json/ on 2026-07-19. Alongside the standard WordPress content types (posts, pages, media, categories, tags), LanzaTech publishes five custom content types that model the company itself: news (external news coverage), employee, board-member, download (published reports and life-cycle assessments) and testimonial. Read operations are publicly accessible without authentication; write operations require a WordPress application password.'
+  description: The public WordPress REST API served by lanzatech.com.
   contact:
     name: LanzaTech
     url: https://lanzatech.com/contact/
@@ -14,14 +14,14 @@ servers:
 - url: https://lanzatech.com/wp-json
   description: Production
 tags:
-- name: template-parts
+- name: template parts
 paths:
   /wp/v2/template-parts:
     get:
       operationId: listTemplateParts
       summary: GET /wp/v2/template-parts
       tags:
-      - template-parts
+      - template parts
       parameters:
       - name: context
         in: query
@@ -80,7 +80,7 @@ paths:
       operationId: createTemplateParts
       summary: POST /wp/v2/template-parts
       tags:
-      - template-parts
+      - template parts
       requestBody:
         required: true
         content:
@@ -156,7 +156,7 @@ paths:
       operationId: getTemplateParts:<>\*\?"\|]+(?:\[^\:<>\*\?"\|]+)?)[\\w]+)ById
       summary: GET /wp/v2/template-parts/{id}/:<>\*\?"\|]+(?:\/[^\/:<>\*\?"\|]+)?)[\/\w-]+)
       tags:
-      - template-parts
+      - template parts
       parameters:
       - name: id
         in: query
@@ -188,7 +188,7 @@ paths:
       operationId: createTemplateParts:<>\*\?"\|]+(?:\[^\:<>\*\?"\|]+)?)[\\w]+)ById
       summary: POST /wp/v2/template-parts/{id}/:<>\*\?"\|]+(?:\/[^\/:<>\*\?"\|]+)?)[\/\w-]+)
       tags:
-      - template-parts
+      - template parts
       requestBody:
         required: false
         content:
@@ -253,7 +253,7 @@ paths:
       operationId: replaceTemplateParts:<>\*\?"\|]+(?:\[^\:<>\*\?"\|]+)?)[\\w]+)ById
       summary: PUT /wp/v2/template-parts/{id}/:<>\*\?"\|]+(?:\/[^\/:<>\*\?"\|]+)?)[\/\w-]+)
       tags:
-      - template-parts
+      - template parts
       requestBody:
         required: false
         content:
@@ -318,7 +318,7 @@ paths:
       operationId: updateTemplateParts:<>\*\?"\|]+(?:\[^\:<>\*\?"\|]+)?)[\\w]+)ById
       summary: PATCH /wp/v2/template-parts/{id}/:<>\*\?"\|]+(?:\/[^\/:<>\*\?"\|]+)?)[\/\w-]+)
       tags:
-      - template-parts
+      - template parts
       requestBody:
         required: false
         content:
@@ -383,7 +383,7 @@ paths:
       operationId: deleteTemplateParts:<>\*\?"\|]+(?:\[^\:<>\*\?"\|]+)?)[\\w]+)ById
       summary: DELETE /wp/v2/template-parts/{id}/:<>\*\?"\|]+(?:\/[^\/:<>\*\?"\|]+)?)[\/\w-]+)
       tags:
-      - template-parts
+      - template parts
       requestBody:
         required: false
         content:
@@ -427,7 +427,7 @@ paths:
       operationId: getTemplatePartsAutosavesById
       summary: GET /wp/v2/template-parts/{id}/autosaves
       tags:
-      - template-parts
+      - template parts
       parameters:
       - name: parent
         in: query
@@ -459,7 +459,7 @@ paths:
       operationId: createTemplatePartsAutosavesById
       summary: POST /wp/v2/template-parts/{id}/autosaves
       tags:
-      - template-parts
+      - template parts
       requestBody:
         required: false
         content:
@@ -538,7 +538,7 @@ paths:
       operationId: getTemplatePartsAutosavesByParentById
       summary: GET /wp/v2/template-parts/{parent}/autosaves/{id}
       tags:
-      - template-parts
+      - template parts
       parameters:
       - name: parent
         in: query
@@ -584,7 +584,7 @@ paths:
       operationId: getTemplatePartsRevisionsByParent
       summary: GET /wp/v2/template-parts/{parent}/revisions
       tags:
-      - template-parts
+      - template parts
       parameters:
       - name: parent
         in: query
@@ -701,7 +701,7 @@ paths:
       operationId: getTemplatePartsRevisionsByParentById
       summary: GET /wp/v2/template-parts/{parent}/revisions/{id}
       tags:
-      - template-parts
+      - template parts
       parameters:
       - name: parent
         in: query
@@ -739,7 +739,7 @@ paths:
       operationId: deleteTemplatePartsRevisionsByParentById
       summary: DELETE /wp/v2/template-parts/{parent}/revisions/{id}
       tags:
-      - template-parts
+      - template parts
       requestBody:
         required: false
         content:
@@ -779,7 +779,7 @@ paths:
       operationId: listTemplatePartsLookup
       summary: GET /wp/v2/template-parts/lookup
       tags:
-      - template-parts
+      - template parts
       parameters:
       - name: slug
         in: query

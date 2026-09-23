@@ -1,8 +1,8 @@
 openapi: 3.2.0
 info:
-  title: LanzaTech WordPress REST block-directory Media API
+  title: LanzaTech WordPress REST Media API
   version: wp/v2
-  description: 'The public WordPress REST API served by lanzatech.com. Derived faithfully from the provider''s own live discovery document at https://lanzatech.com/wp-json/ on 2026-07-19. Alongside the standard WordPress content types (posts, pages, media, categories, tags), LanzaTech publishes five custom content types that model the company itself: news (external news coverage), employee, board-member, download (published reports and life-cycle assessments) and testimonial. Read operations are publicly accessible without authentication; write operations require a WordPress application password.'
+  description: The public WordPress REST API served by lanzatech.com.
   contact:
     name: LanzaTech
     url: https://lanzatech.com/contact/
@@ -14,14 +14,14 @@ servers:
 - url: https://lanzatech.com/wp-json
   description: Production
 tags:
-- name: media
+- name: Media
 paths:
   /wp/v2/media:
     get:
       operationId: listMedia
       summary: GET /wp/v2/media
       tags:
-      - media
+      - Media
       parameters:
       - name: context
         in: query
@@ -240,7 +240,7 @@ paths:
       operationId: createMedia
       summary: POST /wp/v2/media
       tags:
-      - media
+      - Media
       requestBody:
         required: false
         content:
@@ -333,7 +333,7 @@ paths:
       operationId: getMediaById
       summary: GET /wp/v2/media/{id}
       tags:
-      - media
+      - Media
       parameters:
       - name: id
         in: query
@@ -365,7 +365,7 @@ paths:
       operationId: createMediaById
       summary: POST /wp/v2/media/{id}
       tags:
-      - media
+      - Media
       requestBody:
         required: false
         content:
@@ -453,7 +453,7 @@ paths:
       operationId: replaceMediaById
       summary: PUT /wp/v2/media/{id}
       tags:
-      - media
+      - Media
       requestBody:
         required: false
         content:
@@ -541,7 +541,7 @@ paths:
       operationId: updateMediaById
       summary: PATCH /wp/v2/media/{id}
       tags:
-      - media
+      - Media
       requestBody:
         required: false
         content:
@@ -629,7 +629,7 @@ paths:
       operationId: deleteMediaById
       summary: DELETE /wp/v2/media/{id}
       tags:
-      - media
+      - Media
       requestBody:
         required: false
         content:
@@ -673,7 +673,7 @@ paths:
       operationId: createMediaEditById
       summary: POST /wp/v2/media/{id}/edit
       tags:
-      - media
+      - Media
       requestBody:
         required: true
         content:
@@ -745,7 +745,7 @@ paths:
       operationId: createMediaPostProcessById
       summary: POST /wp/v2/media/{id}/post-process
       tags:
-      - media
+      - Media
       requestBody:
         required: true
         content:

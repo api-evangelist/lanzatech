@@ -1,8 +1,8 @@
 openapi: 3.2.0
 info:
-  title: LanzaTech WordPress REST block-directory Statuses API
+  title: LanzaTech WordPress REST Statuses API
   version: wp/v2
-  description: 'The public WordPress REST API served by lanzatech.com. Derived faithfully from the provider''s own live discovery document at https://lanzatech.com/wp-json/ on 2026-07-19. Alongside the standard WordPress content types (posts, pages, media, categories, tags), LanzaTech publishes five custom content types that model the company itself: news (external news coverage), employee, board-member, download (published reports and life-cycle assessments) and testimonial. Read operations are publicly accessible without authentication; write operations require a WordPress application password.'
+  description: The public WordPress REST API served by lanzatech.com.
   contact:
     name: LanzaTech
     url: https://lanzatech.com/contact/
@@ -14,14 +14,14 @@ servers:
 - url: https://lanzatech.com/wp-json
   description: Production
 tags:
-- name: statuses
+- name: Statuses
 paths:
   /wp/v2/statuses:
     get:
       operationId: listStatuses
       summary: GET /wp/v2/statuses
       tags:
-      - statuses
+      - Statuses
       parameters:
       - name: context
         in: query
@@ -70,7 +70,7 @@ paths:
       operationId: getStatusesByStatus
       summary: GET /wp/v2/statuses/{status}
       tags:
-      - statuses
+      - Statuses
       parameters:
       - name: status
         in: query

@@ -1,8 +1,8 @@
 openapi: 3.2.0
 info:
-  title: LanzaTech WordPress REST block-directory Testimonial API
+  title: LanzaTech WordPress REST Testimonial API
   version: wp/v2
-  description: 'The public WordPress REST API served by lanzatech.com. Derived faithfully from the provider''s own live discovery document at https://lanzatech.com/wp-json/ on 2026-07-19. Alongside the standard WordPress content types (posts, pages, media, categories, tags), LanzaTech publishes five custom content types that model the company itself: news (external news coverage), employee, board-member, download (published reports and life-cycle assessments) and testimonial. Read operations are publicly accessible without authentication; write operations require a WordPress application password.'
+  description: The public WordPress REST API served by lanzatech.com.
   contact:
     name: LanzaTech
     url: https://lanzatech.com/contact/
@@ -14,14 +14,14 @@ servers:
 - url: https://lanzatech.com/wp-json
   description: Production
 tags:
-- name: testimonial
+- name: Testimonial
 paths:
   /wp/v2/testimonial:
     get:
       operationId: listTestimonial
       summary: GET /wp/v2/testimonial
       tags:
-      - testimonial
+      - Testimonial
       parameters:
       - name: context
         in: query
@@ -196,7 +196,7 @@ paths:
       operationId: createTestimonial
       summary: POST /wp/v2/testimonial
       tags:
-      - testimonial
+      - Testimonial
       requestBody:
         required: false
         content:
@@ -265,7 +265,7 @@ paths:
       operationId: getTestimonialById
       summary: GET /wp/v2/testimonial/{id}
       tags:
-      - testimonial
+      - Testimonial
       parameters:
       - name: id
         in: query
@@ -303,7 +303,7 @@ paths:
       operationId: createTestimonialById
       summary: POST /wp/v2/testimonial/{id}
       tags:
-      - testimonial
+      - Testimonial
       requestBody:
         required: false
         content:
@@ -367,7 +367,7 @@ paths:
       operationId: replaceTestimonialById
       summary: PUT /wp/v2/testimonial/{id}
       tags:
-      - testimonial
+      - Testimonial
       requestBody:
         required: false
         content:
@@ -431,7 +431,7 @@ paths:
       operationId: updateTestimonialById
       summary: PATCH /wp/v2/testimonial/{id}
       tags:
-      - testimonial
+      - Testimonial
       requestBody:
         required: false
         content:
@@ -495,7 +495,7 @@ paths:
       operationId: deleteTestimonialById
       summary: DELETE /wp/v2/testimonial/{id}
       tags:
-      - testimonial
+      - Testimonial
       requestBody:
         required: false
         content:
@@ -539,7 +539,7 @@ paths:
       operationId: getTestimonialAutosavesById
       summary: GET /wp/v2/testimonial/{id}/autosaves
       tags:
-      - testimonial
+      - Testimonial
       parameters:
       - name: parent
         in: query
@@ -571,7 +571,7 @@ paths:
       operationId: createTestimonialAutosavesById
       summary: POST /wp/v2/testimonial/{id}/autosaves
       tags:
-      - testimonial
+      - Testimonial
       requestBody:
         required: false
         content:
@@ -649,7 +649,7 @@ paths:
       operationId: getTestimonialAutosavesByParentById
       summary: GET /wp/v2/testimonial/{parent}/autosaves/{id}
       tags:
-      - testimonial
+      - Testimonial
       parameters:
       - name: parent
         in: query

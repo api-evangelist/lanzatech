@@ -1,8 +1,8 @@
 openapi: 3.2.0
 info:
-  title: LanzaTech WordPress REST block-directory News API
+  title: LanzaTech WordPress REST News API
   version: wp/v2
-  description: 'The public WordPress REST API served by lanzatech.com. Derived faithfully from the provider''s own live discovery document at https://lanzatech.com/wp-json/ on 2026-07-19. Alongside the standard WordPress content types (posts, pages, media, categories, tags), LanzaTech publishes five custom content types that model the company itself: news (external news coverage), employee, board-member, download (published reports and life-cycle assessments) and testimonial. Read operations are publicly accessible without authentication; write operations require a WordPress application password.'
+  description: The public WordPress REST API served by lanzatech.com.
   contact:
     name: LanzaTech
     url: https://lanzatech.com/contact/
@@ -14,14 +14,14 @@ servers:
 - url: https://lanzatech.com/wp-json
   description: Production
 tags:
-- name: news
+- name: News
 paths:
   /wp/v2/news:
     get:
       operationId: listNews
       summary: GET /wp/v2/news
       tags:
-      - news
+      - News
       parameters:
       - name: context
         in: query
@@ -196,7 +196,7 @@ paths:
       operationId: createNews
       summary: POST /wp/v2/news
       tags:
-      - news
+      - News
       requestBody:
         required: false
         content:
@@ -262,7 +262,7 @@ paths:
       operationId: getNewsById
       summary: GET /wp/v2/news/{id}
       tags:
-      - news
+      - News
       parameters:
       - name: id
         in: query
@@ -300,7 +300,7 @@ paths:
       operationId: createNewsById
       summary: POST /wp/v2/news/{id}
       tags:
-      - news
+      - News
       requestBody:
         required: false
         content:
@@ -361,7 +361,7 @@ paths:
       operationId: replaceNewsById
       summary: PUT /wp/v2/news/{id}
       tags:
-      - news
+      - News
       requestBody:
         required: false
         content:
@@ -422,7 +422,7 @@ paths:
       operationId: updateNewsById
       summary: PATCH /wp/v2/news/{id}
       tags:
-      - news
+      - News
       requestBody:
         required: false
         content:
@@ -483,7 +483,7 @@ paths:
       operationId: deleteNewsById
       summary: DELETE /wp/v2/news/{id}
       tags:
-      - news
+      - News
       requestBody:
         required: false
         content:
@@ -527,7 +527,7 @@ paths:
       operationId: getNewsAutosavesById
       summary: GET /wp/v2/news/{id}/autosaves
       tags:
-      - news
+      - News
       parameters:
       - name: parent
         in: query
@@ -559,7 +559,7 @@ paths:
       operationId: createNewsAutosavesById
       summary: POST /wp/v2/news/{id}/autosaves
       tags:
-      - news
+      - News
       requestBody:
         required: false
         content:
@@ -634,7 +634,7 @@ paths:
       operationId: getNewsAutosavesByParentById
       summary: GET /wp/v2/news/{parent}/autosaves/{id}
       tags:
-      - news
+      - News
       parameters:
       - name: parent
         in: query

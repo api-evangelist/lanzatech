@@ -1,8 +1,8 @@
 openapi: 3.2.0
 info:
-  title: LanzaTech WordPress REST block-directory Plugins API
+  title: LanzaTech WordPress REST Plugins API
   version: wp/v2
-  description: 'The public WordPress REST API served by lanzatech.com. Derived faithfully from the provider''s own live discovery document at https://lanzatech.com/wp-json/ on 2026-07-19. Alongside the standard WordPress content types (posts, pages, media, categories, tags), LanzaTech publishes five custom content types that model the company itself: news (external news coverage), employee, board-member, download (published reports and life-cycle assessments) and testimonial. Read operations are publicly accessible without authentication; write operations require a WordPress application password.'
+  description: The public WordPress REST API served by lanzatech.com.
   contact:
     name: LanzaTech
     url: https://lanzatech.com/contact/
@@ -14,14 +14,14 @@ servers:
 - url: https://lanzatech.com/wp-json
   description: Production
 tags:
-- name: plugins
+- name: Plugins
 paths:
   /wp/v2/plugins:
     get:
       operationId: listPlugins
       summary: GET /wp/v2/plugins
       tags:
-      - plugins
+      - Plugins
       parameters:
       - name: context
         in: query
@@ -79,7 +79,7 @@ paths:
       operationId: createPlugins
       summary: POST /wp/v2/plugins
       tags:
-      - plugins
+      - Plugins
       requestBody:
         required: true
         content:
@@ -128,7 +128,7 @@ paths:
       operationId: getPlugins]+(?:\[^.\]+)?)ByPlugin
       summary: GET /wp/v2/plugins/{plugin}/]+(?:\/[^.\/]+)?)
       tags:
-      - plugins
+      - Plugins
       parameters:
       - name: context
         in: query
@@ -160,7 +160,7 @@ paths:
       operationId: createPlugins]+(?:\[^.\]+)?)ByPlugin
       summary: POST /wp/v2/plugins/{plugin}/]+(?:\/[^.\/]+)?)
       tags:
-      - plugins
+      - Plugins
       requestBody:
         required: false
         content:
@@ -206,7 +206,7 @@ paths:
       operationId: replacePlugins]+(?:\[^.\]+)?)ByPlugin
       summary: PUT /wp/v2/plugins/{plugin}/]+(?:\/[^.\/]+)?)
       tags:
-      - plugins
+      - Plugins
       requestBody:
         required: false
         content:
@@ -252,7 +252,7 @@ paths:
       operationId: updatePlugins]+(?:\[^.\]+)?)ByPlugin
       summary: PATCH /wp/v2/plugins/{plugin}/]+(?:\/[^.\/]+)?)
       tags:
-      - plugins
+      - Plugins
       requestBody:
         required: false
         content:
@@ -298,7 +298,7 @@ paths:
       operationId: deletePlugins]+(?:\[^.\]+)?)ByPlugin
       summary: DELETE /wp/v2/plugins/{plugin}/]+(?:\/[^.\/]+)?)
       tags:
-      - plugins
+      - Plugins
       requestBody:
         required: false
         content:

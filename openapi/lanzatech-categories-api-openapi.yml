@@ -1,8 +1,8 @@
 openapi: 3.2.0
 info:
-  title: LanzaTech WordPress REST block-directory Categories API
+  title: LanzaTech WordPress REST Categories API
   version: wp/v2
-  description: 'The public WordPress REST API served by lanzatech.com. Derived faithfully from the provider''s own live discovery document at https://lanzatech.com/wp-json/ on 2026-07-19. Alongside the standard WordPress content types (posts, pages, media, categories, tags), LanzaTech publishes five custom content types that model the company itself: news (external news coverage), employee, board-member, download (published reports and life-cycle assessments) and testimonial. Read operations are publicly accessible without authentication; write operations require a WordPress application password.'
+  description: The public WordPress REST API served by lanzatech.com.
   contact:
     name: LanzaTech
     url: https://lanzatech.com/contact/
@@ -14,14 +14,14 @@ servers:
 - url: https://lanzatech.com/wp-json
   description: Production
 tags:
-- name: categories
+- name: Categories
 paths:
   /wp/v2/categories:
     get:
       operationId: listCategories
       summary: GET /wp/v2/categories
       tags:
-      - categories
+      - Categories
       parameters:
       - name: context
         in: query
@@ -156,7 +156,7 @@ paths:
       operationId: createCategories
       summary: POST /wp/v2/categories
       tags:
-      - categories
+      - Categories
       requestBody:
         required: true
         content:
@@ -210,7 +210,7 @@ paths:
       operationId: getCategoriesById
       summary: GET /wp/v2/categories/{id}
       tags:
-      - categories
+      - Categories
       parameters:
       - name: id
         in: query
@@ -242,7 +242,7 @@ paths:
       operationId: createCategoriesById
       summary: POST /wp/v2/categories/{id}
       tags:
-      - categories
+      - Categories
       requestBody:
         required: false
         content:
@@ -289,7 +289,7 @@ paths:
       operationId: replaceCategoriesById
       summary: PUT /wp/v2/categories/{id}
       tags:
-      - categories
+      - Categories
       requestBody:
         required: false
         content:
@@ -336,7 +336,7 @@ paths:
       operationId: updateCategoriesById
       summary: PATCH /wp/v2/categories/{id}
       tags:
-      - categories
+      - Categories
       requestBody:
         required: false
         content:
@@ -383,7 +383,7 @@ paths:
       operationId: deleteCategoriesById
       summary: DELETE /wp/v2/categories/{id}
       tags:
-      - categories
+      - Categories
       requestBody:
         required: false
         content:
