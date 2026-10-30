@@ -64,59 +64,138 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-LanzaTech (Nasdaq LNZA) is a carbon recycling company that uses gas fermentation to turn waste carbon
-into fuels and chemicals. Proprietary bacteria consume carbon-rich off-gases from steel mills,
-ferroalloy plants and landfills and produce ethanol and other intermediates, sold as CarbonSmart products
-and used by brands including Unilever, Coty and Zara. LanzaTech operates commercial plants in China,
-India and Belgium, is building the LanzaTech Porsgrunn CCUS project in Norway with Eramet, and works with
-LanzaJet on sustainable aviation fuel.
+LanzaTech is a carbon recycling company (Nasdaq LNZA) that uses gas fermentation to convert waste carbon into fuels and chemicals. Its technology retrofits an industrial site such as a steel mill, a ferroalloy plant or a landfill with a bioreactor in which proprietary bacteria consume carbon-rich off-gases and produce ethanol and other intermediates, marketed as CarbonSmart products and used by brands including Unilever, Coty and Zara. The company operates commercial plants in China, India and Belgium, is building the LanzaTech Porsgrunn CCUS project in Norway with Eramet, and works with LanzaJet on sustainable aviation fuel. LanzaTech publishes no developer program, but lanzatech.com runs on WordPress and exposes a fully public, unauthenticated WordPress REST API whose custom content types (news, employee, board-member, download, testimonial) model the company itself.
 
-Backed by: khosla-ventures, qiming — https://lanzatech.com/
+**Areas:** Company · Carbon Capture · Climate Tech · Sustainability · Synthetic Biology · Energy · Chemicals · Sustainable Aviation Fuel · Manufacturing · Content
 
-## The API
+## LanzaTech on APIs.io
 
-LanzaTech runs no developer program and publishes no API documentation. It does serve `lanzatech.com` on
-WordPress with a **fully public, unauthenticated WordPress REST API** at `https://lanzatech.com/wp-json`.
+Everything profiled for LanzaTech is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/lanzatech/](https://apis.io/providers/lanzatech/)** — or go straight to one of the APIs or properties below.
 
-What makes it worth cataloguing is that LanzaTech models itself in that API. Alongside the standard
-WordPress types it registers five custom content types:
+### APIs (1)
 
-| Type | Items | What it is |
-|---|---|---|
-| `news` | 35 | Curated third-party press coverage |
-| `board-member` | 14 | Board of directors profiles |
-| `download` | 5 | Published reports and life-cycle assessments |
-| `employee` | 4 | Leadership team profiles |
-| `testimonial` | 1 | Partner and customer quotes |
+- [LanzaTech Website (WordPress REST)](https://apis.io/apis/lanzatech/lanzatech-com-website-wordpress-rest/) — The public WordPress REST API (wp-json) of the LanzaTech website at lanzatech.com: the route index of the site's content management system, catalogued as…
 
-Plus 107 blog posts, 16 pages, 314 media items, 4 categories and 141 tags.
+### Published properties
 
-## Artifacts
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-| Artifact | Method |
+#### MCP servers (1)
+
+Model Context Protocol servers that expose the API to agents.
+
+- [lanzatech](https://apis.io/servers/lanzatech/lanzatech/)
+
+#### Agentic access (1)
+
+Which operations an agent can call, which act, and which need a human in the loop.
+
+- [Lanzatech Agentic Access](https://apis.io/agentic-access/lanzatech/lanzatech-agentic-access/)
+
+#### Collections (36)
+
+Postman and Open Collection request collections.
+
+- [Moved to /providers/lanzatech/](https://apis.io/collections/lanzatech/open-lanzatech-block-directory-api/)
+- [Moved to /providers/lanzatech/](https://apis.io/collections/lanzatech/open-lanzatech-block-patterns-api/)
+- [Moved to /providers/lanzatech/](https://apis.io/collections/lanzatech/open-lanzatech-block-renderer-api/)
+- [Moved to /providers/lanzatech/](https://apis.io/collections/lanzatech/open-lanzatech-block-types-api/)
+- [Moved to /providers/lanzatech/](https://apis.io/collections/lanzatech/open-lanzatech-blocks-api/)
+- [Moved to /providers/lanzatech/](https://apis.io/collections/lanzatech/open-lanzatech-board-member-api/)
+- [Moved to /providers/lanzatech/](https://apis.io/collections/lanzatech/open-lanzatech-categories-api/)
+- [Moved to /providers/lanzatech/](https://apis.io/collections/lanzatech/open-lanzatech-comments-api/)
+- [Moved to /providers/lanzatech/](https://apis.io/collections/lanzatech/open-lanzatech-download-api/)
+- [Moved to /providers/lanzatech/](https://apis.io/collections/lanzatech/open-lanzatech-employee-api/)
+- [Moved to /providers/lanzatech/](https://apis.io/collections/lanzatech/open-lanzatech-global-styles-api/)
+- [Moved to /providers/lanzatech/](https://apis.io/collections/lanzatech/open-lanzatech-jet-engine-api/)
+- [Moved to /providers/lanzatech/](https://apis.io/collections/lanzatech/open-lanzatech-media-api/)
+- [Moved to /providers/lanzatech/](https://apis.io/collections/lanzatech/open-lanzatech-menu-items-api/)
+- [Moved to /providers/lanzatech/](https://apis.io/collections/lanzatech/open-lanzatech-menu-locations-api/)
+- [Moved to /providers/lanzatech/](https://apis.io/collections/lanzatech/open-lanzatech-menus-api/)
+- [Moved to /providers/lanzatech/](https://apis.io/collections/lanzatech/open-lanzatech-navigation-api/)
+- [Moved to /providers/lanzatech/](https://apis.io/collections/lanzatech/open-lanzatech-news-api/)
+- [Moved to /providers/lanzatech/](https://apis.io/collections/lanzatech/open-lanzatech-pages-api/)
+- [Moved to /providers/lanzatech/](https://apis.io/collections/lanzatech/open-lanzatech-pattern-directory-api/)
+- [Moved to /providers/lanzatech/](https://apis.io/collections/lanzatech/open-lanzatech-plugins-api/)
+- [Moved to /providers/lanzatech/](https://apis.io/collections/lanzatech/open-lanzatech-posts-api/)
+- [Moved to /providers/lanzatech/](https://apis.io/collections/lanzatech/open-lanzatech-search-api/)
+- [Moved to /providers/lanzatech/](https://apis.io/collections/lanzatech/open-lanzatech-settings-api/)
+- [Moved to /providers/lanzatech/](https://apis.io/collections/lanzatech/open-lanzatech-sidebars-api/)
+- …and 11 more published on APIs.io
+
+#### Overlays (1)
+
+OpenAPI overlays, including conversational phrasing for each operation.
+
+- [Lanzatech Wordpress Overlay](https://apis.io/overlays/lanzatech/lanzatech-wordpress-overlay/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Lanzatech Authentication](https://apis.io/security/lanzatech/lanzatech-authentication/)
+- [Lanzatech Domain Security](https://apis.io/security/lanzatech/lanzatech-domain-security/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://lanzatech.com/)
+- [Support](https://lanzatech.com/contact/)
+- [Blog](https://lanzatech.com/blog/)
+- [Terms of service](https://lanzatech.com/terms-of-use/)
+- [Privacy policy](https://lanzatech.com/privacy-policy/)
+- [GitHub](https://github.com/LanzaTech)
+
+## API Evangelist rating
+
+**Kin Score 18.4** — emerging · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
 |---|---|
-| `openapi/` — OpenAPI 3.0.3, 119 paths, 264 operations | derived from `https://lanzatech.com/wp-json/` |
-| `conventions/` — pagination, sparse fieldsets, embedding, versioning | derived + live-observed |
-| `errors/` — every error code captured from a real request | derived from live responses |
-| `data-model/` — entity and taxonomy graph with item counts | derived from `/wp/v2/types` |
-| `authentication/` — WordPress application passwords | derived |
-| `lifecycle/`, `conformance/` — what exists and what does not | derived |
-| `mcp/` — candidate MCP tool list over the public read surface | derived |
-| `skills/` — two agent skills on verified operationIds | generated |
-| `llms/`, `overlays/`, `agentic-access/` | generated |
-| `well-known/`, `security/` | probed |
+| Discoverability | 57.1 |
+| Contract quality | 1.7 |
+| Contract governance | 4.5 |
+| Operational transparency | 2.6 |
+| Developer ergonomics | 30.4 |
+| Access clarity | 21.1 |
 
-## Recorded absences
+**Agent readiness 5.9** — agent-aware
 
-These were probed and are genuinely not published — no pointer is emitted for any of them:
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | — |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | derived (partial credit) |
+| OpenAPI Examples | — |
+| Rate Limit Signal | — |
+| Event Surface Described | — |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
 
-- No `/.well-known/` documents at all (security.txt, openid-configuration, api-catalog: all 404)
-- No `llms.txt`, no OpenAPI, no AsyncAPI, no webhooks, no event surface
-- No SDKs or client libraries (npm: 0 results; PyPI: 404)
-- No CLI, no sandbox, no UI components, no Postman collection
-- No status page, no deprecation policy, no SLA, no API changelog
-- No OAuth (HTTP Basic only), so no scopes artifact
-- No idempotency mechanism
-- No vulnerability disclosure programme, no trust center, no published certifications
-- No rate-limit signalling — though a Sucuri WAF fronts the site and intercepts `/wp/v2/users` and
-  unauthenticated writes, returning HTML rather than the JSON error envelope
+**Regulatory alignment 20.5** — Energy & Utilities
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/lanzatech/](https://apis.io/providers/lanzatech/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for LanzaTech: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/lanzatech/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
